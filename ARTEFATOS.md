@@ -5,7 +5,7 @@ Os resultados indicam que MalSynGen é capaz de capturar padrões representativo
 
 
 ## Download do código fonte 
-**Opção1**:Para realizar a instalação do códgio fonte utilize o comando:
+**Opção 1**:Para realizar a instalação do códgio fonte utilize o comando:
    ```bash
 git clone https://github.com/MalwareDataLab/SynTabData.git
   ```
