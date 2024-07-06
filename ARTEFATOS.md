@@ -4,26 +4,56 @@ Para avaliar sua performance foram aumentados os dados de dois datasets, conside
 Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
 
 
+## Download do código fonte 
+**Opção1**:Para realizar a instalação do códgio fonte utilize o comando:
+   ```bash
+git clone https://github.com/MalwareDataLab/SynTabData.git
+  ```
+**Opção 2**:Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
 
-
-
-### Datasets
-O diretório datasets contem  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim
-como o código utilizado para balancear estes datasets. Além dos arquivos de validação de cada dataset e código de validação utilizado no subdiretório validation.
-[^1]: https://github.com/aleguma/kronodroid
-
-
-### Dependências
+## Dependências
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
 No entanto, as principais são:
 numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
 Ademais, a lista extensa das dependências encontra-se no arquivo requirements.txt.
 
-### Ambiente de testes
+
+## Pré-configuração
+Antes de executar a ferramenta é necessário a execução dos seguintes comandos para resolução de dependências e instanciamento do ambiente.
+### Configurar pipenv
+```
+pip install pipenv
+```
+```
+pipenv install -r requirements.txt
+
+```
+
+
+## Fluxo de execução
+![fluxograma (5)](https://github.com/SBSegSF24/MalSynGen/assets/174879323/97d57a0e-fbb1-4cd2-afeb-9e09460c91cc)
+
+O fluxo de execução da ferramenta consiste de três etapas:
+**Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/MalwareDataLab/SynTabData/tree/87f5018d6acdbe79eb91563c34eb428f36c19a7a/datasets
+
+ O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R)
+
+  **Treinamento**: Nesta etapa ocorre o treinamento da cGAN e geração de dois conjuntos de dados sintéticos: Dataset S (gerado a partir de R) e Dataset s (gerado a paritr de r). Após a geração dos dados são treinados dois classificadores TR-Ar(Treinado com dataset R, avaliado com r) e TS-Ar(Treinado com S, avaliado com r).
+
+   **Avaliação**: Consiste da coleta de métricas de fidelidade e utilidade dos classificadores e dados sintéticos. E subsequente, aplicação  de uma análise estática utilizando o teste wilcoxon sobre as métricas após o término da execução em dobras.
+
+
+## Datasets
+O diretório datasets contem  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim
+como o código utilizado para balancear estes datasets. Além dos arquivos de validação de cada dataset e código de validação utilizado no subdiretório validation.
+[^1]: https://github.com/aleguma/kronodroid
+
+
+## Ambiente de testes
 Utilizamos um servidor AMD Ryzen 7 5800x como processador de 8 cores e 64 GB de memória RAM para execução dos experimentos. 
 O sistema operacional do servidor é o Ubuntu Server versão 22.04.
 
-### Parâmetros da Ferramenta
+## Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -51,7 +81,7 @@ O sistema operacional do servidor é o Ubuntu Server versão 22.04.
 |      -ml, --use_mlflow      |          Opção para utilizar a ferramenta de rastreamento mlflow.          |     Não     |
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
-### Reprodutubalidade 
+## Reprodutubalidade 
 Para a reprodução dos experimentos executados no artigo utilize os seguintes comandos:
 ```bash
 pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples\_class_malware 10000 --batch\_size 256 --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500--k_fold 10
