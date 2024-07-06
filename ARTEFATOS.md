@@ -96,11 +96,15 @@ pipenv run python3 run_campaign.py -c SF24_4096_2048_1
 ```
 ### Selos Reivindicados
 Os autores julgam como considerados no processo de avaliação os selos:
+
 ***Selo D - Artefatos Disponíveis*** 
 Justificativa: Repositório anônimo disponível publicamente.
+
 ***Selo F - Artefatos Funcionais***
 Artefatos completamente funcionais.
+
 ***Selo R - Artefatos Reprodutíveis***
 Scripts disponibilizados reproduzem as configurações exatas do experimento
+
 ***Selo S- Artefatos Sustentáveis**
 Código com boa documentação.
