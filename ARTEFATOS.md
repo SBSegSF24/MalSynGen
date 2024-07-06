@@ -83,7 +83,7 @@ O sistema operacional do servidor é o Ubuntu Server versão 22.04.
 |      -ml, --use_mlflow      |          Opção para utilizar a ferramenta de rastreamento mlflow.          |     Não     |
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
-## Reprodutubalidade 
+## Reprodução de experimentos 
 Para a reprodução dos experimentos executados no artigo utilize os seguintes comandos:
 ```bash
 pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples\_class_malware 10000 --batch\_size 256 --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500--k_fold 10
