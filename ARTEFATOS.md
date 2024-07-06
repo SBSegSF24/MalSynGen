@@ -4,6 +4,7 @@ Para avaliar sua performance foram aumentados os dados de dois datasets, conside
 Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
 
 
+
 ## Download do código fonte 
 **Opção 1**: Para realizar a instalação do códgio fonte utilize o comando:
    ```bash
@@ -93,3 +94,5 @@ Alternativamente executar:
 ```bash
 pipenv run python3 run_campaign.py -c SF24_4096_2048_1    
 ```
+### Selos Revendincados
+Os autores julgam como considerados no processo de avaliação os selos: D - Artefatos Disponíveis; F - Artefatos Funcionais; Selo S Artefatos Sustentáveis; e o Selo R Artefatos Reprodutíveis com base nos códigos e documentação disponibilizados no repositório GitHub.
