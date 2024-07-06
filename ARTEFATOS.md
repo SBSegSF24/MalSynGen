@@ -11,6 +11,10 @@ Os resultados indicam que MalSynGen é capaz de capturar padrões representativo
 git clone https://github.com/MalwareDataLab/SynTabData.git
   ```
 **Opção 2**: Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
+Acesse o diretorio da ferramenta:
+  ```bash
+cd MalSynGen/
+ ```
 
 ## Dependências
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
