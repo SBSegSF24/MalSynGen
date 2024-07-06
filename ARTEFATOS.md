@@ -5,11 +5,11 @@ Os resultados indicam que MalSynGen é capaz de capturar padrões representativo
 
 
 ## Download do código fonte 
-**Opção 1**:Para realizar a instalação do códgio fonte utilize o comando:
+**Opção 1**: Para realizar a instalação do códgio fonte utilize o comando:
    ```bash
 git clone https://github.com/MalwareDataLab/SynTabData.git
   ```
-**Opção 2**:Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
+**Opção 2**: Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
 
 ## Dependências
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
