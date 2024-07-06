@@ -101,10 +101,10 @@ Os autores julgam como considerados no processo de avaliação os selos:
 Justificativa: Repositório anônimo disponível publicamente.
 
 **Selo F - Artefatos Funcionais**
-Artefatos completamente funcionais.
+Justificativa: Artefatos completamente funcionais.
 
 **Selo R - Artefatos Reprodutíveis**
-Scripts disponibilizados reproduzem as configurações exatas do experimento
+Justificativa: Scripts disponibilizados reproduzem as configurações exatas do experimento
 
 **Selo S- Artefatos Sustentáveis**
-Código com boa documentação.
+Justificativa: Código com boa documentação.
