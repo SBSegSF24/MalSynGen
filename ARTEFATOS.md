@@ -31,9 +31,11 @@ pipenv install -r requirements.txt
 
 
 ## Fluxo de execução
-![fluxograma (5)](https://github.com/SBSegSF24/MalSynGen/assets/174879323/97d57a0e-fbb1-4cd2-afeb-9e09460c91cc)
+
+![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/71ed6b27-8273-4e4f-a57f-fe717d9b26fd)
 
 O fluxo de execução da ferramenta consiste de três etapas:
+
 **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/MalwareDataLab/SynTabData/tree/87f5018d6acdbe79eb91563c34eb428f36c19a7a/datasets
 
  O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R)
