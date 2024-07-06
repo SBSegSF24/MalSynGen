@@ -103,7 +103,7 @@ Justificativa: Repositório anônimo disponível publicamente.
 ***Selo F - Artefatos Funcionais***
 Artefatos completamente funcionais.
 
-***Selo R - Artefatos Reprodutíveis***
+**Selo R - Artefatos Reprodutíveis**
 Scripts disponibilizados reproduzem as configurações exatas do experimento
 
 ***Selo S- Artefatos Sustentáveis**
