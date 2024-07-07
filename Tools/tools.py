@@ -2,6 +2,7 @@
 """
 Este módulo  contém  as definições as ferramentas de plot utilizadas para geração dos gráficos
 """
+# Importação de bibliotecas necessárias
 import os
 import numpy as np
 import itertools
