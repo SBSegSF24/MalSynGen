@@ -33,8 +33,8 @@
     ```
 
 ## Fluxo de execução 
+![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4d55117e-4203-4930-a0f5-2ed19c8857e3)
 
-![fluxograma](https://github.com/MalwareDataLab/SynTabData/assets/72932783/49628e1b-37a5-4dbc-b2be-ab78308af6c7)
 O fluxo de execução da ferramenta consiste de três etapas:
 
    **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/MalwareDataLab/SynTabData/tree/87f5018d6acdbe79eb91563c34eb428f36c19a7a/datasets
