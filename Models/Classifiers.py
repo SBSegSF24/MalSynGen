@@ -119,11 +119,11 @@ class Classifiers:
            - random_forest_max_depth : Profundidade máxima da árvore no Random Forest.
            - max_leaf_nodes : Número máximo de folhas no Random Forest.
            - knn_number_neighbors : Número de vizinhos para o KNN.
-           - knn_weights : Método de peso para o KNN.
+           - knn_weights : Função de peso para o KNN.
            - knn_leaf_size : Tamanho da folha para o KNN.
-           - knn_metric : Métrica de distância para o KNN. AQUI
+           - knn_metric : Métrica utilizada para a computação da distância para o KNN. 
            - knn_algorithm: Algoritmo usado pelo KNN.
-           - support_vector_machine_gamma  Coeficiente gamma para SVM.
+           - support_vector_machine_gamma:  Coeficiente gamma para SVM.
            - support_vector_machine_normalization: Parâmetro de regularização para SVM.
            - support_vector_machine_kernel : Kernel usado pelo SVM.
            - support_vector_machine_kernel_degree : Grau do kernel para SVM.
@@ -146,7 +146,7 @@ class Classifiers:
            - perceptron_training_algorithm : Algoritmo de treinamento para Perceptron.
            - perceptron_training_loss : Função de perda para o Perceptron.
            - perceptron_training_metric : Métrica de avaliação para o Perceptron.
-           - perceptron_layer_activation : Função de ativação das camadas ocultas do Perceptron.
+           - perceptron_layer_activation : Função de ativação das camadas internas do Perceptron.
            - perceptron_last_layer_activation : Função de ativação da última camada do Perceptron.
            - perceptron_dropout_decay_rate : Taxa de decaimento para o dropout no Perceptron.
            - perceptron_number_epochs : Número de épocas de treinamento para o Perceptron.
@@ -588,95 +588,284 @@ class Classifiers:
 
     # funções abaixo definem os parâmetros de entrada especificados para o instanciamento de cada classificador
     def set_random_forest_number_estimators(self, random_forest_number_estimators):
+        """
+        Define o número de estimadores para o Random Forest.
+
+        Parâmetros:
+           - random_forest_number_estimators : Número de estimadores para o Random Forest.
+        """
         self.__random_forest_number_estimators = random_forest_number_estimators
 
     def set_random_forest_max_depth(self, random_forest_max_depth):
+        """
+        Define a profundidade máxima da árvore no Random Forest.
+
+        Parâmetros:
+           - random_forest_max_depth : Profundidade máxima da árvore no Random Forest.
+        """
         self.__random_forest_max_depth = random_forest_max_depth
 
     def max_leaf_nodes(self, max_leaf_nodes):
+        """
+        Define o número máximo de folhas no Random Forest.
+
+        Parâmetros:
+           - max_leaf_nodes: Número máximo de folhas no Random Forest.
+        """
         self.__max_leaf_nodes = max_leaf_nodes
 
     def set_knn_number_neighbors(self, knn_number_neighbors):
+        """
+        Define o número de vizinhos para o KNN.
+
+        Parâmetros:
+           - knn_number_neighbors: Número de vizinhos para o KNN.
+        """
         self.__knn_number_neighbors = knn_number_neighbors
 
     def set_knn_weights(self, knn_weights):
+        """
+        Define a função de peso para o KNN.
+
+        Parâmetros:
+           - knn_weights: Função de peso para o KNN.
+        """
         self.__knn_weights = knn_weights
 
     def set_knn_leaf_size(self, knn_leaf_size):
+        """
+        Define o tamanho da folha para o KNN.
+
+        Parâmetros:
+           - knn_leaf_size: Tamanho da folha para o KNN
+        """
+
         self.__knn_leaf_size = knn_leaf_size
 
     def set_knn_metric(self, knn_metric):
+        """
+        Define a  métrica utilizada para a computação da distância para o KNN.
+
+        Parâmetros:
+           - knn_metric: Métrica utilizada para a computação da distância para o KNN.
+        """
         self.__knn_metric = knn_metric
 
     def set_knn_algorithm(self, knn_algorithm):
+        """
+        Define o algoritmo usado pelo KNN.
+
+        Parâmetros:
+           - knn_algorithm: Algoritmo usado pelo KNN.
+        """
         self.__knn_algorithm = knn_algorithm
 
     def set_support_vector_machine_normalization(self, support_vector_machine_normalization):
+        """
+        Define o parâmetro de regularização para SVM.
+
+        Parâmetros:
+           - support_vector_machine_normalization: Parâmetro de regularização para SVM.
+        """       
         self.__support_vector_machine_normalization = support_vector_machine_normalization
 
     def set_support_vector_machine_kernel(self, support_vector_machine_kernel):
+        """
+        Define o kernel usado pelo SVM.
+
+        Parâmetros:
+           - support_vector_machine_kernel:  Kernel usado pelo SVM.
+        """       
         self.__support_vector_machine_kernel = support_vector_machine_kernel
 
     def set_support_vector_machine_kernel_degree(self, support_vector_machine_kernel_degree):
+        """
+        Define  o grau do kernel para SVM.
+
+        Parâmetros:
+           - support_vector_machine_kernel_degree:  Grau do kernel para SVM.
+        """       
+        
         self.__support_vector_machine_kernel_degree = support_vector_machine_kernel_degree
 
     def set_support_vector_machine_gamma(self, support_vector_machine_gamma):
+        """
+        Define  o coeficiente gamma para SVM.
+
+        Parâmetros:
+           - support_vector_machine_gamma: Coeficiente gamma para SVM.
+        """       
+        
         self.__support_vector_machine_gamma = support_vector_machine_gamma
 
     def set_gaussian_process_kernel(self, gaussian_process_kernel):
+        """
+        Define  o kernel para o processo gaussiano.
+
+        Parâmetros:
+           - gaussian_process_kernel: Kernel para o processo gaussiano.
+        """              
         self.__gaussian_process_kernel = gaussian_process_kernel
 
     def set_gaussian_process_max_iterations(self, gaussian_process_max_iterations):
+        """
+        Define  o número máximo de iterações para o processo gaussiano.
+
+        Parâmetros:
+           - gaussian_process_max_iterations: Número máximo de iterações para o processo gaussiano.
+        """                     
         self.__gaussian_process_max_iterations = gaussian_process_max_iterations
 
     def set_gaussian_process_optimizer(self, gaussian_process_optimizer):
+        """
+        Define  o otimizador para o processo gaussiano.
+
+        Parâmetros:
+           - gaussian_process_optimizer: Otimizador para o processo gaussiano.
+        """    
         self.__gaussian_process_optimizer = gaussian_process_optimizer
 
     def set_decision_tree_criterion(self, decision_tree_criterion):
+        """
+        Define o critério usado para medir a qualidade da divisão na árvore de decisão.
+
+        Parâmetros:
+           - decision_tree_criterion: Critério usado para medir a qualidade da divisão na árvore de decisão.
+        """    
         self.__decision_tree_criterion = decision_tree_criterion
 
     def set_decision_tree_max_depth(self, decision_tree_max_depth):
+        """
+        Define a profundidade máxima da árvore de decisão.
+
+        Parâmetros:
+           - decision_tree_max_depth: Profundidade máxima da árvore de decisão.
+        """    
         self.__decision_tree_max_depth = decision_tree_max_depth
 
     def set_decision_tree_max_feature(self, decision_tree_max_feature):
+        """
+        Define o número máximo de características a serem consideradas.
+
+        Parâmetros:
+           - decision_tree_max_feature: Número máximo de características a serem consideradas.
+        """    
         self.__decision_tree_max_feature = decision_tree_max_feature
 
     def set_decision_tree_max_leaf(self, decision_tree_max_leaf):
+        """
+        Define o número máximo de folhas na árvore de decisão.
+
+        Parâmetros:
+           - decision_tree_max_leaf: Número máximo de folhas na árvore de decisão.
+        """    
         self.__decision_tree_max_leaf = decision_tree_max_leaf
 
     def set_ada_boost_estimator(self, ada_boost_estimator):
+        """
+        Define o estimador base para AdaBoost.
+
+        Parâmetros:
+           - ada_boost_estimator: Estimador base para AdaBoost.
+        """           
         self.__ada_boost_estimator = ada_boost_estimator
 
     def set_ada_boost_number_estimators(self, ada_boost_number_estimators):
+        """
+        Define o estimador base para AdaBoost.
+
+        Parâmetros:
+           - ada_boost_estimator: Estimador base para AdaBoost.
+        """           
         self.__ada_boost_number_estimators = ada_boost_number_estimators
 
     def set_ada_boost_learning_rate(self, ada_boost_learning_rate):
+        """
+        Define a taxa de aprendizado do AdaBoost.
+
+        Parâmetros:
+           - ada_boost_learning_rate: Taxa de aprendizado do AdaBoost.
+        """           
         self.__ada_boost_learning_rate = ada_boost_learning_rate
 
     def set_ada_boost_algorithm(self, ada_boost_algorithm):
+        """
+        Define a taxa de aprendizado do AdaBoost.
+
+        Parâmetros:
+           - ada_boost_learning_rate: Taxa de aprendizado do AdaBoost.
+        """           
         self.__ada_boost_algorithm = ada_boost_algorithm
 
     def set_naive_bayes_priors(self, naive_bayes_priors):
+        """
+        Define a probabilidades das classes para Naive Bayes.
+
+        Parâmetros:
+           - naive_bayes_priors: Probabilidades das classes para Naive Bayes.
+        """           
         self.__naive_bayes_priors = naive_bayes_priors
 
     def set_naive_bayes_variation_smoothing(self, naive_bayes_variation_smoothing):
+        """
+        Define o parâmetro de suavização para Naive Bayes.
+
+        Parâmetros:
+           - naive_bayes_variation_smoothing: Parâmetro de suavização para Naive Bayes.
+        """           
         self.__naive_bayes_variation_smoothing = naive_bayes_variation_smoothing
 
     def set_quadratic_discriminant_analysis_priors(self, quadratic_discriminant_analysis_priors):
+        """
+        Define  a probabilidades das classes para QDA.
+
+        Parâmetros:
+           - quadratic_discriminant_analysis_priors: Probabilidades das classes para QDA.
+        """           
         self.__quadratic_discriminant_analysis_priors = quadratic_discriminant_analysis_priors
 
     def set_quadratic_discriminant_analysis_regularization(self, quadratic_discriminant_analysis_regularization):
+        """
+        Define o parâmetro de regularização para QDA.
+
+        Parâmetros:
+           - quadratic_discriminant_analysis_regularization: Parâmetro de regularização para QDA.
+        """    
         self.__quadratic_discriminant_regularize = quadratic_discriminant_analysis_regularization
 
     def set_quadratic_discriminant_threshold(self, quadratic_discriminant_threshold):
+        """
+        Define o limiar de decisão para QDA.
+
+        Parâmetros:
+           - quadratic_discriminant_threshold: Limiar de decisão para QDA.
+        """    
         self.__quadratic_discriminant_threshold = quadratic_discriminant_threshold
 
     def set_perceptron_training_algorithm(self, perceptron_training_algorithm):
+        """
+        Define o algoritmo de treinamento para Perceptron.
+
+        Parâmetros:
+           - perceptron_training_algorithm: Algoritmo de treinamento para Perceptron.
+        """    
         self.__perceptron_training_algorithm = perceptron_training_algorithm
 
     def set_perceptron_training_loss(self, perceptron_training_loss):
+        """
+        Define  a função de perda para o Perceptron.
+
+        Parâmetros:
+           - perceptron_training_loss: Função de perda para o Perceptron
+        """    
         self.__perceptron_training_loss = perceptron_training_loss
 
     def set_perceptron_layer_activation(self, perceptron_layer_activation):
+        """
+        Define a função de ativação das camadas internas do Perceptron.
+
+        Parâmetros:
+           - perceptron_layer_activation: Função de ativação das camadas internas do Perceptron.
+        """    
         self.__perceptron_layer_activation = perceptron_layer_activation
 
