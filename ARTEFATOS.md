@@ -31,7 +31,7 @@ cd MalSynGen/
  ```
 ## Informações básicas
 Os códigos da utilizados para a execução ferramenta 
-MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se informações sobre o fluxo de execução da ferramenta, sua instalação em ambientes bare metal, Google Collab e containers Docker
+MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se informações sobre o fluxo de execução da ferramenta, sua instalação em ambientes *bare metal*, *Google Collab* e *containers* Docker
 
 
 ## 2.1 Dependências
