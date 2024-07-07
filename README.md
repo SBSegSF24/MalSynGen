@@ -1,10 +1,9 @@
-# MalSynGen
 ## Preparação e Execução
 
 1. Clonar o repositório 
    ```bash
-    git clone https://github.com/SBSegSF24/MalSynGen.git
-    cd MalSynGen/
+    git clone https://github.com/MalwareDataLab/SynTabData.git
+    cd SynTabData
    ```
 
 2. Executar a demonstração de funcionamento da ferramenta: 
@@ -35,10 +34,10 @@
 
 ## Fluxo de execução 
 
-![fluxograma](https://github.com/MalwareDataLab/MalSynGen/assets/72932783/49628e1b-37a5-4dbc-b2be-ab78308af6c7)
+![fluxograma](https://github.com/MalwareDataLab/SynTabData/assets/72932783/49628e1b-37a5-4dbc-b2be-ab78308af6c7)
 O fluxo de execução da ferramenta consiste de três etapas:
 
-   **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/MalwareDataLab/MalSynGen/tree/87f5018d6acdbe79eb91563c34eb428f36c19a7a/datasets
+   **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/MalwareDataLab/SynTabData/tree/87f5018d6acdbe79eb91563c34eb428f36c19a7a/datasets
 
  O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R)
 
@@ -89,7 +88,7 @@ Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main
 pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
 ### Utilizar um virtual enviroment (venv) para a execução dos experimentos:
-Uma alternativa ao uso do pipenv é criar um ambiente virtual na pasta do MalSynGen, seguidos estes passos:
+Uma alternativa ao uso do pipenv é criar um ambiente virtual na pasta do SynTabData, seguidos estes passos:
 ### configurar venv 
 ```
 python3 -m venv .venv
@@ -216,9 +215,9 @@ A ferramenta foi executada e testada na prática nos seguinte ambiente:
    pip install aim
    ```
 
-2. Executar MalSynGen com a opção -a ou --use_aim
+2. Executar SynTabData com a opção -a ou --use_aim
 
-3. Executar o comando aim up na pasta do MalSynGen
+3. Executar o comando aim up na pasta do SynTabData
 
 Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
       
@@ -235,7 +234,7 @@ Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
    ```bash
    mlflow server --port 6002
    ```
-3. Executar MalSynGen com a opção -ml ou --use_mlflow   
+3. Executar SynTabData com a opção -ml ou --use_mlflow   
 
 4. Acessar o endereço http://localhost:6002/ no seu navegador para visualizar os resultados
 
@@ -249,7 +248,7 @@ Documentação Mlflow: https://mlflow.org/docs/latest/index.html
   pip install tensorboard
   ```
 
-2. Executar MalSynGen com a opção -tb ou --use_tensorboard
+2. Executar SynTabData com a opção -tb ou --use_tensorboard
 
 3. Visualizar os resultados com o comando
    
