@@ -20,7 +20,7 @@ cd MalSynGen/
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
 No entanto, as principais são:
 numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
-Ademais, a lista extensa das dependências encontra-se no arquivo requirements.txt.
+Ademais, a lista extensa das dependências encontra-se no arquivo [requirements.txt.](https://github.com/SBSegSF24/MalSynGen/blob/07c602b7a43a3cd2bf305a684759a45c4e7cc2f1/requirements.txt)
 
 
 ## Pré-configuração
