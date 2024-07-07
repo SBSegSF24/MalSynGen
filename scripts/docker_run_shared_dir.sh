@@ -4,4 +4,4 @@
 	echo " example: $0 ."
 	exit
 }
-sudo docker run -it --name=syntabdata-$RANDOM -v $(readlink -f $1):/droidaugmentor/shared -e DISPLAY=unix$DISPLAY sf24/syntabdata:latest bash 
+sudo docker run -it --name=MalSynGen-$RANDOM -v $(readlink -f $1):/MalSynGen/shared -e DISPLAY=unix$DISPLAY sf24/malsyngen:latest bash 
