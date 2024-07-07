@@ -19,22 +19,12 @@ Justificativa: Scripts disponibilizados reproduzem as configurações exatas do 
 Justificativa: Código com boa documentação.
 
 
-## Download do código fonte 
-**Opção 1**: Para realizar a instalação do códgio fonte utilize o comando:
-   ```bash
-git clone https://github.com/MalwareDataLab/SynTabData.git
-  ```
-**Opção 2**: Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
-Acesse o diretorio da ferramenta:
-  ```bash
-cd MalSynGen/
- ```
-## Informações básicas
+## 2 Informações básicas
 Os códigos da utilizados para a execução ferramenta 
 MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se informações sobre o fluxo de execução da ferramenta, sua instalação em ambientes *bare metal*, *Google Collab* e *containers* Docker
 
 
-## 2.1 Dependências
+### 2.1 Dependências
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
 No entanto, as principais são:
 numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
@@ -52,6 +42,16 @@ pipenv install -r requirements.txt
 
 ```
 
+## Instalação 
+**Opção 1**: Para realizar a instalação do códgio fonte utilize o comando:
+   ```bash
+git clone https://github.com/MalwareDataLab/SynTabData.git
+  ```
+**Opção 2**: Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
+Acesse o diretorio da ferramenta:
+  ```bash
+cd MalSynGen/
+ ```
 
 ## Datasets
 O diretório datasets contem  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim
