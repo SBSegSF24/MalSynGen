@@ -158,7 +158,8 @@ input_file_path = "/content/dataset.csv"
 ```
 
 Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive.
- <td><img src="https://github.com/LEA-SF23/DroidAugmentor/blob/main/layout/arquivos.JPG" style="max-width:100%;"></td>
+![googlecollab](https://github.com/SBSegSF24/MalSynGen/assets/174879323/6d1ccd21-242d-4cbb-a66e-ecd4660bc4d7)
+
 
 
 ## Parâmetros da ferramenta:
