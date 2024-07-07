@@ -1,4 +1,4 @@
-## Artefatos apêndice SBSEG 2024 #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware
+## Artefatos apêndice SBSEG 2024: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware
 A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar dados sintéticos tabulares para o domínio de malware Android.
 Para avaliar sua performance foram aumentados os dados de dois datasets, considerando métricas de fidelidade estatística e utilidade. 
 Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
@@ -21,7 +21,7 @@ Justificativa: Código com boa documentação.
 
 ## 2. Informações básicas
 Os códigos da utilizados para a execução ferramenta 
-MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se informações sobre o fluxo de execução da ferramenta, sua instalação em ambientes *bare metal*, *Google Collab* e *containers* Docker
+MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se um README.md contendo sobre o fluxo de execução da ferramenta, sua instalação em ambientes *bare metal*, *Google Collab* e *containers* Docker, configuração e parâmetros de entrada.
 
 
 ### 2.1 Dependências
@@ -31,27 +31,18 @@ numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e
 Ademais, a lista extensa das dependências encontra-se no arquivo [requirements.txt.](https://github.com/SBSegSF24/MalSynGen/blob/07c602b7a43a3cd2bf305a684759a45c4e7cc2f1/requirements.txt)
 
 
-## Pré-configuração
-Antes de executar a ferramenta é necessário a execução dos seguintes comandos para resolução de dependências e instanciamento do ambiente.
-### Configurar pipenv
-```
-pip install pipenv
-```
-```
-pipenv install -r requirements.txt
-
-```
-
-## Instalação 
-**Opção 1**: Para realizar a instalação do códgio fonte utilize o comando:
-   ```bash
-git clone https://github.com/MalwareDataLab/SynTabData.git
+## 3. Instalação 
+Para a instalação da ferramenta MalSynGEn siga os seguintes comandos
+**1.** Para realizar a instalação do códgio fonte utilize o comando:
+```bash
+git clone https://github.com/SBSegSF24/MalSynGen.git
   ```
-**Opção 2**: Acesse o repositório diretamente através do link https://github.com/SBSegSF24/MalSynGen e faça o download.
-Acesse o diretorio da ferramenta:
-  ```bash
+**2.** Acesse o diretorio clonado
+```bash`
 cd MalSynGen/
- ```
+```
+**3.**
+
 
 ## Datasets
 O diretório datasets contem  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim
