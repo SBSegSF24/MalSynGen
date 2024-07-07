@@ -1,6 +1,7 @@
 """
 Script responsável pela validação dos datasets balanceados
 """
+# Importação de bibliotecas necessárias
 import json
 import os
 import sys
