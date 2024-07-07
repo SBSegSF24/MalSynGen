@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Módulo principal para execução de experimentos da ferramenta 
 
