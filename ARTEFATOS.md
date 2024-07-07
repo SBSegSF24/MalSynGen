@@ -38,7 +38,7 @@ Para a instalação da ferramenta MalSynGEn siga os seguintes comandos
 git clone https://github.com/SBSegSF24/MalSynGen.git
   ```
 **2.** Acesse o diretorio clonado
-```bash`
+```bash
 cd MalSynGen/
 ```
 **3.**
