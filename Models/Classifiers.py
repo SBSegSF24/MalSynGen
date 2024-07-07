@@ -1,12 +1,9 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 Módulo de classificadores
 
 Este Módulo define os métodos utilizado para treinar os classificadores utilizados durante a execução.
 """
-
-
+# Importação de bibliotecas necessárias
 import logging
 import numpy as np
 from tensorflow import keras
