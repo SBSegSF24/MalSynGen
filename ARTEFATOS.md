@@ -3,6 +3,20 @@ A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar 
 Para avaliar sua performance foram aumentados os dados de dois datasets, considerando métricas de fidelidade estatística e utilidade. 
 Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
 
+### 1. Selos Considerados
+Os autores julgam como considerados no processo de avaliação os selos:
+
+**Selo D - Artefatos Disponíveis** 
+Justificativa: Repositório anônimo disponível publicamente.
+
+**Selo F - Artefatos Funcionais**
+Justificativa: Artefatos completamente funcionais.
+
+**Selo R - Artefatos Reprodutíveis**
+Justificativa: Scripts disponibilizados reproduzem as configurações exatas do experimento
+
+**Selo S- Artefatos Sustentáveis**
+Justificativa: Código com boa documentação.
 
 
 ## Download do código fonte 
@@ -15,8 +29,12 @@ Acesse o diretorio da ferramenta:
   ```bash
 cd MalSynGen/
  ```
+## Informações básicas
+Os códigos da utilizados para a execução ferramenta 
+MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se informações sobre o fluxo de execução da ferramenta, sua instalação em ambientes bare metal, Google Collab e containers Docker
 
-## Dependências
+
+## 2.1 Dependências
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
 No entanto, as principais são:
 numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
@@ -55,17 +73,4 @@ Alternativamente executar:
 ```bash
 pipenv run python3 run_campaign.py -c SF24_4096_2048_1    
 ```
-### Selos Reivindicados
-Os autores julgam como considerados no processo de avaliação os selos:
 
-**Selo D - Artefatos Disponíveis** 
-Justificativa: Repositório anônimo disponível publicamente.
-
-**Selo F - Artefatos Funcionais**
-Justificativa: Artefatos completamente funcionais.
-
-**Selo R - Artefatos Reprodutíveis**
-Justificativa: Scripts disponibilizados reproduzem as configurações exatas do experimento
-
-**Selo S- Artefatos Sustentáveis**
-Justificativa: Código com boa documentação.
