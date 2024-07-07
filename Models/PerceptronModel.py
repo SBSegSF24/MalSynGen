@@ -4,6 +4,7 @@ PerceptronMultilayer Class
 This module defines the PerceptronMultilayer class, which encapsulates a multi-layer perceptron (MLP) model
 using Keras layers for binary classification tasks.
 """
+# Importação de bibliotecas necessárias
 from keras.layers import Dense, Dropout, Input
 from keras.models import Model
 from tensorflow import keras
