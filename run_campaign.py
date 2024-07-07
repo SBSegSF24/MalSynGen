@@ -2,6 +2,7 @@
 Módulo responsavel pela execução de campanhas da ferramenta 
 
 """
+# Importação de bibliotecas necessárias
 try:
     import sys
     import os
