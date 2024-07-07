@@ -162,39 +162,35 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 
 
 
-## Parâmetros da ferramenta:
-    --------------------------------------------------------------
-   
-          (main.py):
 
-           -i ,  --input_dataset        Caminho para o arquivo do dataset real de entrada         
-           -o ,  --output_dir           Diretório para gravação dos arquivos de saída.
-           --data_type                  Tipo de dado para representar as características das amostras.
-           --num_samples_class_malware  Número de amostras da Classe 1 (maligno).
-           --num_samples_class_benign   Número de amostras da Classe 0 (benigno).
-           --number_epochs              Número de épocas (iterações de treinamento) da cGAN.
-           --k_fold                     Número de subdivisões da validação cruzada 
-           --initializer_mean           Valor central da distribuição gaussiana do inicializador.
-           --initializer_deviation      Desvio padrão da distribuição gaussiana do inicializador.
-           --latent_dimension           Dimensão do espaço latente para treinamento cGAN.
-           --training_algorithm         Algoritmo de treinamento para cGAN. Opções: 'Adam', 'RMSprop', 'Adadelta'.
-           --activation_function        Função de ativação da cGAN. Opções: 'LeakyReLU', 'ReLU', 'PReLU'.
-           --dropout_decay_rate_g       Taxa de decaimento do dropout do gerador da cGAN.
-           --dropout_decay_rate_d       Taxa de decaimento do dropout do discriminador da cGAN.
-           --dense_layer_sizes_g        Valores das camadas densas do gerador.
-           --dense_layer_sizes_d        Valores das camadas densas do discriminador.
-           --batch_size                 Tamanho do lote da cGAN.
-           --verbosity                  Nível de verbosidade.
-           --save_models                Opção para salvar modelos treinados.
-           --path_confusion_matrix      Diretório de saída das matrizes de confusão.
-           --path_curve_loss            Diretório de saída dos gráficos de curva de treinamento.
-           -a,  --use_aim               Opção para utilizar a ferramenta de rastreamento Aimstack
-           -ml, --use_mlflow            Opção para utilizar a ferramenta de rastreamento mlflow
-           -rid, --run_id              Opção ligado ao mlflow, utilizada para resumir uma execução não terminada 
-           -tb, --use_tensorboard       Opção para utilizar a ferramenta de rastreamento Tensorboard
-
-        --------------------------------------------------------------
-        
+## Parâmetros da Ferramenta
+|       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
+|:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
+|     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
+|       -o, --output_dir      |               Diretório para gravação dos arquivos de saída.               |     Não     |
+|         --data_type         |       Tipo de dado para representar as características das amostras.       |     Não     |
+| --num_samples_class_malware |                  Número de amostras da Classe 1 (maligno).                 |     Sim     |
+|  --num_samples_class_benign |                  Número de amostras da Classe 0 (benigno).                 |     Sim     |
+|       --number_epochs       |            Número de épocas (iterações de treinamento) da cGAN.            |     Não     |
+|           --k_fold          |                 Número de subdivisões da validação cruzada                 |     Não     |
+|      --initializer_mean     |          Valor central da distribuição gaussiana do inicializador.         |     Não     |
+|   --initializer_deviation   |          Desvio padrão da distribuição gaussiana do inicializador.         |     Não     |
+|      --latent_dimension     |              Dimensão do espaço latente para treinamento cGAN.             |     Não     |
+|     --training_algorithm    | Algoritmo de treinamento para cGAN. Opções: 'Adam', 'RMSprop', 'Adadelta'. |     Não     |
+|    --activation_function    |      Função de ativação da cGAN. Opções: 'LeakyReLU', 'ReLU', 'PReLU'      |     Não     |
+|    --dropout_decay_rate_g   |              Taxa de decaimento do dropout do gerador da cGAN.             |     Não     |
+|    --dropout_decay_rate_d   |           Taxa de decaimento do dropout do discriminador da cGAN.          |     Não     |
+|    --dense_layer_sizes_g    |                   Valores das camadas densas do gerador.                   |     Não     |
+|    --dense_layer_sizes_d    |                Valores das camadas densas do discriminador.                |     Não     |
+|         --batch_size        |                          Tamanho do lote da cGAN.                          |     Não     |
+|         --verbosity         |                            Nível de verbosidade.                           |     Não     |
+|        --save_models        |                    Opção para salvar modelos treinados.                    |     Não     |
+|   --path_confusion_matrix   |                Diretório de saída das matrizes de confusão.                |     Não     |
+|      --path_curve_loss      |          Diretório de saída dos gráficos de curva de treinamento.          |     Não     |
+|        -a, --use_aim        |         Opção para utilizar a ferramenta de rastreamento Aimstack.         |     Não     |
+|      -ml, --use_mlflow      |          Opção para utilizar a ferramenta de rastreamento mlflow.          |     Não     |
+|        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
+|    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
 ## Ambientes de teste
 
