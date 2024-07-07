@@ -1,7 +1,7 @@
 """
 Este módulo define a classe ConditionalGAN para treinar um modelo GAN condicional utilizando Keras.
 """
-
+# Importação de bibliotecas necessárias
 import numpy as np
 from keras.layers import Input, Dense, Flatten, Dropout, Activation, LeakyReLU, PReLU, Concatenate, BatchNormalization
 from keras.initializers import RandomNormal
