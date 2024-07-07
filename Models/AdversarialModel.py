@@ -2,11 +2,10 @@
 Este módulo define a classe AdversarialModel, que é usada para criar, treinar e salvar modelos adversariais (GANs).
 """
 
-
+# Importação de bibliotecas necessárias
 import logging
 import os
 from pathlib import Path
-
 from tensorflow.keras.models import Model
 from tensorflow.keras.models import model_from_json
 from tensorflow.keras.losses import BinaryCrossentropy
