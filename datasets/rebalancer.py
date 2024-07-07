@@ -2,7 +2,7 @@
 Script responsável pelo balanceamento dos datasets
 
 """
-
+# Importação de bibliotecas necessárias
 from collections import Counter
 import json
 import os
