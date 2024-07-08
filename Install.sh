@@ -1,4 +1,4 @@
 #!/bin/sh
-RUN apt-get -y install python3-pip
-RUN pip install pipenv
-RUN pipenv install -r requirements.txt
+sudo apt-get -y install python3-pip
+pip install pipenv
+pipenv install -r requirements.txt
