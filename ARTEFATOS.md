@@ -81,6 +81,10 @@ Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 
 ```bash
 ./run_demo_app.sh
 ```
+Para a execução do mesmo teste no ambiente docker execute o script 
+```bash
+ sudo ./scripts/docker_run_solo.sh
+```
 ## 7. Experimentos
 Para reproduzir os experimentos executados no artigo utilize o seguinte comando:
 ```bash
