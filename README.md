@@ -127,9 +127,9 @@ Google collab é uma ferramenta cloud que permite a execução de códigos Pytho
    
 <td><img src= https://github.com/SBSegSF24/MalSynGen/assets/174879323/628010a5-f2e9-48dc-8044-178f7e9c2c37 style="max-width:100%;"></td>
 
-3. Faça o upload da pasta do MalSynGen no Google Drive
+3. Faça o upload da pasta do MalSynGen no seu Google Drive.
 
-4. Adicione a célula no novo notebook para acessar pasta do Google Drive
+4. Adicione uma nova célula ao clicar no botão + code no topo esquerda da tela, contendo o seguinte  trecho de código para acessar a pasta do Google Drive.
 ```
 from google.colab import drive
 drive.mount('/content/drive')
