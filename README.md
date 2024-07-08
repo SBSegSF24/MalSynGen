@@ -123,7 +123,7 @@ Google collab é uma ferramenta cloud que permite a execução de códigos Pytho
 
 1.  Acesse o seguinte link para utilizar a ferramenta Google colab: https://colab.google/
    
-2. Crie um novo notebook, clicando no botão New notebook no topo direito da tela.
+2. Crie um novo notebook, clicando no botão **New notebook** no topo direito da tela.
    
 <td><img src= https://github.com/SBSegSF24/MalSynGen/assets/174879323/628010a5-f2e9-48dc-8044-178f7e9c2c37 style="max-width:100%;"></td>
 
@@ -142,7 +142,7 @@ cd /content/drive/MyDrive/MalSynGen-main
 ```
 !pip install -r requirements.txt
 ```
-7. Crie uma célula para a execução da ferramenta (Exemplo)
+7. Crie uma célula para a execução da ferramenta (Exemplo):
 ```
 !python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
@@ -155,7 +155,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
    **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/SBSegSF24/MalSynGen/tree/accbe69f12bbf02d5d7f9c75291a60a5738bbb67/datasets
 
- O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R)
+ O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R).
 
   **Treinamento**: Nessa etapa, a cGANs é treinada  e utilizada cGANs para gerar dados sintéticos, precisamos treinar classificadores para posteriormente verificarmos a utilidade dos dados sintéticos gerados: Dataset S (gerado a partir de R) e Dataset s (gerado a paritr de r).  Os classificadores utilizados são denominados TR-As(Treinado com dataset R, avaliado com s) e TS-Ar(Treinado com S, avaliado com r).
 
@@ -199,25 +199,27 @@ O fluxo de execução da ferramenta consiste de três etapas:
 A ferramenta foi executada e testada nos seguintes ambientes:
 
 
--**Hardware**:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07
--**Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07
+-**Hardware**:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07.
+-**Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
 Módulos Python conforme [requirements](requirements.txt).
 
 
 ## 7. Ferramentas de rastreamento
 ### 7.1. Aimstack
 
-1. Instalar a ferramenta
+1. Instalar a ferramenta.
 
    ```bash
    pip install aim
    ```
 
-2. Executar MalSynGen com a opção -a ou --use_aim
+2. Executar MalSynGen com a opção -a ou --use_aim (Exemplo):
+   ```bash
+pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -a
+   ```
+3. Após o final da execução, utilize o comando aim up na pasta do MalSynGen.
 
-3. Executar o comando aim up na pasta do MalSynGen
-
-Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
+   Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
       
 ### 7.2. Mlflow
 
@@ -232,11 +234,14 @@ Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
    ```bash
    mlflow server --port 6002
    ```
-3. Executar MalSynGen com a opção -ml ou --use_mlflow   
+3. Executar MalSynGen com a opção -ml ou --use_mlflow (Exemplo):
+   ```bash
+pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -ml
+   ```
 
-4. Acessar o endereço http://localhost:6002/ no seu navegador para visualizar os resultados
+4. Após o fim da execução, acesse o endereço http://localhost:6002/ no seu navegador para visualizar os resultados.
 
-Documentação Mlflow: https://mlflow.org/docs/latest/index.html
+   Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 ### 7.3. Tensorboard
 
@@ -246,9 +251,12 @@ Documentação Mlflow: https://mlflow.org/docs/latest/index.html
   pip install tensorboard
   ```
 
-2. Executar MalSynGen com a opção -tb ou --use_tensorboard
+2. Executar MalSynGen com a opção -tb ou --use_tensorboard (Exemplo):
+ ```bash
+pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -tb
+   ```
 
-3. Visualizar os resultados com o comando
+3. Visualizar os resultados com o comando:
    
   ```bash
   tensorboard --logdir=tensorboardfolder/ --port=6002
