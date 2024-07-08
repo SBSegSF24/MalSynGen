@@ -6,6 +6,46 @@
     cd MalSynGen
    ./Install.sh
    ```
+1.1 Alternativa manual a execução do script Install.sh 
+### Configurar o pipenv
+
+```
+pip install pipenv
+```
+```
+pipenv install -r requirements.txt
+```
+
+
+Execução básica:
+```
+pipenv python3 run_campaign.py
+```
+
+Exemplo de execução de uma campanha pré-configurada:
+
+```
+pipenv run python3 run_campaign.py -c Kronodroid_r
+
+```
+### Utilizar um virtual enviroment (venv) para a execução dos experimentos:
+Uma alternativa ao uso do pipenv é criar um ambiente virtual na pasta do MalSynGen, seguidos estes passos:
+### configurar venv 
+```
+python3 -m venv .venv
+```
+```
+source .venv/bin/activate
+```
+```
+pip3 install -r requirements.txt
+```
+Exemplo de execução de uma campanha pré-configurada:
+
+```
+python3 run_campaign.py -c Kronodroid_e
+```
+
 
 2. Executar a demonstração de funcionamento da ferramenta: 
 
@@ -48,13 +88,13 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 
 ## Executando os datasets balanceados
-O script em bash execution.sh é reponsavel pela execução de todos os datasets balanceados.
+O script em bash Interactive_execution_datasets.sh é reponsavel pela execução de todos os datasets balanceados.
 
 Executar o script: 
 
 
    ```bash
-   bash execution.sh
+   bash Interactive_execution_datasets
    ```
 
 
@@ -62,49 +102,13 @@ Executar o script:
 
 A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
 
-### Configurar o pipenv
 
-```
-pip install pipenv
-```
-```
-pipenv install -r requirements.txt
-```
-
-
-Execução básica:
-```
-pipenv python3 run_campaign.py
-```
-
-Exemplo de execução de uma campanha pré-configurada:
-
-```
-pipenv run python3 run_campaign.py -c Kronodroid_r
-
-```
 
 Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main.py**):
 ```
 pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
-### Utilizar um virtual enviroment (venv) para a execução dos experimentos:
-Uma alternativa ao uso do pipenv é criar um ambiente virtual na pasta do MalSynGen, seguidos estes passos:
-### configurar venv 
-```
-python3 -m venv .venv
-```
-```
-source .venv/bin/activate
-```
-```
-pip3 install -r requirements.txt
-```
-Exemplo de execução de uma campanha pré-configurada:
 
-```
-python3 run_campaign.py -c Kronodroid_e
-```
 
 
 ###  Parâmetros dos testes automatizados:
