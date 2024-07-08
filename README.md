@@ -1,4 +1,4 @@
-### 1.Instalação
+## 1.Instalação
 
 1. Clonar o repositório e execute os seguintes comandos
    ```bash
@@ -34,7 +34,7 @@
    ```
    pip3 install -r requirements.txt
    ```
-### 2.Execução
+## 2.Execução
 1. Executar a demonstração de funcionamento da ferramenta: 
 
    **Opção 1**: instalar as dependências e executar a aplicação em um ambiente Linux.
@@ -60,7 +60,7 @@
     ./run_sf24_experiments.sh
    ```
    
-### 3.Outras opções de execução
+## 3.Outras opções de execução
    O script em bash  exec_datasets_balanceados.sh   é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
    Executar o script: 
 
@@ -141,7 +141,7 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 
 
 
-### 4. Fluxo de execução 
+## 4. Fluxo de execução 
 ![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4d55117e-4203-4930-a0f5-2ed19c8857e3)
 
 O fluxo de execução da ferramenta consiste de três etapas:
@@ -158,7 +158,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 
 
-### 5.Parâmetros da Ferramenta
+## 5.Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -187,7 +187,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
-### 6.Ambientes de teste
+## 6.Ambientes de teste
 
 A ferramenta foi executada e testada nos seguintes ambientes:
 
@@ -199,7 +199,7 @@ A ferramenta foi executada e testada nos seguintes ambientes:
 Módulos Python conforme [requirements](requirements.txt).
 
 
-### 7.Feramentas de rastreamento
+## 7.Feramentas de rastreamento
 **Aimstack**
 
 1. Instalar a ferramenta
