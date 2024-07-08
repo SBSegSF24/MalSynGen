@@ -1,4 +1,4 @@
-## 1.Instalação
+## 1.Preparação e instalação
 
 1. Clonar o repositório e execute os seguintes comandos
    ```bash
