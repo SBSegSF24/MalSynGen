@@ -1,4 +1,4 @@
-"""
+""""
 Módulo responsavel pela execução de campanhas da ferramenta 
 
 """
@@ -257,14 +257,15 @@ def main():
     time_start_evaluation = datetime.datetime.now()
     count_campaign = 1
     USE_MLFLOW=False
-    #Estabelece o endereço de servidor de rastreamento mlflow como localhost porta 6002
+    #testa se o parâmetro do mlflow está ativado
     if Parâmetros.use_mlflow:
          USE_MLFLOW= True
     if USE_MLFLOW==False:
         for c in campaigns_chosen:
-            #inicializa a execução mlflow
+            #inicialização a execuçao sem mflow
 
                 logging.info("\tCampaign {} {}/{} ".format(c, count_campaign, len(campaigns_chosen)))
+                #para cada campanha aumentar o número de campanhas
                 count_campaign += 1
                 campaign = campaigns_available[c]
                 params, values = zip(*campaign.items())
@@ -274,7 +275,7 @@ def main():
                 for combination in combinations_dicts:
                     logging.info("\t\tcombination {}/{} ".format(count_combination, len(combinations_dicts)))
                     logging.info("\t\t{}".format(combination))
-
+                    # estabelece o comando de execução
                     cmd = COMMAND
                     cmd += " --verbosity {}".format(Parâmetros.verbosity)
                     cmd += " --output_dir {}".format(os.path.join(campaign_dir, "combination_{}".format(count_combination)))
@@ -283,11 +284,11 @@ def main():
 
                     for param in combination.keys():
                         cmd += " --{} {}".format(param, combination[param])
-
+                    # cronometra o início do experimento da campanha
                     time_start_experiment = datetime.datetime.now()
                     logging.info("\t\t\t\t\tBegin: {}".format(time_start_experiment.strftime(TIME_FORMAT)))
                     run_cmd(cmd)
-
+                    #cronometra o fim do experimento da campanha
                     time_end_experiment = datetime.datetime.now()
                     duration = time_end_experiment - time_start_experiment
                     logging.info("\t\t\t\t\tEnd                : {}".format(time_end_experiment.strftime(TIME_FORMAT)))
@@ -299,11 +300,12 @@ def main():
         time_end_evaluation = datetime.datetime.now()
         logging.info("Evaluation duration: {}".format(time_end_evaluation - time_start_evaluation))
     else:
-        count_campaign = 1
-        mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+        #caso o mlflow esteja habilitado, estabelece o endereço e nome da campanha
+        mlflow.set_tracking_uri("http://127.0.0.1:6002/")
         mlflow.set_experiment("MalSynGEn")
         with mlflow.start_run(run_name="campanhas"): 
          for c in campaigns_chosen:
+           #para cada execução da campanha é criada uma execução filha da execução original
            with mlflow.start_run(run_name=c,nested=True) as run:
             id=run.info.run_id
             logging.info("\tCampaign {} {}/{} ".format(c, count_campaign, len(campaigns_chosen)))
@@ -318,7 +320,7 @@ def main():
             for combination in combinations_dicts:
                 logging.info("\t\tcombination {}/{} ".format(count_combination, len(combinations_dicts)))
                 logging.info("\t\t{}".format(combination))
-
+                #comando alternativo que possui a opção -ml
                 cmd = COMMAND2
                 cmd += " --verbosity {}".format(Parâmetros.verbosity)
                 cmd += " --output_dir {}".format(os.path.join(campaign_dir, "combination_{}".format(count_combination)))
@@ -347,6 +349,12 @@ def main():
 
         time_end_evaluation = datetime.datetime.now()
         logging.info("Evaluation duration: {}".format(time_end_evaluation - time_start_evaluation))
+
+
+
+if __name__ == '__main__':
+    sys.exit(main())
+
 
 
 
