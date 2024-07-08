@@ -20,18 +20,17 @@ Justificativa: Código inteligível e acompanhado com boa documentação.
 
 
 ## 2. Informações básicas
-Os códigos da utilizados para a execução ferramenta 
-MalSynGen  estão disponibilizados no repositório GitHub https://github.com/SBSegSF24/MalSynGen.git. Neste encontram-se um README.md contendo sobre o fluxo de execução da ferramenta,configuração, parâmetros de entrada e instalação em ambientes :
+Os códigos da utilizados para a execução ferramenta MalSynGen, estão disponibilizados no repositório GitHub https://github.com/SBSegSF24/MalSynGen.git. Neste encontram-se um README.md contendo informações sobre o fluxo de execução da ferramenta, configuração, parâmetros de entrada e instalação nos seguintes ambientes :
 
--*bare metal* (testado em  Ubuntu 22.04 com Python 3.10.12,3.8.10 e 3.8.2. E Debian 11 e 12 com python  3.9.2)
+-*Bare metal* (testado em  Ubuntu 22.04 com Python 3.10.12,3.8.10 e 3.8.2. E Debian 11 e 12 com python  3.9.2)
 
 -*Google Collab* 
 
--*containers* Docker (testado em Docker versões 24.0.7 e 20.10.5 com imagem Ubuntu 20.04 e 22.04)
+-*Containers* Docker (testado em Docker versões 24.0.7 e 20.10.5 com imagem Ubuntu 20.04 e 22.04)
 
 
 ### 2.1. Dependências
-Testamos o código da ferramentas com as seguintes versões python:
+Testamos o código da ferramenta com as seguintes versões python:
 - Python 3.8.10
 - Python 3.9.2
 - Python 3.10.12
@@ -58,10 +57,9 @@ cd MalSynGen/
 ```bash
 ./Install.sh
 ```
-Alternativamente
+Alternativamente, para construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
 ```bash
 ./scripts/docker_build.sh
-./scripts/docker_run_solo.sh
 ```
 A instalação manual e em outros ambientes está detalhada no README.md do repositório GitHub.
 
@@ -75,10 +73,9 @@ como o código utilizado para balancear estes datasets. Além dos arquivos de va
 ## 5. Ambiente de testes
 A ferramenta foi testada nos seguintes ambientes: 
 
-- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, Python 3.8.10, Docker 24.07
-- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.3, Python  3.10.12, Docker 24.07
-- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 11 (*bullseye*), Python 3.9.2, Docker 20.10.5
-- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 12 (*bookworm*), Python 3.11.2, Docker 24.07
+-**Hardware**:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07.
+
+-**Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
 
 ## 6. Teste mínimo
 Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 286 características, com 300 épocas em 10 folds. Leva 26 minutos num computador AMD Ryzen 7 5800x, 8 cores, 64GB RAM.
@@ -88,7 +85,7 @@ Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 
 ## 7. Experimentos
 Para a reprodução dos experimentos executados no artigo utilize os seguintes comando:
 ```bash
-./Reproduction.sh
+ ./reproduzir_sf24.sh
 ```
 Alternativamente executar:
 ```bash
