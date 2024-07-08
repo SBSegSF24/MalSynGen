@@ -133,15 +133,15 @@ Goggle collab é uma ferramenta cloud que permite a execução de códigos Pytho
 from google.colab import drive
 drive.mount('/content/drive')
 ```
-5. Acesse a pasta do MalSynGen (Exemplo):
+5. Crie uma célula para acessar a pasta do MalSynGen  (Exemplo):
 ```
 cd /content/drive/MyDrive/MalSynGen-main
 ```
-6. Instale as dependências da ferramenta:
+6. Instale as dependências da ferramenta, criando uma célula com o seguinte código:
 ```
 !pip install -r requirements.txt
 ```
-7. Execute a ferramenta (Exemplo)
+7. Crie uma célula para a execução da ferramenta com (Exemplo)
 ```
 !python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
