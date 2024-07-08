@@ -87,7 +87,7 @@ A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a 
 Exemplo de execução de uma campanha pré-configurada com base na execução do Kronodroid e do artigo:
 
 ```
-python3 run_campaign.py -c Kronodroid_e
+pipenv run python3 run_campaign.py -c Kronodroid_e
 ```
 
 
