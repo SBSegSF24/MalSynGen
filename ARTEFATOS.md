@@ -3,7 +3,7 @@ A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar 
 Para avaliar sua performance foram aumentados os dados de dois datasets, considerando métricas de fidelidade estatística e utilidade. 
 Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
 
-### 1. Selos Considerados
+## 1. Selos Considerados
 Os autores julgam como considerados no processo de avaliação os selos:
 
 **Selo D - Artefatos Disponíveis**:
