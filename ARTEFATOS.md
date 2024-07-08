@@ -66,8 +66,8 @@ Alternativamente
 A instalação manual e em outros ambientes está detalhada no README.md do repositório GitHub.
 
 ## 4. Datasets
-O diretório datasets contem  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim
-como o código utilizado para balancear estes datasets. Além dos arquivos de validação de cada dataset e código de validação utilizado no subdiretório validation.
+O diretório [datasets](https://github.com/SBSegSF24/MalSynGen/tree/0669acd4855a7e268eba045346cf526def3acade/datasets) contem  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim
+como o código utilizado para balancear estes datasets. Além dos arquivos de validação de cada dataset e código de validação utilizado no subdiretório [validation](https://github.com/SBSegSF24/MalSynGen/tree/0669acd4855a7e268eba045346cf526def3acade/datasets/validation).
 [^1]: https://github.com/aleguma/kronodroid
 
 
