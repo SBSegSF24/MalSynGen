@@ -57,7 +57,7 @@ cd MalSynGen/
 ```bash
 ./Install.sh
 ```
-Alternativamente, para construir uma imagem Docker localmente a partir do Dockerfile e instanciar a ferramenta em um container.
+Alternativamente, para construir uma imagem Docker localmente a partir do Dockerfile.
 ```bash
 ./scripts/docker_build.sh
 ```
