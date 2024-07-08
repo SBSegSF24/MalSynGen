@@ -244,4 +244,5 @@ Módulos Python conforme [requirements](requirements.txt).
   ```bash
   tensorboard --logdir=tensorboardfolder/ --port=6002
   ```
+
     Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
