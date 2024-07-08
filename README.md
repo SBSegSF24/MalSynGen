@@ -42,10 +42,10 @@
    ./run_demo_app.sh
    ```
      
-   **Opção 2**: Executar o script da imagen
+   **Opção 2**: Executar o script de execução da imagen Docker.
    
    ```bash
-   ./scripts/docker_run_solo.sh
+   sudo ./scripts/docker_run_solo.sh
    ```
    
    **Opção 3**: Executar o docker demo que instancia uma versão reduzida do experimento.
@@ -57,7 +57,7 @@
 2. Executar os mesmos experimentos (campanhas) do paper
 
    ```bash
-    ./run_sf24_experiments.sh
+    ./reproduzir_sf24.sh
    ```
    
 ## 3.Outras opções de execução
@@ -66,7 +66,7 @@
 
 
    ```bash
-   bash  exec_datasets_balanceados.sh
+   ./exec_datasets_balanceados.sh
    ```
 
 
