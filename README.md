@@ -225,9 +225,9 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 
 1. Instalar a ferramenta
    
-   ```bash
-   pip install mlflow
-   ```
+```bash
+pip install mlflow
+```
 
 2. Instanciar um servidor local na porta 6002
 
@@ -258,8 +258,8 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 
 3. Visualizar os resultados com o comando:
    
-  ```bash
-  tensorboard --logdir=tensorboardfolder/ --port=6002
-  ```
+```bash
+tensorboard --logdir=tensorboardfolder/ --port=6002
+```
 
-   Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
+Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
