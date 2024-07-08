@@ -91,4 +91,8 @@ Alternativamente executar:
 ```bash
 pipenv run python3 run_campaign.py -c SF24_4096_2048_1    
 ```
+Os resultados serão salvos na pasta campanhas_SF24/, para acessar a pasta
+```bash
+cd campanhas_SF24/
+```
 
