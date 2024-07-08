@@ -1,4 +1,4 @@
-## 1.Preparação e instalação
+## 1. Preparação e instalação
 
 1. Clonar o repositório e execute os seguintes comandos
    ```bash
@@ -34,7 +34,7 @@
    ```
    pip3 install -r requirements.txt
    ```
-## 2.Execução
+## 2. Execução
 1. Executar a demonstração de funcionamento da ferramenta: 
 
    **Opção 1**: instalar as dependências e executar a aplicação em um ambiente Linux.
@@ -60,7 +60,7 @@
     ./reproduzir_sf24.sh
    ```
    
-## 3.Outras opções de execução
+## 3. Outras opções de execução
    O script em bash  exec_datasets_balanceados.sh   é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
    Executar o script: 
 
@@ -70,7 +70,7 @@
    ```
 
 
-#### 3.1.Executando outros experimentos
+#### 3.1. Executando outros experimentos
 
 A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
 
@@ -85,7 +85,7 @@ Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main
 ```
 pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
-#### 3.2.Parâmetros dos testes automatizados:
+#### 3.2. Parâmetros dos testes automatizados:
 
       --------------------------------------------------------------
 
@@ -118,7 +118,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
     --------------------------------------------------------------
 
 
-#### 3.3.Executando a ferramenta no Google Colab
+#### 3.3. Executando a ferramenta no Google Colab
 Google collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 
 1. Acesse o link para a ferramenta Google colab: https://colab.google/
@@ -165,7 +165,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 
 
-## 5.Parâmetros da Ferramenta
+## 5. Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -194,7 +194,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
-## 6.Ambientes de teste
+## 6. Ambientes de teste
 
 A ferramenta foi executada e testada nos seguintes ambientes:
 
@@ -204,8 +204,8 @@ A ferramenta foi executada e testada nos seguintes ambientes:
 Módulos Python conforme [requirements](requirements.txt).
 
 
-## 7.Feramentas de rastreamento
-**Aimstack**
+## 7.Ferramentas de rastreamento
+### 7.1. Aimstack
 
 1. Instalar a ferramenta
 
@@ -219,7 +219,7 @@ Módulos Python conforme [requirements](requirements.txt).
 
 Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
       
-**Mlflow**
+### 7.2. Mlflow
 
 1. Instalar a ferramenta
    
@@ -238,7 +238,7 @@ Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
 
 Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
-**Tensorboard**
+### 7.3. Tensorboard
 
 1. Instalar a ferramenta
 
