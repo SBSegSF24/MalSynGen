@@ -1,4 +1,4 @@
-### Instalação
+### 1.Instalação
 
 1. Clonar o repositório e execute os seguintes comandos
    ```bash
@@ -11,7 +11,6 @@
       
       ```bash
       ./scripts/docker_build.sh
-      ./scripts/docker_run_solo.sh
       ```
    **Opção 2**: Utilizar o script Install.sh.
       
@@ -35,7 +34,7 @@
    ```
    pip3 install -r requirements.txt
    ```
-### Execução
+### 2.Execução
 1. Executar a demonstração de funcionamento da ferramenta: 
 
    **Opção 1**: instalar as dependências e executar a aplicação em um ambiente Linux.
@@ -43,10 +42,9 @@
    ./run_demo_app.sh
    ```
      
-   **Opção 2**: construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
+   **Opção 2**: Executar o script da imagen
    
    ```bash
-   ./scripts/docker_build.sh
    ./scripts/docker_run_solo.sh
    ```
    
@@ -60,25 +58,10 @@
 
    ```bash
     ./run_sf24_experiments.sh
-    ```
-
-## Fluxo de execução 
-![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4d55117e-4203-4930-a0f5-2ed19c8857e3)
-
-O fluxo de execução da ferramenta consiste de três etapas:
-
-   **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/SBSegSF24/MalSynGen/tree/accbe69f12bbf02d5d7f9c75291a60a5738bbb67/datasets
-
- O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R)
-
-  **Treinamento**: Nessa etapa, a cGANs é treinada  e utilizada cGANs para gerar dados sintéticos, precisamos treinar classificadores para posteriormente verificarmos a utilidade dos dados sintéticos gerados: Dataset S (gerado a partir de R) e Dataset s (gerado a paritr de r).  Os classificadores utilizados são denominados TR-As(Treinado com dataset R, avaliado com s) e TS-Ar(Treinado com S, avaliado com r).
-
-   **Avaliação**: Esta etapa consiste da  execução e subsquente extração de métricas de utilidade dos classificadores, e fidelidade dos sintéticos atravês de uma comparação entre s e r. Por fim, verificamos se a utilidade dos dados sintéticos é fiel à utilidade dos dados reais através de testes como o de Wilcoxon no final da execução de dobras.
-
-
-## Executando os datasets balanceados
-O script em bash  exec_datasets_balanceados.sh  é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
-
+   ```
+   
+### 3.Outras opções de execução
+O script em bash  exec_datasets_balanceados.sh   é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
 
 Executar o script: 
 
@@ -88,7 +71,7 @@ Executar o script:
    ```
 
 
-### Executando outros experimentos
+#### 3.1.Executando outros experimentos
 
 A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
 Exemplo de execução de uma campanha pré-configurada com base na execução do Kronodroid E do artigo:
@@ -102,10 +85,7 @@ Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main
 ```
 pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
-
-
-
-###  Parâmetros dos testes automatizados:
+### 3.2.Parâmetros dos testes automatizados:
 
       --------------------------------------------------------------
 
@@ -138,7 +118,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
     --------------------------------------------------------------
 
 
-## Executando a ferramenta no Google Colab
+### 3.3.Executando a ferramenta no Google Colab
 Goggle collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 link para a ferramenta Google collab: https://colab.google/
 ```
@@ -162,8 +142,24 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 
 
 
+### 4. Fluxo de execução 
+![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4d55117e-4203-4930-a0f5-2ed19c8857e3)
 
-## Parâmetros da Ferramenta
+O fluxo de execução da ferramenta consiste de três etapas:
+
+   **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/SBSegSF24/MalSynGen/tree/accbe69f12bbf02d5d7f9c75291a60a5738bbb67/datasets
+
+ O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R)
+
+  **Treinamento**: Nessa etapa, a cGANs é treinada  e utilizada cGANs para gerar dados sintéticos, precisamos treinar classificadores para posteriormente verificarmos a utilidade dos dados sintéticos gerados: Dataset S (gerado a partir de R) e Dataset s (gerado a paritr de r).  Os classificadores utilizados são denominados TR-As(Treinado com dataset R, avaliado com s) e TS-Ar(Treinado com S, avaliado com r).
+
+   **Avaliação**: Esta etapa consiste da  execução e subsquente extração de métricas de utilidade dos classificadores, e fidelidade dos sintéticos atravês de uma comparação entre s e r. Por fim, verificamos se a utilidade dos dados sintéticos é fiel à utilidade dos dados reais através de testes como o de Wilcoxon no final da execução de dobras.
+
+
+
+
+
+### 5.Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -192,7 +188,7 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
-## Ambientes de teste
+### 6.Ambientes de teste
 
 A ferramenta foi executada e testada nos seguintes ambientes:
 
@@ -204,7 +200,7 @@ A ferramenta foi executada e testada nos seguintes ambientes:
 Módulos Python conforme [requirements](requirements.txt).
 
 
-## Feramentas de rastreamento
+### 7.Feramentas de rastreamento
 **Aimstack**
 
 1. Instalar a ferramenta
