@@ -85,7 +85,7 @@ Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main
 ```
 pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
-### 3.2.Parâmetros dos testes automatizados:
+#### 3.2.Parâmetros dos testes automatizados:
 
       --------------------------------------------------------------
 
@@ -118,7 +118,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
     --------------------------------------------------------------
 
 
-### 3.3.Executando a ferramenta no Google Colab
+#### 3.3.Executando a ferramenta no Google Colab
 Goggle collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 link para a ferramenta Google collab: https://colab.google/
 ```
