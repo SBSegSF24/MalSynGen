@@ -16,8 +16,8 @@ pip install pipenv
 pipenv install -r requirements.txt
 ```
 
-#### (ALTERNATIVA AO INSTALL.SH)  Utilizar um virtual enviroment (venv) para a execução dos experimentos:
-#### Configurar Venv
+#### (ALTERNATIVA AO INSTALL.SH)  Configurar Venv:
+
 ```
 python3 -m venv .venv
 ```
