@@ -78,7 +78,7 @@ A ferramenta foi testada nos seguintes ambientes:
 -**Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
 
 ## 6. Teste mínimo
-Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 286 características, com 300 épocas em 10 folds. Leva 26 minutos num computador AMD Ryzen 7 5800x, 8 cores, 64GB RAM.
+Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 286 características, com 100 épocas em 2 folds. Leva 5 minutos num computador AMD Ryzen 7 5800x, 8 cores, 64GB RAM.
 ```bash
 ./run_demo_app.sh
 ```
