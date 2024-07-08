@@ -43,7 +43,7 @@ cd MalSynGen/
 ```
 **3.** Execute o script de instalação
 ```bash
-./install.sh
+./Install.sh
 ```
 A instalação manual e em outros ambientes está detalhada no README.md do repositório GitHub.
 
