@@ -1,6 +1,6 @@
 ## Preparação e Execução
 
-1. Clonar o repositório 
+1. Clonar o repositório e execute os seguintes comandos
    ```bash
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
