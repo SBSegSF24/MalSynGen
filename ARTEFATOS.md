@@ -6,16 +6,16 @@ Os resultados indicam que MalSynGen é capaz de capturar padrões representativo
 ### 1. Selos Considerados
 Os autores julgam como considerados no processo de avaliação os selos:
 
-**Selo D - Artefatos Disponíveis** 
+**Selo D - Artefatos Disponíveis**:
 Justificativa: Repositório  anônimo  GitHub público com documentação da ferramente e modulos
 
-**Selo F - Artefatos Funcionais**
+**Selo F - Artefatos Funcionais**:
 Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 (*bare metal* e Docker) e 20.04 (Docker) e Debian  11 (*bare metal*) e 12 (*bare metal*)
 
-**Selo R - Artefatos Reprodutíveis**
+**Selo R - Artefatos Reprodutíveis**:
 Justificativa: São disponbilizados scripts para reprodução dos experimentos detalhados no paper.[script1](https://github.com/SBSegSF24/MalSynGen/blob/e71cec8b62a395ca282528912f21b279e64992c8/run_sf24_experiments.sh);[script2](https://github.com/SBSegSF24/MalSynGen/blob/e71cec8b62a395ca282528912f21b279e64992c8/Reproduction.sh).
 
-**Selo S- Artefatos Sustentáveis**
+**Selo S- Artefatos Sustentáveis**:
 Justificativa: Código inteligível e acompanhado com boa documentação.
 
 
