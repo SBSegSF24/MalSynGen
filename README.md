@@ -84,7 +84,7 @@ Executar o script:
 ### Executando outros experimentos
 
 A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
-Exemplo de execução de uma campanha pré-configurada com base na execução do Kronodroid e do artigo:
+Exemplo de execução de uma campanha pré-configurada com base na execução do Kronodroid E do artigo:
 
 ```
 pipenv run python3 run_campaign.py -c Kronodroid_e
@@ -132,7 +132,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 
 
 ## Executando a ferramenta no Google Colab
-Goggle collab é uma ferramenta cloud que permite a execução de códigos python no seu navegador.
+Goggle collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 link para a ferramenta Google collab: https://colab.google/
 ```
 from google.colab import drive
@@ -187,7 +187,7 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 
 ## Ambientes de teste
 
-A ferramenta foi executada e testada na prática nos seguintes ambientes:
+A ferramenta foi executada e testada nos seguintes ambientes:
 
 
 - Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, python 3.8.10, docker 24.07
