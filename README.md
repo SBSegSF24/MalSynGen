@@ -17,15 +17,6 @@ pipenv install -r requirements.txt
 ```
 
 
-Execução básica:
-```
-pipenv python3 run_campaign.py
-```
-
-Exemplo de execução de uma campanha pré-configurada:
-
-```
-pipenv run python3 run_campaign.py -c Kronodroid_r
 
 ```
 #### (ALTERNATIVA AO INSTALL.SH)  Utilizar um virtual enviroment (venv) para a execução dos experimentos:
@@ -38,11 +29,6 @@ source .venv/bin/activate
 ```
 ```
 pip3 install -r requirements.txt
-```
-Exemplo de execução de uma campanha pré-configurada:
-
-```
-python3 run_campaign.py -c Kronodroid_e
 ```
 
 
@@ -66,7 +52,7 @@ python3 run_campaign.py -c Kronodroid_e
    ```
 
     
-4. Executar os mesmos experimentos (campanhas) do paper
+3. Executar os mesmos experimentos (campanhas) do paper
 
    ```bash
     ./run_sf24_experiments.sh
@@ -100,7 +86,11 @@ Executar o script:
 ### Executando outros experimentos
 
 A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
+Exemplo de execução de uma campanha pré-configurada com base na execução do Kronodroid e do artigo:
 
+```
+python3 run_campaign.py -c Kronodroid_e
+```
 
 
 Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main.py**):
@@ -144,7 +134,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 
 
 ## Executando a ferramenta no Google Colab
-
+link para a ferramenta Google collab: https://colab.google/
 ```
 from google.colab import drive
 drive.mount('/content/drive')
