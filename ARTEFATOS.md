@@ -82,7 +82,7 @@ Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 
 ./run_demo_app.sh
 ```
 ## 7. Experimentos
-Para a reprodução dos experimentos executados no artigo utilize os seguintes comandos:
+Para a reprodução dos experimentos executados no artigo utilize os seguintes comando:
 ```bash
 ./Reproduction.sh
 ```
