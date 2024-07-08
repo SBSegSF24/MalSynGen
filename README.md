@@ -119,9 +119,9 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 
 
 #### 3.3.Executando a ferramenta no Google Colab
-Goggle collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
+Google collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 
-1. Acesse o link para a ferramenta Google collab: https://colab.google/
+1. Acesse o link para a ferramenta Google colab: https://colab.google/
    
 2. Crie um novo notebook, clicando no botão New notebook no topo direito da tela.
    
