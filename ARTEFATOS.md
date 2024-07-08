@@ -45,6 +45,7 @@ Ademais, a lista extensa das dependências encontra-se no arquivo [requirements.
 
 ## 3. Instalação 
 Para a instalação da ferramenta MalSynGen siga os seguintes comandos
+
 **1.** Para realizar a instalação do código fonte utilize o comando:
 ```bash
 git clone https://github.com/SBSegSF24/MalSynGen.git
