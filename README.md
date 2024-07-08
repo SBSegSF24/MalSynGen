@@ -225,7 +225,7 @@ Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
    ```bash
    mlflow server --port 6002
    ```
-3. Executar MalSynGencom a opção -ml ou --use_mlflow   
+3. Executar MalSynGen com a opção -ml ou --use_mlflow   
 
 4. Acessar o endereço http://localhost:6002/ no seu navegador para visualizar os resultados
 
