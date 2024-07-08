@@ -10,7 +10,7 @@ Os autores julgam como considerados no processo de avaliação os selos:
 Justificativa: Repositório  anônimo  GitHub público com documentação da ferramente e modulos
 
 **Selo F - Artefatos Funcionais**
-Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 e 20.04 e Debian  11 e 12
+Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 (*bare metal* e Docker) e 20.04 (Docker) e Debian  11 (*bare metal*) e 12 (*bare metal*)
 
 **Selo R - Artefatos Reprodutíveis**
 Justificativa: São disponbilizados scripts para reprodução dos experimentos detalhados no paper.
@@ -24,7 +24,7 @@ Os códigos da utilizados para a execução ferramenta
 MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se um README.md contendo sobre o fluxo de execução da ferramenta,configuração, parâmetros de entrada e instalação em ambeintes :
 -*bare metal* (testado em  Ubuntu 22.04 com Python 3.10.12,3.8.10 e 3.8.2. E Debian 11 e 12 com python  3.9.2)
 -*Google Collab* 
--*containers* Docker (testado em versões 24.0.7 e 20.10.5)
+-*containers* Docker (testado em Docker versões 24.0.7 e 20.10.5 com imagem Ubuntu 20.04 e 22.04)
 
 
 ### 2.1. Dependências
