@@ -1,4 +1,4 @@
-""""
+"""
 Módulo responsavel pela execução de campanhas da ferramenta 
 
 """
@@ -324,20 +324,19 @@ def main():
                 cmd = COMMAND2
                 cmd += " --verbosity {}".format(Parâmetros.verbosity)
                 cmd += " --output_dir {}".format(os.path.join(campaign_dir, "combination_{}".format(count_combination)))
-                #cmd +=" -ml"
                 cmd += " --run_id {}".format(id)
-                #cmd +=" -ml"
+
                 count_combination += 2
 
                 for param in combination.keys():
                     cmd += " --{} {}".format(param, combination[param])
 
-
+                # cronometra o início do experimento da campanha
                 time_start_experiment = datetime.datetime.now()
                 logging.info(
                     "\t\t\t\t\tBegin: {}".format(time_start_experiment.strftime(TIME_FORMAT)))
                 run_cmd(cmd)
-
+                #cronometra o fim do experimento da campanha
                 time_end_experiment = datetime.datetime.now()
                 duration = time_end_experiment - time_start_experiment
                 logging.info("\t\t\t\t\tEnd                : {}".format(time_end_experiment.strftime(TIME_FORMAT)))
@@ -346,15 +345,9 @@ def main():
 
             time_end_campaign = datetime.datetime.now()
             logging.info("\t Campaign duration: {}".format(time_end_campaign - time_start_campaign))
-
+        #Obtém o tempo de final da execução
         time_end_evaluation = datetime.datetime.now()
         logging.info("Evaluation duration: {}".format(time_end_evaluation - time_start_evaluation))
-
-
-
-if __name__ == '__main__':
-    sys.exit(main())
-
 
 
 
