@@ -147,8 +147,6 @@ cd /content/drive/MyDrive/MalSynGen-main
 ```
 
 Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive.
- <td><img src=https://github.com/SBSegSF24/MalSynGen/assets/174879323/6d1ccd21-242d-4cbb-a66e-ecd4660bc4d7 style="max-width:100%;"></td>
-
 
 
 ## 4. Fluxo de execução 
