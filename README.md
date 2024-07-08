@@ -204,7 +204,7 @@ A ferramenta foi executada e testada nos seguintes ambientes:
 Módulos Python conforme [requirements](requirements.txt).
 
 
-## 7.Ferramentas de rastreamento
+## 7. Ferramentas de rastreamento
 ### 7.1. Aimstack
 
 1. Instalar a ferramenta
