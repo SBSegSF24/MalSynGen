@@ -70,7 +70,8 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 
 ## Executando os datasets balanceados
-O script em bash Interactive_execution_datasets.sh é reponsavel pela execução de todos os datasets balanceados.
+O script em bash Interactive_execution_datasets.sh é reponsavel pela execução dos datasets dos experimentos com base na configuração especificada pelo usuário
+
 
 Executar o script: 
 
@@ -131,7 +132,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 
 
 ## Executando a ferramenta no Google Colab
-Goggle collab  ´  uma ferramenta cloud que perminte a execução de c´digos python no seu navegador.
+Goggle collab é uma ferramenta cloud que permite a execução de códigos python no seu navegador.
 link para a ferramenta Google collab: https://colab.google/
 ```
 from google.colab import drive
