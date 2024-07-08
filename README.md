@@ -122,7 +122,7 @@ Goggle collab é uma ferramenta cloud que permite a execução de códigos Pytho
 
 1. Acesse o link para a ferramenta Google collab: https://colab.google/
    
-2. Crie um novo notebook, clicando no botão New notebook
+2. Crie um novo notebook, clicando no botão New notebook no topo direito da tela.
    
 <td><img src= https://github.com/SBSegSF24/MalSynGen/assets/174879323/628010a5-f2e9-48dc-8044-178f7e9c2c37 style="max-width:100%;"></td>
 
@@ -145,8 +145,6 @@ cd /content/drive/MyDrive/MalSynGen-main
 ```
 !python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
-
-Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive.
 
 
 ## 4. Fluxo de execução 
