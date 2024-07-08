@@ -7,24 +7,33 @@ Os resultados indicam que MalSynGen é capaz de capturar padrões representativo
 Os autores julgam como considerados no processo de avaliação os selos:
 
 **Selo D - Artefatos Disponíveis** 
-Justificativa: Repositório anônimo disponível publicamente.
+Justificativa: Repositório  anônimo  GitHub público com documentação da ferramente e modulos
 
 **Selo F - Artefatos Funcionais**
-Justificativa: Artefatos completamente funcionais.
+Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 e 20.04 e Debian  11 e 12
 
 **Selo R - Artefatos Reprodutíveis**
-Justificativa: Scripts disponibilizados reproduzem as configurações exatas do experimento
+Justificativa: São disponbilizados scripts para reprodução dos experimentos detalhados no paper.
 
 **Selo S- Artefatos Sustentáveis**
-Justificativa: Código com boa documentação.
+Justificativa: Código inteligível e acompanhado com boa documentação.
 
 
 ## 2. Informações básicas
 Os códigos da utilizados para a execução ferramenta 
-MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se um README.md contendo sobre o fluxo de execução da ferramenta, sua instalação em ambientes *bare metal*, *Google Collab* e *containers* Docker, configuração e parâmetros de entrada.
+MalSynGen  estão disponibilizados no repositório GitHub https://github.com/MalwareDataLab/SynTabData. Neste encontram-se um README.md contendo sobre o fluxo de execução da ferramenta,configuração, parâmetros de entrada e instalação em ambeintes :
+-*bare metal* (testado em  Ubuntu 22.04 com Python 3.10.12,3.8.10 e 3.8.2. E Debian 11 e 12 com python  3.9.2)
+-*Google Collab* 
+-*containers* Docker (testado em versões 24.0.7 e 20.10.5)
 
 
 ### 2.1. Dependências
+Testamos o código da ferramentas com as seguintes versões python:
+- Python 3.8.10
+- Python 3.9.2
+- Python 3.10.12
+- Python 3.8.2 
+
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python.
 No entanto, as principais são:
 numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
@@ -47,7 +56,8 @@ cd MalSynGen/
 ```
 Alternativamente
 ```bash
-bash Install.sh
+./scripts/docker_build.sh
+./scripts/docker_run_solo.sh
 ```
 A instalação manual e em outros ambientes está detalhada no README.md do repositório GitHub.
 
@@ -59,19 +69,21 @@ como o código utilizado para balancear estes datasets. Além dos arquivos de va
 
 
 ## 5. Ambiente de testes
-Utilizamos um servidor AMD Ryzen 7 5800x como processador de 8 cores e 64 GB de memória RAM para execução dos experimentos. 
-O sistema operacional do servidor é o Ubuntu Server versão 22.04.
+A ferramenta foi testada nos seguintes ambientes: 
+
+- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04, python 3.8.10, docker 24.07
+- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 11, python 3.9.2, docker 20.10.5
+-  Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 12, python 3.11.2, docker 24.07
 
 ## 6.Teste mínimo
-Para a realização do teste mínimo uma versão reduzida de um dos experimentos do artigo, utilize o seguinte comando.
+Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 286 características, com 300 epocas em 10 folds. 
 ```bash
 ./run_demo_app.sh
 ```
 ## 7. Experimentos
 Para a reprodução dos experimentos executados no artigo utilize os seguintes comandos:
 ```bash
-pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples\_class_malware 10000 --batch\_size 256 --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500--k_fold 10
-pipenv run python3 main.py -i datasets/kronodroid_real_emulador-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500--k_fold 10
+./Reproduction.sh
 ```
 Alternativamente executar:
 ```bash
