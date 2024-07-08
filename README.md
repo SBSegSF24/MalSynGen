@@ -131,6 +131,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 
 
 ## Executando a ferramenta no Google Colab
+Goggle collab  ´  uma ferramenta cloud que perminte a execução de c´digos python no seu navegador.
 link para a ferramenta Google collab: https://colab.google/
 ```
 from google.colab import drive
