@@ -1,11 +1,11 @@
 ## 1. Preparação e instalação
 
-1. Clonar o repositório e execute os seguintes comandos
+1. Clonar o repositório e execute os seguintes comandos.
    ```bash
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
    ```
-2. Instalação das dependências
+2. Instalação das dependências.
    
    **Opção 1**: Construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
       
@@ -17,14 +17,14 @@
       ```bash
    ./Install.sh
       ```
-   **Opção 3**: Configurar o pipenv
+   **Opção 3**: Configurar o pipenv.
    ```
    pip install pipenv
    ```
    ```
    pipenv install -r requirements.txt
    ```
-   **Opção 4**: Configurar o venv
+   **Opção 4**: Configurar o venv.
    ```
    python3 -m venv .venv
    ```
@@ -54,7 +54,7 @@
    ```
 
     
-2. Executar os mesmos experimentos (campanhas) do paper
+2. Executar os mesmos experimentos (campanhas) do paper.
 
    ```bash
     ./reproduzir_sf24.sh
@@ -93,7 +93,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
                          Você pode fornecer o nome de uma campanha específica ou uma  
                          lista de campanhas separadas por vírgula. 
                          Por exemplo: --campaign SF24_4096_2048_10 ou --campaign 
-                          Kronodroid_e.
+                          Kronodroid_e,kronodroid_r.
 
     --demo ou -d:
                          Ativa o modo demo. Quando presente, o script será executado 
@@ -121,7 +121,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 #### 3.3. Executando a ferramenta no Google Colab
 Google collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 
-1. Acesse o link para a ferramenta Google colab: https://colab.google/
+1.  Acesse o seguinte link para utilizar a ferramenta Google colab: https://colab.google/
    
 2. Crie um novo notebook, clicando no botão New notebook no topo direito da tela.
    
@@ -129,12 +129,12 @@ Google collab é uma ferramenta cloud que permite a execução de códigos Pytho
 
 3. Faça o upload da pasta do MalSynGen no seu Google Drive.
 
-4. Adicione uma nova célula ao clicar no botão + code no topo esquerda da tela, contendo o seguinte  trecho de código para acessar a pasta do Google Drive.
+4. Adicione uma nova célula ao clicar no botão **+code** no topo esquerda da tela, contendo o seguinte  trecho de código para acessar a pasta do Google Drive.
 ```
 from google.colab import drive
 drive.mount('/content/drive')
 ```
-5. Crie uma célula para acessar a pasta do MalSynGen  (Exemplo):
+5. Crie uma célula para acessar a pasta do MalSynGen (Exemplo):
 ```
 cd /content/drive/MyDrive/MalSynGen-main
 ```
@@ -142,7 +142,7 @@ cd /content/drive/MyDrive/MalSynGen-main
 ```
 !pip install -r requirements.txt
 ```
-7. Crie uma célula para a execução da ferramenta com (Exemplo)
+7. Crie uma célula para a execução da ferramenta (Exemplo)
 ```
 !python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
@@ -199,8 +199,8 @@ O fluxo de execução da ferramenta consiste de três etapas:
 A ferramenta foi executada e testada nos seguintes ambientes:
 
 
--Hardware:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. Software: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07
--Hardware:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. Software: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07
+-**Hardware**:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07
+-**Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07
 Módulos Python conforme [requirements](requirements.txt).
 
 
