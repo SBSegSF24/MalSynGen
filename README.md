@@ -185,7 +185,7 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 
 ## Ambientes de teste
 
-A ferramenta foi executada e testada na prática nos seguinte ambiente:
+A ferramenta foi executada e testada na prática nos seguintes ambientes:
 
 
 - Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, python 3.8.10, docker 24.07
