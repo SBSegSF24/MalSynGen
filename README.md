@@ -7,7 +7,7 @@
    ```
 2. instalação das dependências
    
-   **Opção 1**: construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
+   **Opção 1**: Construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
       
       ```bash
       ./scripts/docker_build.sh
@@ -36,7 +36,7 @@
    pip3 install -r requirements.txt
    ```
 ### Execução
-2. Executar a demonstração de funcionamento da ferramenta: 
+1. Executar a demonstração de funcionamento da ferramenta: 
 
    **Opção 1**: instalar as dependências e executar a aplicação em um ambiente Linux.
    ```bash
@@ -56,7 +56,7 @@
    ```
 
     
-3. Executar os mesmos experimentos (campanhas) do paper
+2. Executar os mesmos experimentos (campanhas) do paper
 
    ```bash
     ./run_sf24_experiments.sh
