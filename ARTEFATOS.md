@@ -86,10 +86,6 @@ Para reproduzir os experimentos executados no artigo utilize o seguinte comando:
 ```bash
  ./reproduzir_sf24.sh
 ```
-Alternativamente executar:
-```bash
-pipenv run python3 run_campaign.py -c SF24_4096_2048_1    
-```
 Os resultados serão salvos na pasta campanhas_SF24/. Para acessar essa pasta use o seguinte comando:
 ```bash
 cd campanhas_SF24/
