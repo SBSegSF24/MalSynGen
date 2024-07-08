@@ -5,36 +5,36 @@
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
    ```
-2. Instalação:
+2. instalação das dependências
    
-**Opção 1**: construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
-   
-   ```bash
-   ./scripts/docker_build.sh
-   ./scripts/docker_run_solo.sh
+   **Opção 1**: construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
+      
+      ```bash
+      ./scripts/docker_build.sh
+      ./scripts/docker_run_solo.sh
+      ```
+   **Opção 2**: Utilizar o script Install.sh.
+      
+      ```bash
+   ./Install.sh
+      ```
+   **Opção 3**: Configurar o pipenv
    ```
-**Opção 2**: Utilizar o script Install.sh.
-   
-   ```bash
-./Install.sh
+   pip install pipenv
    ```
-**Opção 3**: Configurar o pipenv
-```
-pip install pipenv
-```
-```
-pipenv install -r requirements.txt
-```
-**Opção 4**: Configurar o venv
-```
-python3 -m venv .venv
-```
-```
-source .venv/bin/activate
-```
-```
-pip3 install -r requirements.txt
-```
+   ```
+   pipenv install -r requirements.txt
+   ```
+   **Opção 4**: Configurar o venv
+   ```
+   python3 -m venv .venv
+   ```
+   ```
+   source .venv/bin/activate
+   ```
+   ```
+   pip3 install -r requirements.txt
+   ```
 ### Execução
 2. Executar a demonstração de funcionamento da ferramenta: 
 
