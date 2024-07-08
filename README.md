@@ -7,7 +7,7 @@
    ```
 2. Instalação das dependências.
    
-   **Opção 1**: Construir uma imagem Docker localmente a partir do Dockerfile 
+   **Opção 1**: Construir uma imagem Docker localmente a partir do Dockerfile.
       
       ```bash
       ./scripts/docker_build.sh
