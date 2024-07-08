@@ -208,7 +208,7 @@ Módulos Python conforme [requirements](requirements.txt).
 
 3. Executar o comando aim up na pasta do MalSynGen
 
-Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
+   Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
       
 **Mlflow**
 
@@ -227,7 +227,7 @@ Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
 
 4. Acessar o endereço http://localhost:6002/ no seu navegador para visualizar os resultados
 
-Documentação Mlflow: https://mlflow.org/docs/latest/index.html
+   Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 **Tensorboard**
 
@@ -245,4 +245,4 @@ Documentação Mlflow: https://mlflow.org/docs/latest/index.html
   tensorboard --logdir=tensorboardfolder/ --port=6002
   ```
 
-Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
+   Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
