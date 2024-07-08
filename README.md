@@ -5,7 +5,7 @@
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
    ```
-2. instalação das dependências
+2. Instalação das dependências
    
    **Opção 1**: Construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
       
@@ -199,10 +199,8 @@ O fluxo de execução da ferramenta consiste de três etapas:
 A ferramenta foi executada e testada nos seguintes ambientes:
 
 
-- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, python 3.8.10, docker 24.07
-- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.3, python  3.10.12, docker 24.07
-- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 11, python 3.9.2, docker 20.10.5
-- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 12, python 3.11.2, docker 24.07
+-Hardware:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. Software: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07
+-Hardware:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. Software: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07
 Módulos Python conforme [requirements](requirements.txt).
 
 
