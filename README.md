@@ -187,11 +187,12 @@ Obs.: Lembre-se de ter Models, Tools e a main devidamente importada no seu drive
 
 A ferramenta foi executada e testada na prática nos seguinte ambiente:
 
-   
-. Linux Ubuntu 22.04.2 LTS<br/>
-   Kernel Version = 5.15.109+<br/>
-   Python = 3.8.10 <br/>
-   Módulos Python conforme [requirements](requirements.txt).
+
+- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, python 3.8.10, docker 24.07
+- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.3, python  3.10.12, docker 24.07
+- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 11, python 3.9.2, docker 20.10.5
+- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 12, python 3.11.2, docker 24.07
+Módulos Python conforme [requirements](requirements.txt).
 
 
 ## Feramentas de rastreamento
