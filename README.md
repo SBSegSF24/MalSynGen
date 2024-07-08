@@ -230,14 +230,14 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
    ```
 
 2. Instanciar um servidor local na porta 6002
-   
-   ```bash
-   mlflow server --port 6002
-   ```
+
+```bash
+mlflow server --port 6002
+```
 3. Executar MalSynGen com a opção -ml ou --use_mlflow (Exemplo):
-   ```bash
+```bash
 pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -ml
-   ```
+```
 
 4. Após o fim da execução, acesse o endereço http://localhost:6002/ no seu navegador para visualizar os resultados.
 
@@ -247,14 +247,14 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 
 1. Instalar a ferramenta
 
-  ```bash
+```bash
   pip install tensorboard
-  ```
+```
 
 2. Executar MalSynGen com a opção -tb ou --use_tensorboard (Exemplo):
- ```bash
+```bash
 pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -tb
-   ```
+```
 
 3. Visualizar os resultados com o comando:
    
