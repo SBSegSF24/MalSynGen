@@ -209,9 +209,9 @@ Módulos Python conforme [requirements](requirements.txt).
 
 1. Instalar a ferramenta.
 
-   ```bash
-   pip install aim
-   ```
+```bash
+pip install aim
+```
 
 2. Executar MalSynGen com a opção -a ou --use_aim (Exemplo):
 ```bash
