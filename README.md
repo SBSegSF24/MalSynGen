@@ -241,14 +241,14 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 
 4. Após o fim da execução, acesse o endereço http://localhost:6002/ no seu navegador para visualizar os resultados.
 
-   Documentação Mlflow: https://mlflow.org/docs/latest/index.html
+Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 ### 7.3. Tensorboard
 
 1. Instalar a ferramenta
 
 ```bash
-  pip install tensorboard
+pip install tensorboard
 ```
 
 2. Executar MalSynGen com a opção -tb ou --use_tensorboard (Exemplo):
