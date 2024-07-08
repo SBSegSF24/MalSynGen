@@ -119,10 +119,15 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
 
 #### 3.3.Executando a ferramenta no Google Colab
 Goggle collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
+
 1. Acesse o link para a ferramenta Google collab: https://colab.google/
-2. Crie um novo notebook, clicando no botão New notebook 
+   
+2. Crie um novo notebook, clicando no botão New notebook
+   
 <td><img src= https://github.com/SBSegSF24/MalSynGen/assets/174879323/628010a5-f2e9-48dc-8044-178f7e9c2c37 style="max-width:100%;"></td>
+
 3. Faça o upload da pasta do MalSynGen no Google Drive
+
 4. Adicione a célula no novo notebook para acessar pasta do Google Drive
 ```
 from google.colab import drive
