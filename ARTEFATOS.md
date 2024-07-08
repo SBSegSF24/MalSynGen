@@ -45,6 +45,10 @@ cd MalSynGen/
 ```bash
 ./Install.sh
 ```
+Alternativamente
+```bash
+bash Install.sh
+```
 A instalação manual e em outros ambientes está detalhada no README.md do repositório GitHub.
 
 ## 4. Datasets
