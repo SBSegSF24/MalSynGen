@@ -4,6 +4,7 @@
    ```bash
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
+   ./Install.sh
    ```
 
 2. Executar a demonstração de funcionamento da ferramenta: 
