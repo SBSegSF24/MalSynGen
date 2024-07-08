@@ -6,6 +6,7 @@
     cd MalSynGen
    ```
 2. Instalação:
+   
 **Opção 1**: construir uma imagem Docker localmente a partir do Dockerfile e instanciar um container.
    
    ```bash
