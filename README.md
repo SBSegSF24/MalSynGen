@@ -1,13 +1,13 @@
 ## Preparação e Execução
-
+### Instalação
 1. Clonar o repositório e execute os seguintes comandos
    ```bash
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
    ./Install.sh
    ```
-1.1 Alternativa manual a execução do script Install.sh 
-### Configurar o pipenv
+
+#### (ALTERNATIVA AO INSTALL.SH) Configurar o pipenv
 
 ```
 pip install pipenv
@@ -28,9 +28,8 @@ Exemplo de execução de uma campanha pré-configurada:
 pipenv run python3 run_campaign.py -c Kronodroid_r
 
 ```
-### Utilizar um virtual enviroment (venv) para a execução dos experimentos:
-Uma alternativa ao uso do pipenv é criar um ambiente virtual na pasta do MalSynGen, seguidos estes passos:
-### configurar venv 
+#### (ALTERNATIVA AO INSTALL.SH)  Utilizar um virtual enviroment (venv) para a execução dos experimentos:
+#### Configurar Venv
 ```
 python3 -m venv .venv
 ```
