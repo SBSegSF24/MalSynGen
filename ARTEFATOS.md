@@ -41,7 +41,7 @@ Ademais, a lista extensa das dependências encontra-se no arquivo [requirements.
 
 
 ## 3. Instalação 
-Para a instalação da ferramenta MalSynGEn siga os seguintes comandos
+Para a instalação da ferramenta MalSynGen siga os seguintes comandos
 **1.** Para realizar a instalação do código fonte utilize o comando:
 ```bash
 git clone https://github.com/SBSegSF24/MalSynGen.git
@@ -71,13 +71,13 @@ como o código utilizado para balancear estes datasets. Além dos arquivos de va
 ## 5. Ambiente de testes
 A ferramenta foi testada nos seguintes ambientes: 
 
-- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, python 3.8.10, docker 24.07
-- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.3, python  3.10.12, docker 24.07
-- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 11, python 3.9.2, docker 20.10.5
-- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 12, python 3.11.2, docker 24.07
+- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.2, Python 3.8.10, Docker 24.07
+- Hardware:AMD Ryzen 7 5800x,8 cores, 64 GB RAM. Software: Ubuntu Server versão 22.04.3, Python  3.10.12, Docker 24.07
+- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 11 (*bullseye*), Python 3.9.2, Docker 20.10.5
+- Hardware:Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz,8 cores, 75 GB RAM. Software: Debian GNU 12 (*bookworm*), Python 3.11.2, Docker 24.07
 
 ## 6.Teste mínimo
-Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 286 características, com 300 epocas em 10 folds. 
+Teste funcional rápido utilizando o dataset kronodroid R, com 20000 amostras e 286 características, com 300 épocas em 10 folds.
 ```bash
 ./run_demo_app.sh
 ```
