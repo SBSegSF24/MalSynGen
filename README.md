@@ -7,7 +7,7 @@
    ./Install.sh
    ```
 
-#### (ALTERNATIVA AO INSTALL.SH) Configurar o pipenv
+#### (ALTERNATIVA AO INSTALL.SH) Configurar o pipenv:
 
 ```
 pip install pipenv
