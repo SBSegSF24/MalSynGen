@@ -77,14 +77,14 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 
 ## Executando os datasets balanceados
-O script em bash Interactive_execution_datasets.sh  é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
+O script em bash  exec_datasets_balanceados.sh  é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
 
 
 Executar o script: 
 
 
    ```bash
-   bash Interactive_execution_datasets
+   bash  exec_datasets_balanceados.sh
    ```
 
 
