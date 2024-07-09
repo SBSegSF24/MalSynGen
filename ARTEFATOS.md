@@ -64,8 +64,8 @@ Alternativamente, para construir uma imagem Docker localmente a partir do Docker
 A instalação manual e em outros ambientes está detalhada no README.md do repositório GitHub.
 
 ## 4. Datasets
-O diretório [datasets](https://github.com/SBSegSF24/MalSynGen/tree/0669acd4855a7e268eba045346cf526def3acade/datasets) contém  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device[^1] utilizados no artigo, assim como o código utilizado para balancear esses datasets. O diretório também contém os arquivos de validação de cada dataset e código de validação utilizado no subdiretório [validation](https://github.com/SBSegSF24/MalSynGen/tree/0669acd4855a7e268eba045346cf526def3acade/datasets/validation).
-[^1]: https://github.com/aleguma/kronodroid
+O diretório [datasets](https://github.com/SBSegSF24/MalSynGen/tree/0669acd4855a7e268eba045346cf526def3acade/datasets) contém  os datasets balanceados KronoDroid_emulator e KronoDroid_real_device utilizados no artigo, assim como o código utilizado para balancear esses datasets. O diretório também contém os arquivos de validação de cada dataset e código de validação utilizado no subdiretório [validation](https://github.com/SBSegSF24/MalSynGen/tree/0669acd4855a7e268eba045346cf526def3acade/datasets/validation). Adicionalmente, as versões originais dos dataset vem do repositório: https://github.com/aleguma/kronodroid 
+
 
 
 
