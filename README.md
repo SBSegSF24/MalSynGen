@@ -45,7 +45,7 @@
    ```
      
 
-   **Opção 2**: Executar o docker demo que instancia uma versão reduzida do experimento.
+   **Opção 2**: Executar o docker demo que instancia uma versão reduzida do experimento.  A execução leva em torno de 5 minutos numa máquina AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
    ```bash
    ./run_demo_docker.sh
    ```
