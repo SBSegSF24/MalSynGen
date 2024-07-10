@@ -199,12 +199,12 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 ## 6. Ambientes de teste
 
-A ferramenta foi executada e testada nos seguintes ambientes:
+A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
 
--**Hardware**:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07.
+1. **Hardware**:AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07.
 
--**Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
+2. **Hardware**:Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
 Módulos Python conforme [requirements](requirements.txt).
 
 
