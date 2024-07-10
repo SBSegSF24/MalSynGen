@@ -61,12 +61,12 @@
    ```
    
 ## 3. Outras opções de execução
-   O script em bash  exec_datasets_balanceados.sh   é responsável pela execução dos datasets dos experimentos com base na entrada especificada pelo usuário.
+   O script **run_balanced_datasets.sh** é responsável pela execução dos datasets balanceaddos dos experimentos com base na entrada especificada pelo usuário.
    Executar o script: 
 
 
    ```bash
-   ./exec_datasets_balanceados.sh
+   ./run_balanced_datasets.sh
    ```
 
 
