@@ -22,11 +22,11 @@ Justificativa: Código estrutura, organizado, inteligível e acompanhado de boa 
 
 As instruções de instalação, execução e utilização, bem como os códigos fonte, estão disponíveis no repositório GitHub https://github.com/SBSegSF24/MalSynGen. No repositório há um README.md contendo informações sobre o fluxo de execução da ferramenta, configuração, parâmetros de entrada e instalação nos seguintes ambientes:
 
--*Bare metal* (testado em  Ubuntu 22.04 com Python 3.10.12,3.8.10 e 3.8.2 e em Debian 11 e 12 com Python 3.9.2)
+1. *Bare metal* (testado em  Ubuntu 22.04 com Python 3.10.12,3.8.10 e 3.8.2 e em Debian 11 e 12 com Python 3.9.2)
 
--*Google Collab* 
+2. *Google Colab* 
 
--*Containers* Docker (testado em Docker versões 24.0.7 e 20.10.5 com imagem Ubuntu 20.04 e 22.04)
+3. *Containers* Docker (testado em Docker versões 24.0.7 e 20.10.5 com imagem Ubuntu 20.04 e 22.04)
 
 
 ### 2.1. Dependências
