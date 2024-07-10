@@ -188,7 +188,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 |    --dropout_decay_rate_d   |           Taxa de decaimento do dropout do discriminador da cGAN.          |     Não     |
 |    --dense_layer_sizes_g    |                   Valores das camadas densas do gerador.                   |     Não     |
 |    --dense_layer_sizes_d    |                Valores das camadas densas do discriminador.                |     Não     |
-|         --batch_size        |                          Tamanho do lote da cGAN.                          |     Não     |
+|         --batch_size        |                          Tamanho do lote da cGAN. Opções16, 32, 64,128,256 |     Não     |
 |         --verbosity         |                            Nível de verbosidade.                           |     Não     |
 |        --save_models        |                    Opção para salvar modelos treinados.                    |     Não     |
 |   --path_confusion_matrix   |                Diretório de saída das matrizes de confusão.                |     Não     |
