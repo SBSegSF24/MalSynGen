@@ -1,7 +1,19 @@
 """
-Módulo de classificadores
-
-Este Módulo define os métodos utilizado para treinar os classificadores utilizados durante a execução.
+Este módulo define os métodos utilizados para instanciar e treinar os classificadores utilizados durante a execução.
+Classes: 
+- Classifiers: A classe Classifiers é responsável por criar, configurar e treinar diversos modelos de classificação utilizando parâmetros especificados pelo usuário ou valores padrão. 
+A classe suporta múltiplos algoritmos de aprendizado supervisionado, incluindo:
+                -Random Forest.
+                -K-Nearest Neighbors.
+                -Support Vector Machine. 
+                -Gaussian Process.
+                -Decision Tree.
+                -AdaBoost.
+                -Naive Bayes.
+                -Quadratic Discriminant Analysis.
+                -Perceptron Multilayer.
+                -XGBoost.
+                -SGD Regressor.
 """
 # Importação de bibliotecas necessárias
 import logging
@@ -26,6 +38,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 
 # Parâmetros padrão para cada tipo de classificador
+#Valor padrão para o número de estimadores para o Random Forest.
 DEFAULT_RANDOM_FOREST_NUMBER_ESTIMATORS = 100
 DEFAULT_RANDOM_FOREST_MAX_DEPTH = None
 DEFAULT_RANDOM_FOREST_MAX_LEAF_NODES = None
@@ -81,6 +94,65 @@ DEFAULT_VERBOSE_LIST = {logging.INFO: 2, logging.DEBUG: 1, logging.WARNING: 2,
 
 
 class Classifiers:
+    """
+A classe Classifiers é responsável por criar, configurar e treinar diversos modelos de classificação utilizando parâmetros especificados pelo usuário ou valores padrão. 
+A classe suporta múltiplos algoritmos de aprendizado supervisionado, incluindo:
+                -Random Forest.
+                -K-Nearest Neighbors.
+                -Support Vector Machine. 
+                -Gaussian Process.
+                -Decision Tree.
+                -AdaBoost.
+                -Naive Bayes.
+                -Quadratic Discriminant Analysis.
+                -Perceptron Multilayer.
+                -XGBoost.
+                -SGD Regressor.
+    Funções:
+        - __init__ : Inicializa a classe Classifiers com os parâmetros padrão ou especificados.
+        - _get_instance_random_forest : Retorna uma instância treinada de um classificador RandomForest.
+        - __get_instance_k_neighbors_classifier :  Retorna uma instância treinada de um classificador KNN.
+        - __get_instance_support_vector_machine :  Retorna uma instância treinada de um classifcador SVM.
+        - __get_instance_gaussian_process : Retorna uma instância treinada de um classificador de processo Gausiano.
+        - __get_instance_xgboost : Retorna uma instância treinada de um classificador XGBoost.
+        - __get_instance_SGDRegressor : Retorna uma instância treinada de um classificador SGD.
+        - __get_instance_decision_tree : Retorna uma instância treinada de um classificador Decision Tree.
+        - __get_instance_ada_boost : Retorna uma instância treinada de um classificador  AdaBoost.
+        - __get_instance_naive_bayes : Retorna uma instância treinada de um classificador  Naive Bayes.
+        - __get_instance_quadratic_discriminant : Retorna uma instância treinada de um classificador discriminador quadrático.
+        - __get_instance_perceptron : Retorna uma instância treinada de um classificador perceptron de multi camadas.
+        - get_trained_classifiers : Retorna uma lista de classificadores treinados baseados na lista de classificadores fornecida.
+        - set_random_forest_number_estimators : Define o número de estimadores para o Random Forest.
+        - set_random_forest_max_depth :  Define a profundidade máxima da árvore do algoritmo Random Forest.
+        - max_leaf_nodes :   Define o número máximo de folhas no Random Forest.
+        - set_knn_number_neighbors : Define o número de vizinhos para o algoritmo KNN.
+        - set_knn_weights : Define a função de peso para o algoritmo KNN.
+        - set_knn_leaf_size : Define o tamanho da folha para o KNN.
+        - set_knn_metric : Define a  métrica utilizada para a computação da distância para o KNN.
+        - set_knn_algorithm : Define o algoritmo usado pelo KNN.
+        - set_support_vector_machine_normalization: Define o parâmetro de regularização para SVM.
+        - set_support_vector_machine_kernel : Define o kernel usado pelo SVM.
+        - set_support_vector_machine_kernel_degree : Define o grau do kernel para SVM.
+        - set_support_vector_machine_gamma : Define o coeficiente gamma para SVM.
+        - set_gaussian_process_kernel: Define  o kernel para o processo gaussiano.
+        - set_gaussian_process_max_iterations : Define  o número máximo de iterações para o processo gaussiano.
+        - set_gaussian_process_optimizer : Define  o otimizador para o processo gaussiano.
+        - set_decision_tree_criterion : Define o critério usado para medir a qualidade da divisão na árvore de decisão.
+        - set_decision_tree_max_depth : Define a profundidade máxima da árvore de decisão.
+        - set_decision_tree_max_feature : Define o número máximo de características a serem consideradas para a árvore de decisão.
+        - set_decision_tree_max_leaf : Define o número máximo de folhas na árvore de decisão.
+        - set_ada_boost_estimator : Define o estimador base para AdaBoost.
+        - set_ada_boost_number_estimators : Define o  número maximo de estimadores para o AdaBoost.
+        - set_ada_boost_learning_rate : Define a taxa de aprendizado do AdaBoost.
+        - set_ada_boost_algorithm : Define o algoritmo a utilizado pelo AdaBoost.
+        - set_naive_bayes_priors : Define a probabilidades de Priors para Naive Bayes.
+        - set_naive_bayes_variation_smoothing : Define o parâmetro de suavização para Naive Bayes.
+        - set_quadratic_discriminant_analysis_priors : Define  a probabilidades de priors para QDA.
+        - set_quadratic_discriminant_analysis_regularization : Define o parâmetro de regularização para QDA.
+        - set_perceptron_training_algorithm : Define o algoritmo de treinamento para Perceptron.
+        - set_perceptron_training_loss : Define  a função de perda para o Perceptron.
+        - set_perceptron_layer_activation : Define a função de ativação das camadas internas do Perceptron.
+    """
 
     def __init__(self, random_forest_number_estimators=DEFAULT_RANDOM_FOREST_NUMBER_ESTIMATORS,
                  random_forest_max_depth=DEFAULT_RANDOM_FOREST_MAX_DEPTH,
@@ -135,12 +207,12 @@ class Classifiers:
            - decision_tree_max_feature : Número máximo de características a serem consideradas.
            - decision_tree_max_leaf : Número máximo de folhas na árvore de decisão.
            - ada_boost_estimator : Estimador base para AdaBoost.
-           - ada_boost_number_estimators : Número de estimadores no AdaBoost.
+           - ada_boost_number_estimators : Número maximo de estimadores para o AdaBoost.
            - ada_boost_learning_rate : Taxa de aprendizado do AdaBoost.
            - ada_boost_algorithm : Algoritmo usado pelo AdaBoost.
-           - naive_bayes_priors : Probabilidades das classes para Naive Bayes.
+           - naive_bayes_priors : Probabilidades de Priors para Naive Bayes.
            - naive_bayes_variation_smoothing : Parâmetro de suavização para Naive Bayes.
-           - quadratic_discriminant_analysis_priors : Probabilidades das classes para QDA.
+           - quadratic_discriminant_analysis_priors : Probabilidades de priors para QDA.
            - quadratic_discriminant_analysis_regularization : Parâmetro de regularização para QDA.
            - quadratic_discriminant_threshold : Limiar de decisão para QDA.
            - perceptron_training_algorithm : Algoritmo de treinamento para Perceptron.
@@ -151,6 +223,8 @@ class Classifiers:
            - perceptron_dropout_decay_rate : Taxa de decaimento para o dropout no Perceptron.
            - perceptron_number_epochs : Número de épocas de treinamento para o Perceptron.
            - perceptron_layers_settings : Configurações das camadas do Perceptron.
+           - set_naive_bayes_priors : Define  a probabilidades de prior para QDA.
+           - set_quadratic_discriminant_threshold : Define o limiar de decisão para QDA.
 
         """
         # Inicialização dos parâmetros privados com os valores fornecidos
@@ -309,7 +383,7 @@ class Classifiers:
         return instance_model_classifier
     def __get_instance_xgboost(self, x_samples_training, y_samples_training, dataset_type):
         """
-        Retorna uma instância treinada de um classificador XGBoost .
+        Retorna uma instância treinada de um classificador XGBoost.
         
         Parâmetros:
            - x_samples_training : Amostras de treinamento.
@@ -501,7 +575,7 @@ class Classifiers:
     def get_trained_classifiers(self, classifiers_list, x_samples_training, y_samples_training, dataset_type,
                                 verbose_level, input_dataset_shape):
         """
-        Retorna uma lista de classificadores treinados baseados na lista de algoritmos fornecida.
+        Retorna uma lista de classificadores treinados baseados na lista de classificadores fornecida.
         
         Parâmetros:
            - classifier_list : Lista de strings com nomes de algoritmos de classificação desejados.
@@ -598,10 +672,10 @@ class Classifiers:
 
     def set_random_forest_max_depth(self, random_forest_max_depth):
         """
-        Define a profundidade máxima da árvore no Random Forest.
+        Define a profundidade máxima da árvore do Random Forest.
 
         Parâmetros:
-           - random_forest_max_depth : Profundidade máxima da árvore no Random Forest.
+           - random_forest_max_depth : Profundidade máxima da árvore do Random Forest.
         """
         self.__random_forest_max_depth = random_forest_max_depth
 
@@ -616,19 +690,19 @@ class Classifiers:
 
     def set_knn_number_neighbors(self, knn_number_neighbors):
         """
-        Define o número de vizinhos para o KNN.
+        Define o número de vizinhos para o classificador KNN.
 
         Parâmetros:
-           - knn_number_neighbors: Número de vizinhos para o KNN.
+           - knn_number_neighbors: Número de vizinhos para o classificador KNN.
         """
         self.__knn_number_neighbors = knn_number_neighbors
 
     def set_knn_weights(self, knn_weights):
         """
-        Define a função de peso para o KNN.
+        Define a função de peso para o classificador KNN.
 
         Parâmetros:
-           - knn_weights: Função de peso para o KNN.
+           - knn_weights: Função de peso para o classificador KNN.
         """
         self.__knn_weights = knn_weights
 
@@ -680,7 +754,7 @@ class Classifiers:
 
     def set_support_vector_machine_kernel_degree(self, support_vector_machine_kernel_degree):
         """
-        Define  o grau do kernel para SVM.
+        Define o grau do kernel para SVM.
 
         Parâmetros:
            - support_vector_machine_kernel_degree:  Grau do kernel para SVM.
@@ -690,7 +764,7 @@ class Classifiers:
 
     def set_support_vector_machine_gamma(self, support_vector_machine_gamma):
         """
-        Define  o coeficiente gamma para SVM.
+        Define o coeficiente gamma para SVM.
 
         Parâmetros:
            - support_vector_machine_gamma: Coeficiente gamma para SVM.
@@ -745,10 +819,10 @@ class Classifiers:
 
     def set_decision_tree_max_feature(self, decision_tree_max_feature):
         """
-        Define o número máximo de características a serem consideradas.
+        Define o número máximo de características a serem consideradas para a árvore de decisão.
 
         Parâmetros:
-           - decision_tree_max_feature: Número máximo de características a serem consideradas.
+           - decision_tree_max_feature: Número máximo de características a serem consideradas para a árvore de decisão..
         """    
         self.__decision_tree_max_feature = decision_tree_max_feature
 
@@ -772,10 +846,10 @@ class Classifiers:
 
     def set_ada_boost_number_estimators(self, ada_boost_number_estimators):
         """
-        Define o estimador base para AdaBoost.
+        Define o  número maximo de estimadores para o AdaBoost.
 
         Parâmetros:
-           - ada_boost_estimator: Estimador base para AdaBoost.
+           - ada_boost_estimator: Número maximo de estimadores para o AdaBoost.
         """           
         self.__ada_boost_number_estimators = ada_boost_number_estimators
 
@@ -790,19 +864,19 @@ class Classifiers:
 
     def set_ada_boost_algorithm(self, ada_boost_algorithm):
         """
-        Define a taxa de aprendizado do AdaBoost.
+        Define o algoritmo a utilizado pelo AdaBoost.
 
         Parâmetros:
-           - ada_boost_learning_rate: Taxa de aprendizado do AdaBoost.
+           - ada_boost_learning_rate: Algoritmo a utilizado pelo AdaBoost.
         """           
         self.__ada_boost_algorithm = ada_boost_algorithm
 
     def set_naive_bayes_priors(self, naive_bayes_priors):
         """
-        Define a probabilidades das classes para Naive Bayes.
+        Define a probabilidades de Priors para Naive Bayes.
 
         Parâmetros:
-           - naive_bayes_priors: Probabilidades das classes para Naive Bayes.
+           - naive_bayes_priors: Probabilidades de Priors para Naive Bayes.
         """           
         self.__naive_bayes_priors = naive_bayes_priors
 
@@ -817,10 +891,10 @@ class Classifiers:
 
     def set_quadratic_discriminant_analysis_priors(self, quadratic_discriminant_analysis_priors):
         """
-        Define  a probabilidades das classes para QDA.
+        Define  a probabilidades de prios para QDA.
 
         Parâmetros:
-           - quadratic_discriminant_analysis_priors: Probabilidades das classes para QDA.
+           - quadratic_discriminant_analysis_priors: Probabilidades de priors para QDA.
         """           
         self.__quadratic_discriminant_analysis_priors = quadratic_discriminant_analysis_priors
 
@@ -844,10 +918,10 @@ class Classifiers:
 
     def set_perceptron_training_algorithm(self, perceptron_training_algorithm):
         """
-        Define o algoritmo de treinamento para Perceptron.
+        Define o algoritmo de treinamento para o Perceptron.
 
         Parâmetros:
-           - perceptron_training_algorithm: Algoritmo de treinamento para Perceptron.
+           - perceptron_training_algorithm: Algoritmo de treinamento para o Perceptron.
         """    
         self.__perceptron_training_algorithm = perceptron_training_algorithm
 

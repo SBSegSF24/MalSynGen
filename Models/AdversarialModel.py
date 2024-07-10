@@ -1,5 +1,7 @@
 """
 Este módulo define a classe AdversarialModel, que é usada para criar, treinar e salvar modelos adversariais (GANs).
+Classes:
+- AdversarialModel (Classe utilizada para a criação e treinamento um modelo adversarial generativo (GAN)).
 """
 
 # Importação de bibliotecas necessárias
@@ -13,34 +15,64 @@ from tensorflow.keras.optimizers.legacy import Adam, RMSprop, Adadelta
 import tensorflow as tf
 
 # Constantes padrão para hiperparâmetros do modelo adversarial
+#Valor padrão para a taxa de aprendizado do gerador
 DEFAULT_OPTIMIZER_GENERATOR_LEARNING = 0.0001
+#Valor padrão para a taxa de aprendizado do discriminador
 DEFAULT_OPTIMIZER_DISCRIMINATOR_LEARNING = 0.0001
+# Valor padrão beta para o gerador
 DEFAULT_OPTIMIZER_GENERATOR_BETA = 0.5
+#Valor padrão beta para o  discriminador
 DEFAULT_OPTIMIZER_DISCRIMINATOR_BETA = 0.5
 DEFAULT_LATENT_DIMENSION = 128
-
+# Otimizadores padrões para o gerador e discriminador
 DEFAULT_OPTIMIZER_GENERATOR = Adam(DEFAULT_OPTIMIZER_GENERATOR_LEARNING, DEFAULT_OPTIMIZER_GENERATOR_BETA)
 DEFAULT_OPTIMIZER_DISCRIMINATOR = Adam(DEFAULT_OPTIMIZER_DISCRIMINATOR_LEARNING, DEFAULT_OPTIMIZER_DISCRIMINATOR_BETA)
+#Funções de perda padrão para o gerador e discriminador
 DEFAULT_LOSS_GENERATOR = BinaryCrossentropy()
 DEFAULT_LOSS_DISCRIMINATOR = BinaryCrossentropy()
 
+#Valor padrão para a taxa de aprendizado para o otimizador Adam.
 DEFAULT_CONDITIONAL_GAN_ADAM_LEARNING_RATE = 0.0001
+#Valor padrão beta para o otimizador Adam.
 DEFAULT_CONDITIONAL_GAN_ADAM_BETA = 0.5
+#Valor padrão para a Taxa de aprendizado para o otimizador Adam.
 DEFAULT_CONDITIONAL_GAN_RMS_PROP_LEARNING_RATE = 0.001
+#Valor padrão para a taxa de decaimento para o otimizador RMSprop.
 DEFAULT_CONDITIONAL_GAN_RMS_PROP_DECAY_RATE = 0.5
+#Valor padrão para a taxa de aprendizado para o otimizador Adadelta.
 DEFAULT_CONDITIONAL_GAN_ADA_DELTA_LEARNING_RATE = 0.001
+#Valor padrão para a taxa de decaimento para o otimizador Adadelta.
 DEFAULT_CONDITIONAL_GAN_ADA_DELTA_DECAY_RATE = 0.5
+#Valor padrão para a taxa de suavização da cGAN
 DEFAULT_CONDITIONAL_GAN_SMOOTHING_RATE = 0.15
+#Valor padrão para a média da distribuição latente da cGAN.
 DEFAULT_CONDITIONAL_GAN_LATENT_MEAN_DISTRIBUTION = 0.0
+#Valor padrão para o desvio padrão da distribuição latente da cGAN
 DEFAULT_CONDITIONAL_GAN_LATENT_STANDER_DEVIATION = 1.0
 
+#Títulos padrão para os arquivos dos modelos 
 DEFAULT_FILE_NAME_DISCRIMINATOR = "discriminator_model"
 DEFAULT_FILE_NAME_GENERATOR = "generator_model"
 DEFAULT_PATH_OUTPUT_MODELS = "models_saved/"
 
 class AdversarialModel(Model):
     """
-    Classe para criar e treinar um modelo adversarial generativo (GAN).
+    Classe utilizada para a criação e treinamento um modelo adversarial generativo (GAN).
+    Funções:
+        - __init__ : Inicializa a classe com valores padrão ou fornecidos.
+        - get_learning_rates : Retorna as taxas de aprendizado dos otimizadores.
+        - compile :  Compila o modelo adversarial com os otimizadores e funções de perda fornecidos.
+        - train_step : Executa uma etapa de treino para o modelo adversarial
+        - save_models : Salva os modelos do gerador e discriminador em arquivos JSON e H5.
+        - load_models : Carrega os modelos gerador e discriminador de arquivos JSON e H5.
+        - set_generator : Define o modelo gerador para  o modelo adversarial.
+        - set_discriminator : Define o modelo discriminador para o modelo adversarial.
+        - set_latent_dimension :  Define a dimensão do espaço latente.
+        - set_optimizer_generator : Define o otimizador para o gerador.
+        - set_optimizer_discriminator : Define o otimizador para o discriminador. 
+        - set_loss_generator : Define a função de perda para o gerador.
+        - set_loss_discriminator : Define a função de perda para o discriminador.
+        - get_optimizer : Retorna o otimizador baseado no algoritmo de treinamento especificado.
     """
     def __init__(self, generator_model=None, discriminator_model=None, latent_dimension=DEFAULT_LATENT_DIMENSION,
                  optimizer_generator=DEFAULT_OPTIMIZER_GENERATOR, loss_generator=DEFAULT_LOSS_GENERATOR,
@@ -68,7 +100,7 @@ class AdversarialModel(Model):
           -  optimizer_discriminator : Otimizador para o discriminador.
           -  loss_discriminator : Função de perda para o discriminador.
           -  conditional_gan_adam_learning_rate : Taxa de aprendizado para o otimizador Adam.
-          -  conditional_gan_adam_beta : Beta para o otimizador Adam.
+          -  conditional_gan_adam_beta : Valor beta para o otimizador Adam.
           -  conditional_gan_rms_prop_learning_rate : Taxa de aprendizado para o otimizador RMSprop.
           -  conditional_gan_rms_prop_decay_rate : Taxa de decaimento para o otimizador RMSprop.
           -  conditional_gan_ada_delta_learning_rate : Taxa de aprendizado para o otimizador Adadelta.
@@ -76,9 +108,9 @@ class AdversarialModel(Model):
           -  file_name_discriminator : Nome do arquivo para salvar o modelo discriminador.
           -  file_name_generator : Nome do arquivo para salvar o modelo gerador.
           -  models_saved_path : Caminho para salvar os modelos.
-          -  latent_mean_distribution : Média da distribuição latente.
-          -  latent_stander_deviation : Desvio padrão da distribuição latente.
-          -  smoothing_rate : Taxa de suavização.
+          -  latent_mean_distribution : Média da distribuição latente da cGAN.
+          -  latent_stander_deviation : Desvio padrão da distribuição latente da cGAN.
+          -  smoothing_rate : Taxa de suavização da cGAN.
         """
         super().__init__(*args, **kwargs)
 
@@ -174,7 +206,7 @@ class AdversarialModel(Model):
 
     def save_models(self, path_output, k_fold):
         """
-        Salva os modelos gerador e discriminador em arquivos JSON e H5.
+        Salva os modelos do gerador e discriminador em arquivos JSON e H5.
 
         Parâmetros:
            - path_output : Caminho de saída para salvar os modelos.
@@ -252,7 +284,7 @@ class AdversarialModel(Model):
 
     def set_generator(self, generator):
         """
-        Define o modelo gerador.
+        Define o modelo gerador para o modelo adversarial.
 
         Parâmetros:
            - generator : O modelo gerador.
@@ -261,7 +293,7 @@ class AdversarialModel(Model):
 
     def set_discriminator(self, discriminator):
         """
-        Define o modelo discriminador.
+        Define o modelo discriminador para o modelo adversarial.
 
         Parâmetros:
           - discriminator : O  modelo discriminador.
