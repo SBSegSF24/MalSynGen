@@ -32,10 +32,10 @@ As instruções de instalação, execução e utilização, bem como os códigos
 
 ### 2.1. Dependências
 Testamos o código da ferramenta com as seguintes versões Python:
-- Python 3.8.10
-- Python 3.9.2
-- Python 3.10.12
-- Python 3.8.2 
+1. Python 3.8.2 
+2. Python 3.8.10
+3. Python 3.9.2
+4. Python 3.10.12
 
 O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python, como 
 numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
