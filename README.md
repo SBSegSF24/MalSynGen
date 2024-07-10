@@ -58,7 +58,7 @@
 2. Executar os mesmos experimentos (campanhas) do paper.
 
    ```bash
-    ./reproduzir_sf24.sh
+    ./run_reproduce_sf24.sh
    ```
    
 ## 3. Outras opções de execução
