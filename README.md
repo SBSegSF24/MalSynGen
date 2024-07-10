@@ -39,7 +39,7 @@
 ## 2. Execução
 1. Executar a demonstração de funcionamento da ferramenta: 
 
-   **Opção 1**: instalar as dependências e executar a aplicação em um ambiente Linux.
+   **Opção 1**: instalar as dependências e executar uma demonstração em um ambiente Linux. A execução leva em torno de 5 minutos numa máquina AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
    ```bash
    ./run_demo_venv.sh
    ```
