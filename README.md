@@ -211,7 +211,7 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 ## 7. Ferramentas de rastreamento
 ### 7.1. Aimstack
 
-1. Instalar a ferramenta.
+1. Instalar a ferramenta:
 
 ```bash
 pip install aim
@@ -221,7 +221,7 @@ pip install aim
 ```bash
 pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -a
 ```
-3. Após o final da execução, utilize o comando aim up na pasta do MalSynGen.
+3. Após o final da execução, utilize o comando **aim up** na pasta do MalSynGen.
 ```bash
 aim up
 ```
@@ -230,13 +230,13 @@ Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
 
 ### 7.2. Mlflow
 
-1. Instalar a ferramenta
+1. Instalar a ferramenta:
    
 ```bash
 pip install mlflow
 ```
 
-2. Instanciar um servidor local na porta 6002
+2. Instanciar um servidor local na porta 6002:
 
 ```bash
 mlflow server --port 6002
@@ -254,7 +254,7 @@ Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 ### 7.3. Tensorboard
 
-1. Instalar a ferramenta
+1. Instalar a ferramenta:
 
 ```bash
 pip install tensorboard
