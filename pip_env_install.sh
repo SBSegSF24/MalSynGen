@@ -9,3 +9,4 @@ if command -v pip >/dev/null 2>&1; then
 	fi
 else
 	echo "pip não instalado, execute o comando: sudo apt install python3-pip"	
+fi
