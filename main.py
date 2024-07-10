@@ -1,6 +1,15 @@
 
 """
-Módulo principal para execução de experimentos da ferramenta 
+Módulo principal para a execução de experimentos da ferramenta, responsável pelo fluxo de execução.
+Funções: 
+- run_experiment (Fluxo principal de execução)
+- get_adversarial_model (Instanciamento do modelo cGAN).
+- show_and_export_results (Exportação de resultados).
+- comparative_data ( Compara dados sintéticos com dados reais usando métricas de fidelidade (Similaridade de cosseno, erro quadrático médio).
+- evaluate_TRTS_data, evaluate_TSTR_data (Cálculo das métricas de utilidade dos classificadores).
+- p_value_test (Cálculo do teste de Wilcoxon).
+- generate_sample (Gera amostras sintéticas usando o modelo gerador da cGAN. Utilizado para gerar os datatsets S e s)
+
 
 """
 
@@ -43,7 +52,7 @@ try:
     import mlflow.models
     from sklearn.linear_model import SGDRegressor
     from Tools.tools import PlotConfusionMatrix
-    from Tools.tools import PlotRegressiveMetrics
+    from Tools.tools import PlotFidelityeMetrics
     from Tools.tools import PlotCurveLoss
     from Tools.tools import ProbabilisticMetrics
     from Tools.tools import PlotClassificationMetrics
@@ -81,6 +90,7 @@ except ImportError as error:
 
 
 # Configurações de log e supressão de avisos
+#Os niveis de verbosidade do log podem ser INFO (1) ou DEBUG (2).
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 tf_logger = logging.getLogger('tensorflow')
 tf_logger.setLevel(logging.ERROR)
@@ -94,34 +104,54 @@ with warnings.catch_warnings():
 DEFAULT_VERBOSITY = logging.INFO
 TIME_FORMAT = '%Y-%m-%d,%H:%M:%S'
 DEFAULT_DATA_TYPE = "float32"
-
+#Número padrão de amostras malware a serem geradas.
 DEFAULT_NUMBER_GENERATE_MALWARE_SAMPLES = 2000
+# Número padrão de amostras beningas a serem geradas.
 DEFAULT_NUMBER_GENERATE_BENIGN_SAMPLES = 2000
+#Número padrão de épocas (iterações de treinamento) da cGAN.
 DEFAULT_NUMBER_EPOCHS_CONDITIONAL_GAN = 100
+#Número padrão de dobras a serem utilizados
 DEFAULT_NUMBER_STRATIFICATION_FOLD = 5
-
+#Número padrão de camadas latentes
 DEFAULT_ADVERSARIAL_LATENT_DIMENSION = 128
+
+# Algoritmo padrão de treinamento para cGAN. Opções: 'Adam', 'RMSprop', 'Adadelta'.
 DEFAULT_ADVERSARIAL_TRAINING_ALGORITHM = "Adam"
+#Função de ativação padrão da cGAN. Opções: 'LeakyReLU', 'ReLU', 'PRe
 DEFAULT_ADVERSARIAL_ACTIVATION = "LeakyReLU"  # ['LeakyReLU', 'ReLU', 'PReLU']
+# Valor padrão para a taxa de decaimento do dropout do gerador da cGAN.
 DEFAULT_ADVERSARIAL_DROPOUT_DECAY_RATE_G = 0.2
+# Valor padrão para a taxa de decaimento do dropout do discriminador da cGAN.
 DEFAULT_ADVERSARIAL_DROPOUT_DECAY_RATE_D = 0.4
+#Valor padrão para a central da distribuição gaussiana do inicializador.
 DEFAULT_ADVERSARIAL_INITIALIZER_MEAN = 0.0
+# Valor padrão para desvio padrão da distribuição gaussiana do inicializador.
 DEFAULT_ADVERSARIAL_INITIALIZER_DEVIATION = 0.02
+#Tamanho de lota padrão da cGAN. Opções: 16, 32, 64,128,256
 DEFAULT_ADVERSARIAL_BATCH_SIZE = 32
+#Valor padrão para número de neurônios das camadas densas do gerador.
 DEFAULT_ADVERSARIAL_DENSE_LAYERS_SETTINGS_G = [512]
+#Valor padrão para número de neurônios das camadas densas do discriminador.
 DEFAULT_ADVERSARIAL_DENSE_LAYERS_SETTINGS_D = [512]
+#Valor padrão para a média da distribuição do ruído aleatório de entrada.
 DEFAULT_ADVERSARIAL_RANDOM_LATENT_MEAN_DISTRIBUTION = 0.0
+#Valor para o desvio padrão do ruído aleatório de entrada
 DEFAULT_ADVERSARIAL_RANDOM_LATENT_STANDER_DEVIATION = 1.0
 
+#Configurações das camadas internas
 DEFAULT_CONDITIONAL_LAST_ACTIVATION_LAYER = "sigmoid"
+#Configurações do perceptron
 DEFAULT_PERCEPTRON_TRAINING_ALGORITHM = "Adam"
 DEFAULT_PERCEPTRON_LOSS = "binary_crossentropy"
 DEFAULT_PERCEPTRON_DENSE_LAYERS_SETTINGS = [512, 256, 256]
 DEFAULT_PERCEPTRON_DROPOUT_DECAY_RATE = 0.2
 DEFAULT_PERCEPTRON_METRIC = ["accuracy"]
+# Valor padrão para a opção de salvar modelos: True ou False
 DEFAULT_SAVE_MODELS = True
+#Caminhos para os arquivos de saida
 DEFAULT_OUTPUT_PATH_CONFUSION_MATRIX = "confusion_matrix"
 DEFAULT_OUTPUT_PATH_TRAINING_CURVE = "training_curve"
+#Classificadores utilizados por padrão. Opções: RandomForest, SupportVectorMachine, DecisionTree, AdaBoost, Perceptron, SGDRegressor, XGboost
 DEFAULT_CLASSIFIER_LIST = ["RandomForest", "SupportVectorMachine","DecisionTree", "AdaBoost","Perceptron","SGDRegressor","XGboost"] 
 
 """
@@ -148,7 +178,7 @@ def list_of_strs(arg):
 def generate_samples(instance_model, number_instances, latent_dimension, label_class, verbose_level,
                      latent_mean_distribution, latent_stander_deviation):
     """
-    Gera amostras sintéticas usando um modelo gerador.
+    Gera amostras sintéticas usando o modelo gerador da cGAN. Utilizado para gerar os datatsets S e s
 
     Parâmetros:
     - instance_model: modelo gerador
@@ -201,7 +231,7 @@ def plot_to_image(figure):
 
 def comparative_data(fold, x_synthetic, real_data, label):
     """
-    Compara dados sintéticos com dados reais usando métricas probabilísticas.
+    Compara dados sintéticos com dados reais usando métricas de fidelidade (Similaridade de cosseno, erro quadrático médio).
 
     Parâmetros:
     - fold: índice da iteração atual
@@ -457,7 +487,7 @@ def evaluate_TSTR_data(list_classifiers, x_TSTR, y_TSTR, fold, k, generate_confu
 
 def p_value_test (TSTR_label,TRTS_label,type_of_metric,classifier_type):
     """
-    Calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas.
+    Calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas das métricas de utilidade dos classificadores.
 
     Parâmetros:
     -TSTR_label (dict): Dicionário contendo os dados dos classificadores TSTR, onde as chaves são os tipos de classificadores 
@@ -482,10 +512,10 @@ def p_value_test (TSTR_label,TRTS_label,type_of_metric,classifier_type):
 
 def show_and_export_results(dict_similarity, classifier_type, output_dir, title_output_label, dict_metrics, dict_TRTS_auc, dict_TSTR_auc):
     """
-    Função para mostrar e exportar resultados de métricas de classificação e regressão.
+    Função para mostrar e exportar resultados de métricas de fidelidade e utilidade.
     
     Parâmetros:
-        -dict_similarity (dict): Dicionário contendo listas de métricas de similaridade.
+        -dict_similarity (dict): Dicionário contendo listas de métricas de fidelidade entre os dados.
         -classifier_type (list): Lista de classificadores.
         -output_dir (str): Diretório de saída para salvar os resultados.
         -title_output_label (str): Título do rótulo de saída.
@@ -496,7 +526,7 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
     
     # Inicializa as classes para plotar métricas
     plot_classifier_metrics = PlotClassificationMetrics()
-    plot_regressive_metrics = PlotRegressiveMetrics()
+    plot_fidelity_metrics = PlotFidelityeMetrics()
     
     # Itera sobre os classificadores
     for index in range(len(classifier_type)):
@@ -673,14 +703,14 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
     plot_filename1 = os.path.join(output_dir, f'Comparison_TSTR_TRTS_positive.jpg')
     plot_filename2 = os.path.join(output_dir, f'Comparison_TSTR_TRTS_false.jpg')
 
-    plot_regressive_metrics.plot_regressive_metrics(
+    plot_fidelity_metrics.plot_fidelity_metrics(
         dict_similarity["list_mean_squared_error"]["positive"],
         dict_similarity["list_cosine_similarity"]["positive"],
         dict_similarity["list_maximum_mean_discrepancy"]["positive"],
         plot_filename1,
         f'{title_output_label}'
     )
-    plot_regressive_metrics.plot_regressive_metrics(
+    plot_fidelity_metrics.plot_fidelity_metrics(
         dict_similarity["list_mean_squared_error"]["false"],
         dict_similarity["list_cosine_similarity"]["false"],
         dict_similarity["list_maximum_mean_discrepancy"]["false"],
@@ -713,7 +743,7 @@ def get_adversarial_model(latent_dim, input_data_shape, activation_function, ini
                           dense_layer_sizes_d, dataset_type, training_algorithm, latent_mean_distribution,
                           latent_stander_deviation):
     """
-    Função para instanciamento da rede adversarial.
+    Função para o instanciamento da rede adversarial cGAN.
     
     Parâmetros:
         -latent_dim:  Dimensão do espaço latente para treinamento cGAN.
@@ -842,7 +872,7 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
         "list_kl_divergence": {"positive": [], "false": []},
         "list_maximum_mean_discrepancy": {"positive": [], "false": []}
     }
-
+    # Definição dos dicionários utilizados para armazenar as métricas de utilidade
     dict_TRTS_auc={"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]}
     dict_TSTR_auc={"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]}
     dict_metrics={"TSTR accuracy":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]},
@@ -1160,26 +1190,26 @@ def create_argparse():
 
 if __name__ == "__main__":
     """
-    Função principal responsável pela chama das funções necessarias para a configuração e execução do código
+    Função principal responsável por chamar as funções necessarias para a configuração e execução do código
     """
 
     arguments = create_argparse()
 
     logging_format = '%(asctime)s\t***\t%(message)s'
 
-    # configura o mecanismo de logging
+    # Configura o mecanismo de logging
     if arguments.verbosity == logging.DEBUG:
         # mostra mais detalhes
         logging_format = '%(asctime)s\t***\t%(levelname)s {%(module)s} [%(funcName)s] %(message)s'
 
-    #verifica se o caminho para o diretorio de output existe
+    #Verifica se o caminho para o diretório de output existe
     Path(arguments.output_dir).mkdir(parents=True, exist_ok=True)
     logging_filename = os.path.join(arguments.output_dir, LOGGING_FILE_NAME)
 
 
     logging.basicConfig(format=logging_format, level=arguments.verbosity)
 
-    # Add file rotating handler, with level DEBUG
+    # Adiciona o arquivo de log com os valores de logging estabelecidos nos parâmetros de entrada
     rotatingFileHandler = RotatingFileHandler(filename=logging_filename, maxBytes=100000, backupCount=5)
     rotatingFileHandler.setLevel(arguments.verbosity)
     rotatingFileHandler.setFormatter(logging.Formatter(logging_format))
@@ -1187,7 +1217,7 @@ if __name__ == "__main__":
     
     show_all_settings(arguments)
     
-    #realiza a cronometrização do tempo de de início da execução
+    #Realiza a cronometrização do tempo de de início da execução
     time_start_campaign = datetime.datetime.now()
     # Leitura dos argumentos de entrada dos parâmetros da ferramenta
     if arguments.data_type == 'int8':
@@ -1219,7 +1249,7 @@ if __name__ == "__main__":
         experiment_name= output_dir.split('/')[-1]
         aim_run=Run(experiment=experiment_name)
     if USE_MLFLOW:
-       #Estabelece o endereço de servidor de rastreamento mlflow como localhost porta 6002
+       #Estabelece o endereço do servidor de rastreamento mlflow como localhost porta 6002
        mlflow.set_tracking_uri("http://127.0.0.1:6002/")
        
        if arguments.run_id==None:

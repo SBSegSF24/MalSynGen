@@ -1,6 +1,12 @@
 
 """
-Este módulo  contém  as definições as ferramentas de plot utilizadas para geração dos gráficos
+Este módulo  contém  as definições das classes das ferramentas de plot utilizadas para geração dos gráficos. 
+Clases:
+- PlotConfusionMatrix (Classe responsável pelo plot das matrizes de confusão).
+- PlotCurveLoss (Classe responsável pelos plots das curvas de perda durante o treinamento de modelos generativos adversariais).
+- PlotClassificationMetrics (Classe responsável pelo plot das métricas de utilidade dos classificadores).
+- PlotFidelityeMetrics (Classe responsável pelo plot das métricas de fidelidade).
+- ProbabilisticMetrics (Classe responsável pelo cálculo de métricas de probabilidade entre rótulos reais e os valores preditos).
 """
 # Importação de bibliotecas necessárias
 import os
@@ -24,10 +30,15 @@ from sklearn.metrics import pairwise
 # Definição de constantes padrão para a matriz de confusão e curvas de perda
 DEFAULT_MATRIX_CONFUSION_CLASS_LABELS = ["Maligno", "Benigno"]
 DEFAULT_MATRIX_CONFUSION_PREDICT_LABELS = ["Rótulo Verdadeiro", "Rótulo Predito"]
+#Título padrão para as matrizes de confusão
 DEFAULT_MATRIX_CONFUSION_TITLE = "Matriz de Confusão"
+# Valor padrão para a largura das barras
 DEFAULT_WIDTH_BAR = 0.2
+# Valor padrão para a fonte dos plots
 DEFAULT_FONT_SIZE = 12
+# Valor padrão para o declínio das legendas do plot
 DEFAULT_MATRIX_CONFUSION_ROTATION_LEGENDS = 45
+#Valores padrões ara as legendas dos plots
 DEFAULT_LOSS_CURVE_LEGEND_GENERATOR = "Gerador"
 DEFAULT_LOSS_CURVE_LEGEND_DISCRIMINATOR = "Discriminador"
 DEFAULT_LOSS_CURVE_LEGEND_ITERATIONS = "Interações (Épocas)"
@@ -37,7 +48,7 @@ DEFAULT_LOSS_CURVE_LEGEND_NAME = "Legenda"
 DEFAULT_LOSS_CURVE_PREFIX_FILE = "curve_training_error"
 DEFAULT_TITLE_COMPARATIVE_PLOTS = "Comparativo entre dados sintéticos e reais (Média)"
 DEFAULT_PLOT_CLASSIFIER_METRICS_LABELS = ['Acurácia', 'Precisão', 'Recall', 'F1-Score']
-DEFAULT_PLOT_REGRESSION_METRICS_LABELS = ['Similaridade de Cossenos', 'Erro Médio Quadrático', 'Máxima Discrepância Média']
+DEFAULT_PLOT_FIDELITY_METRICS_LABELS = ['Similaridade de Cossenos', 'Erro Médio Quadrático', 'Máxima Discrepância Média']
 
 # Cores padrão para gráficos
 DEFAULT_COLOR_MAP = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22','#17becf']
@@ -46,9 +57,16 @@ DEFAULT_COLOR_NAME = ['Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds', 
 
 class PlotConfusionMatrix:
     """
-    Classe para gerar e plotar matrizes de confusão.
+   Classe responsável pelo plot das matrizes de confusão.
+    
+    Funções:
+        - __init__: Inicializa a classe com valores padrão ou fornecidos.
+        - plot_confusion_matrix: Plota a matriz de confusão.
+        - set_class_labels: Define os rótulos das classes.
+        - set_titles_confusion_matrix: Define os títulos dos eixos da matriz de confusão.
+        - set_title_confusion_matrix: Define o título da matriz de confusão.
+        - set_legend_rotation: Define a rotação da legenda da matriz de confusão.
     """
-
     def __init__(self, class_labels=None, titles_confusion_matrix_labels=None,
                  title_confusion_matrix=DEFAULT_MATRIX_CONFUSION_TITLE,
                  legend_rotation=DEFAULT_MATRIX_CONFUSION_ROTATION_LEGENDS):
@@ -104,31 +122,53 @@ class PlotConfusionMatrix:
     def set_class_labels(self, class_labels):
         """
         Define os rótulos das classes da matriz de confusão.
+
+        Parâmetros:
+            - class_labels: Lista de novos rótulos de classe.
         """
         self.class_labels = class_labels
 
     def set_titles_confusion_matrix(self, titles_confusion_matrix):
         """
         Define os títulos dos eixos da matriz de confusão.
+
+        Parâmetros:
+            - titles_confusion_matrix: Lista com os novos títulos dos eixos.
         """
         self.titles_confusion_matrix = titles_confusion_matrix
 
     def set_title_confusion_matrix(self, title_confusion_matrix):
         """
         Define o título da matriz de confusão.
+
+        Parâmetros:
+            - title_confusion_matrix: Novo título para a matriz de confusão.
         """
         self.title_confusion_matrix = title_confusion_matrix
 
     def set_legend_rotation(self, legend_rotation):
         """
         Define a rotação da legenda da matriz de confusão.
+
+        Parâmetros:
+            - legend_rotation: Novo valor para a rotação da legenda.
         """
         self.legend_rotation = legend_rotation
 
-
 class PlotCurveLoss:
     """
-    Classe para gerar e plotar curvas de perda durante o treinamento de modelos generativos adversariais.
+    Classe responsável pelos plots das curvas de perda durante o treinamento de modelos generativos adversariais.
+        Funções:
+            - __init__: Inicializa a classe com valores padrão ou fornecidos.
+            - plot_training_loss_curve: Plota a curva de perda de treinamento.
+            - set_loss_curve_legend_generator: Define a legenda para a curva de perda do gerador.
+            - set_loss_curve_legend_discriminator: Define a legenda para a curva de perda do discriminador.
+            - set_loss_curver_title_plot: Define o título do plot da curva de perda.
+            - set_loss_curve_legend_iterations: Define a legenda para as iterações (épocas) no plot.
+            - set_loss_curve_legend_loss: Define a legenda para a perda no plot.
+            - set_loss_curve_legend_name: Define o nome da legenda no plot.
+            - set_loss_curve_prefix_file: Define o prefixo do nome do arquivo para salvar o plot.
+  
     """
 
     def __init__(self, loss_curve_legend_generator=DEFAULT_LOSS_CURVE_LEGEND_GENERATOR,
@@ -160,7 +200,7 @@ class PlotCurveLoss:
 
     def plot_training_loss_curve(self, generator_loss, discriminator_loss, output_dir, k_fold, path_curve_loss):
         """
-        Plota a curva de perda de treinamento para o gerador e discriminador e salva como um arquivo PDF.
+        Plota a curva de perda de treinamento para o gerador e discriminador e a salva como um arquivo PDF.
 
         Parâmetros:
             - generator_loss: Lista contendo as perdas do gerador ao longo das épocas.
@@ -189,49 +229,79 @@ class PlotCurveLoss:
     def set_loss_curve_legend_generator(self, loss_curve_legend_generator):
         """
         Define a legenda para a curva de perda do gerador.
+
+        Parâmetros:
+            - loss_curve_legend_generator: Valor para a legenda do gerador.
         """
         self.loss_curve_legend_generator = loss_curve_legend_generator
 
     def set_loss_curve_legend_discriminator(self, loss_curve_legend_discriminator):
         """
         Define a legenda para a curva de perda do discriminador.
+
+        Parâmetros:
+            - loss_curve_legend_discriminator: Valor para a legenda do discriminador.
         """
         self.loss_curve_legend_discriminator = loss_curve_legend_discriminator
 
     def set_loss_curver_title_plot(self, loss_curver_title_plot):
         """
         Define o título do plot da curva de perda.
+
+        Parâmetros:
+            - loss_curver_title_plot: Valor para o título do plot.
         """
         self.loss_curver_title_plot = loss_curver_title_plot
 
     def set_loss_curve_legend_iterations(self, loss_curve_legend_iterations):
         """
         Define a legenda para as iterações (épocas) no plot da curva de perda.
+
+        Parâmetros:
+            - loss_curve_legend_iterations: Valor para a legenda das iterações.
         """
         self.loss_curve_legend_iterations = loss_curve_legend_iterations
 
     def set_loss_curve_legend_loss(self, loss_curve_legend_loss):
         """
         Define a legenda para a perda no plot da curva de perda.
+
+        Parâmetros:
+            - loss_curve_legend_loss: Valor para a legenda da perda.
         """
         self.loss_curve_legend_loss = loss_curve_legend_loss
 
     def set_loss_curve_legend_name(self, loss_curve_legend_name):
         """
         Define o nome da legenda no plot da curva de perda.
+
+        Parâmetros:
+            - loss_curve_legend_name: valor para o nome da legenda.
         """
         self.loss_curve_legend_name = loss_curve_legend_name
 
     def set_loss_curve_prefix_file(self, loss_curve_prefix_file):
         """
         Define o prefixo do nome do arquivo para salvar o plot da curva de perda.
+
+        Parâmetros:
+            - loss_curve_prefix_file: Valor para o prefixo do nome do arquivo.
         """
         self.loss_curve_prefix_file = loss_curve_prefix_file
 
 class PlotClassificationMetrics:
     """
-    Classe para gerar e plotar métricas de classificação.
+    Classe responsável pelo plot das métricas de utilidade dos classificadores
+    
+    Funções:
+        - __init__: Inicializa a classe com valores padrão ou fornecidos.
+        - plot_classifier_metrics: Plota as métricas de classificação.
+        - set_labels_bar_metrics: Define os rótulos das barras de métricas.
+        - set_color_map_bar: Define o mapa de cores para as barras.
+        - set_width_bar: Define a largura das barras.
+        - set_font_size: Define o tamanho da fonte das anotações.
     """
+
 
     def __init__(self, labels_bar_metrics=None, color_map_bar=None, width_bar=DEFAULT_WIDTH_BAR, font_size=DEFAULT_FONT_SIZE):
         """
@@ -314,40 +384,59 @@ class PlotClassificationMetrics:
     def set_labels_bar_metrics(self, labels_bar_metrics):
         """
         Define os rótulos das barras de métricas.
+
+        Parâmetros:
+            - labels_bar_metrics: Lista de rótulos para as barras.
         """
         self.labels_bar_metrics = labels_bar_metrics
 
     def set_color_map_bar(self, color_map_bar):
         """
         Define o mapa de cores para as barras.
+
+        Parâmetros:
+            - color_map_bar: Mapa de cores para as barras.
         """
         self.color_map_bar = color_map_bar
 
     def set_width_bar(self, width_bar):
         """
         Define a largura das barras.
+
+        Parâmetros:
+            - width_bar: Largura das barras.
         """
         self.width_bar = width_bar
 
     def set_font_size(self, font_size):
         """
         Define o tamanho da fonte das anotações.
+
+        Parâmetros:
+            - font_size: Tamanho da fonte das anotações.
         """
         self.font_size = font_size
 
-
-class PlotRegressiveMetrics:
+class PlotFidelityeMetrics:
     """
-    Classe para gerar e plotar métricas de regressão.
+    Classe para gerar e plotar métricas de fidelidade.
+    
+    Funções:
+        - __init__: Inicializa a classe com valores padrão ou fornecidos.
+        - plot_fidelity_metrics: Plota as métricas de fidelidade.
+        - set_labels_bar_metrics: Define os rótulos das barras de métricas de fidelidade.
+        - set_color_map_bar: Define o mapa de cores para as barras.
+        - set_width_bar: Define a largura das barras.
+        - set_font_size: Define o tamanho da fonte das anotações.
     """
 
-    def __init__(self, labels_plot_regressive_metrics=None, color_map_bar=None, width_bar=DEFAULT_WIDTH_BAR,
+    def __init__(self, labels_plot_fidelity_metrics=None, color_map_bar=None, width_bar=DEFAULT_WIDTH_BAR,
                  font_size=DEFAULT_FONT_SIZE, plot_title=DEFAULT_TITLE_COMPARATIVE_PLOTS):
         """
-        Inicializa a classe PlotRegressiveMetrics com parâmetros padrão ou fornecidos.
+        Inicializa a classe PlotFidelityeMetrics com parâmetros padrão ou fornecidos.
 
         Parâmetros:
-            - labels_plot_regressive_metrics: Lista de rótulos para as barras de métricas regressivas.
+            - labels_plot_fidelity_metrics: Lista de rótulos para as barras de métricas de fidelidade.
             - color_map_bar: Mapa de cores para as barras.
             - width_bar: Largura das barras.
             - font_size: Tamanho da fonte das anotações.
@@ -356,18 +445,18 @@ class PlotRegressiveMetrics:
         if color_map_bar is None:
             color_map_bar = DEFAULT_COLOR_MAP_REGRESSIVE
 
-        if labels_plot_regressive_metrics is None:
-            labels_plot_regressive_metrics = DEFAULT_PLOT_REGRESSION_METRICS_LABELS
+        if labels_plot_fidelity_metrics is None:
+            labels_plot_fidelity_metrics = DEFAULT_PLOT_FIDELITY_METRICS_LABELS
 
-        self.labels_plot_regressive_metrics = labels_plot_regressive_metrics
+        self.labels_plot_fidelity_metrics = labels_plot_fidelity_metrics
         self.color_map_bar = color_map_bar
         self.width_bar = width_bar
         self.plot_title_axis_x = plot_title
         self.font_size = font_size
 
-    def plot_regressive_metrics(self, mean_squared_error_list, list_cosine_similarity, list_max_mean_discrepancy, plot_filename, plot_title):
+    def plot_fidelity_metrics(self, mean_squared_error_list, list_cosine_similarity, list_max_mean_discrepancy, plot_filename, plot_title):
         """
-        Plota as métricas de regressão.
+        Realiza o plot das métricas de fidelidade.
 
         Parâmetros:
             - mean_squared_error_list: Lista de valores de erro médio quadrático.
@@ -379,7 +468,7 @@ class PlotRegressiveMetrics:
         list_metrics = [list_cosine_similarity, mean_squared_error_list, list_max_mean_discrepancy]
         new_plot_bars = go.Figure()
         # Itera sobre as métricas,cores e rótulos 
-        for metric, metric_values, color in zip(self.labels_plot_regressive_metrics, list_metrics, self.color_map_bar):
+        for metric, metric_values, color in zip(self.labels_plot_fidelity_metrics, list_metrics, self.color_map_bar):
             try:
                 #Cálculo das média e desvio padrão das métricas
                 metric_mean = np.mean(metric_values)
@@ -415,30 +504,54 @@ class PlotRegressiveMetrics:
 
     def set_labels_bar_metrics(self, labels_bar_metrics):
         """
-        Define os rótulos das barras de métricas regressivas.
+        Define os rótulos das barras de métricas de fidelidade.
+
+        Parâmetros:
+            - labels_bar_metrics: Lista de rótulos para as barras.
         """
-        self.labels_plot_regressive_metrics = labels_bar_metrics
+        self.labels_plot_fidelity_metrics = labels_bar_metrics
 
     def set_color_map_bar(self, color_map_bar):
         """
         Define o mapa de cores para as barras.
+
+        Parâmetros:
+            - color_map_bar: Mapa de cores para as barras.
         """
         self.color_map_bar = color_map_bar
 
     def set_width_bar(self, width_bar):
         """
         Define a largura das barras.
+
+        Parâmetros:
+            - width_bar: Largura das barras.
         """
         self.width_bar = width_bar
 
     def set_font_size(self, font_size):
         """
         Define o tamanho da fonte das anotações.
+
+        Parâmetros:
+            - font_size: Tamanho da fonte das anotações.
         """
         self.font_size = font_size
+
 class ProbabilisticMetrics:
     """
-    Classe para calcular diversas métricas probabilísticas entre rótulos reais e previstos.
+    Classe responsável pelo cálculo de métricas de probabilidade entre rótulos reais e os valores preditos.
+
+    Funções:
+        - __init__: Inicializa a classe.
+        - get_mean_squared_error: Calcula o erro quadrático médio.
+        - get_cosine_similarity: Calcula a similaridade de cossenos.
+        - get_kl_divergence: Calcula a divergência de Kullback-Leibler.
+        - get_maximum_mean_discrepancy: Calcula a discrepância média máxima.
+        - get_accuracy: Calcula a acurácia.
+        - get_precision: Calcula a precisão.
+        - get_recall: Calcula o recall.
+        - get_f1_score: Calcula o F1-Score.
     """
 
     def __init__(self):
