@@ -12,10 +12,10 @@
       ```bash
       ./scripts/docker_build.sh
       ```
-   **Opção 2**: Utilizar o script **install.sh**.
+   **Opção 2**: Utilizar o script **pip_env_install.sh**.
       
       ```bash
-   ./install.sh
+   ./pip_env_install.sh
       ```
    **Opção 3**: Configurar o pipenv.
    ```
