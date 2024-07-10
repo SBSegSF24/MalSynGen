@@ -1,5 +1,5 @@
 """
-Este módulo define a classe AdversarialModel, que é usada para criar, treinar e salvar modelos adversariais (GANs).
+Este módulo define a classe AdversarialModel, que é utilizada a rede adversarial generativa, carregar e salvar modelos, estabelecer otimizadores e os passos de treino de cada dobra.
 Classes:
 - AdversarialModel (Classe utilizada para a criação e treinamento um modelo adversarial generativo (GAN)).
 """
@@ -57,7 +57,7 @@ DEFAULT_PATH_OUTPUT_MODELS = "models_saved/"
 
 class AdversarialModel(Model):
     """
-    Classe utilizada para a criação e treinamento um modelo adversarial generativo (GAN).
+    Classe utilizada para a criação e treinamento um modelo adversarial generativo .
     Funções:
         - __init__ : Inicializa a classe com valores padrão ou fornecidos.
         - get_learning_rates : Retorna as taxas de aprendizado dos otimizadores.
