@@ -48,7 +48,7 @@
    **Opção 2**: Executar o script de execução da imagen Docker.
    
    ```bash
-   sudo ./scripts/docker_run_solo.sh
+   ./scripts/docker_run_solo.sh
    ```
    
    **Opção 3**: Executar o docker demo que instancia uma versão reduzida do experimento.
