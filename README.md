@@ -36,6 +36,7 @@
    ```
    pipenv install -r requirements.txt
    ```
+   Obs: É necessário a instalação do pipenv através da opção 4 ou opção 2 para garantir o funcionamento da ferramenta.
 ## 2. Execução
 1. Executar a demonstração de funcionamento da ferramenta: 
 
