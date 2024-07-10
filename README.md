@@ -57,7 +57,7 @@
    ```
 
     
-2. Executar os mesmos experimentos (campanhas) do paper. Leva em torno de 14 horas em um computador AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
+2. Executar os mesmos experimentos (campanhas) do paper. A execução leva em torno de 14 horas em um computador AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
 
    ```bash
     ./run_reproduce_sf24.sh
