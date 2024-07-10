@@ -43,11 +43,11 @@ DEFAULT_CONDITIONAL_GAN_RMS_PROP_DECAY_RATE = 0.5
 DEFAULT_CONDITIONAL_GAN_ADA_DELTA_LEARNING_RATE = 0.001
 #Valor padrão para a taxa de decaimento para o otimizador Adadelta.
 DEFAULT_CONDITIONAL_GAN_ADA_DELTA_DECAY_RATE = 0.5
-#Valor padrão para a taxa de suavização da cGAN
+#Valor padrão para a taxa de suavização do modelo adversarial
 DEFAULT_CONDITIONAL_GAN_SMOOTHING_RATE = 0.15
-#Valor padrão para a média da distribuição latente da cGAN.
+#Valor padrão para a média da distribuição latente do modelo adversarial.
 DEFAULT_CONDITIONAL_GAN_LATENT_MEAN_DISTRIBUTION = 0.0
-#Valor padrão para o desvio padrão da distribuição latente da cGAN
+#Valor padrão para o desvio padrão da distribuição latente do modelo adversarial
 DEFAULT_CONDITIONAL_GAN_LATENT_STANDER_DEVIATION = 1.0
 
 #Títulos padrão para os arquivos dos modelos 
@@ -108,9 +108,9 @@ class AdversarialModel(Model):
           -  file_name_discriminator : Nome do arquivo para salvar o modelo discriminador.
           -  file_name_generator : Nome do arquivo para salvar o modelo gerador.
           -  models_saved_path : Caminho para salvar os modelos.
-          -  latent_mean_distribution : Média da distribuição latente da cGAN.
-          -  latent_stander_deviation : Desvio padrão da distribuição latente da cGAN.
-          -  smoothing_rate : Taxa de suavização da cGAN.
+          -  latent_mean_distribution : Média da distribuição latente do modelo adversarial.
+          -  latent_stander_deviation : Desvio padrão da distribuição latente do modelo adversarial.
+          -  smoothing_rate : Taxa de suavização do modelo adversarial.
         """
         super().__init__(*args, **kwargs)
 
