@@ -17,14 +17,8 @@
       ```bash
    ./pip_env_install.sh
       ```
-   **Opção 3**: Configurar o pipenv.
-   ```
-   pip install pipenv
-   ```
-   ```
-   pipenv install -r requirements.txt
-   ```
-   **Opção 4**: Configurar o venv.
+
+   **Opção 3**: Configurar o venv.
    ```
    python3 -m venv .venv
    ```
@@ -33,6 +27,14 @@
    ```
    ```
    pip3 install -r requirements.txt
+   ```
+
+   **Opção 4**: Configurar o pipenv.
+   ```
+   pip install pipenv
+   ```
+   ```
+   pipenv install -r requirements.txt
    ```
 ## 2. Execução
 1. Executar a demonstração de funcionamento da ferramenta: 
