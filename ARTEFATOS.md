@@ -1,22 +1,21 @@
-## Artefatos apêndice SBSEG 2024: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware
-A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar dados sintéticos tabulares para o domínio de malware Android.
-Para avaliar o seu desempenho foram aumentados os dados de dois datasets, considerando métricas de fidelidade estatística e utilidade. 
-Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
+## Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware
+
+A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar dados sintéticos tabulares para o domínio de malware Android. Para avaliar o seu desempenho foram aumentados os dados de dois datasets, considerando métricas de fidelidade estatística e utilidade. Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
 
 ## 1. Selos Considerados
-Os autores julgam como considerados no processo de avaliação os seguintes selos:
+Os autores solicitam a avaliação para os seguintes selos:
 
 **Selo D - Artefatos Disponíveis**:
-Justificativa: Repositório  anônimo disponível no GitHub público com documentação da ferramente e módulos.
+Justificativa: Artefatos disponíveis em repositório estável e público no GitHub, com documentação da ferramente, instruções de instalação e exemplos de utilização.
 
 **Selo F - Artefatos Funcionais**:
-Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 (*bare metal* e Docker) e 20.04 (Docker) e Debian  11 (*bare metal*) e 12 (*bare metal*).
+Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 (*bare metal* e Docker), Ubuntu 20.04 (Docker), Debian  11 (*bare metal*) e Debian 12 (*bare metal*). Detalhes do hardware e software desses ambientes estão disponíveis no README.md do GitHub.
 
 **Selo R - Artefatos Reprodutíveis**:
-Justificativa: São disponibilizados scripts para reprodução dos experimentos detalhados no artigo.[script1](https://github.com/SBSegSF24/MalSynGen/blob/07ccc905a5a48af6cb8d9d9b426e1d5abc65a718/reproduzir_sf24.sh);[script2](https://github.com/SBSegSF24/MalSynGen/blob/e71cec8b62a395ca282528912f21b279e64992c8/Reproduction.sh).
+Justificativa: Disponibilizamos um script para reprodução dos experimentos do trabalho. O script a informações sobre estimativa de execução estão disponíveis no README.md do GitHub.
 
 **Selo S- Artefatos Sustentáveis**:
-Justificativa: Código inteligível e acompanhado com boa documentação.
+Justificativa: Código estrutura, organizado, inteligível e acompanhado de boa documentação.
 
 
 ## 2. Informações básicas

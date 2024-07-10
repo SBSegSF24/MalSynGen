@@ -45,13 +45,7 @@
    ```
      
 
-   **Opção 2**: Executar o script de execução da imagen Docker.
-   
-   ```bash
-   ./scripts/docker_run_solo.sh
-   ```
-   
-   **Opção 3**: Executar o docker demo que instancia uma versão reduzida do experimento.
+   **Opção 2**: Executar o docker demo que instancia uma versão reduzida do experimento.
    ```bash
    ./run_demo_docker.sh
    ```
@@ -206,7 +200,7 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
 2. **Hardware**: Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
 
-
+3. **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM (3200MHz), NVDIA RTX3090 24GB. **Software**: WSL: 2.2.4.0, Docker version 24.0.7 (build 24.0.7-0ubuntu2~22.04.1), Python 3.11.5
 
 ## 7. Ferramentas de rastreamento
 ### 7.1. Aimstack
