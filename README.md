@@ -41,7 +41,7 @@
 
    **Opção 1**: instalar as dependências e executar a aplicação em um ambiente Linux.
    ```bash
-   ./run_demo_app.sh
+   ./run_demo_venv.sh
    ```
      
 
