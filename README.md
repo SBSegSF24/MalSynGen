@@ -42,6 +42,7 @@
    ./run_demo_app.sh
    ```
      
+
    **Opção 2**: Executar o script de execução da imagen Docker.
    
    ```bash
