@@ -5,16 +5,16 @@ A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar 
 ## 1. Selos Considerados
 Os autores solicitam a avaliação para os seguintes selos:
 
-**Selo D - Artefatos Disponíveis**:
+**SeloD - Artefatos Disponíveis**:
 Justificativa: Artefatos disponíveis em repositório estável e público no GitHub, com documentação da ferramente, instruções de instalação e exemplos de utilização.
 
-**Selo F - Artefatos Funcionais**:
+**SeloF - Artefatos Funcionais**:
 Justificativa: Artefatos funcionais e testados em Ubuntu 22.04 (*bare metal* e Docker), Ubuntu 20.04 (Docker), Debian  11 (*bare metal*) e Debian 12 (*bare metal*). Detalhes do hardware e software desses ambientes estão disponíveis no README.md do GitHub.
 
-**Selo R - Artefatos Reprodutíveis**:
+**SeloR - Artefatos Reprodutíveis**:
 Justificativa: Disponibilizamos um script para reprodução dos experimentos do trabalho. O script a informações sobre estimativa de execução estão disponíveis no README.md do GitHub.
 
-**Selo S- Artefatos Sustentáveis**:
+**SeloS - Artefatos Sustentáveis**:
 Justificativa: Código estrutura, organizado, inteligível e acompanhado de boa documentação.
 
 
