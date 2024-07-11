@@ -1,5 +1,7 @@
 """
-Este módulo define a classe ConditionalGAN para treinar um modelo GAN condicional utilizando Keras.
+Este módulo define a classe ConditionalGAN  responsavel por configurar e criar um modelo GAN condicional utilizando Keras.
+Classes: 
+    - Classe responsavel por configurar e criar um modelo GAN condicional utilizando Keras. 
 """
 # Importação de bibliotecas necessárias
 import numpy as np
@@ -8,6 +10,7 @@ from keras.initializers import RandomNormal
 from keras.models import Model
 
 # Parâmetros padrão para a Conditional GAN
+
 DEFAULT_CONDITIONAL_GAN_LATENT_DIMENSION = 128
 DEFAULT_CONDITIONAL_GAN_TRAINING_ALGORITHM = "Adam"
 DEFAULT_CONDITIONAL_GAN_ACTIVATION = "LeakyReLU"
@@ -26,7 +29,25 @@ DEFAULT_CONDITIONAL_GAN_INITIALIZER_DEVIATION = 0.02
 
 class ConditionalGAN:
     """
-    Classe que define um modelo GAN condicional com gerador e discriminador usando Keras.
+    Classe responsavel por configurar e criar um modelo GAN condicional utilizando Keras.
+    Funções:
+        - __init__ : Inicializa a ConditionalGAN com os parâmetros especificados ou padrão.
+        - add_activation_layer :  Define a funlção de ativação especificada à  camada na rede neural.
+        - get_generator : Instância e retorna o modelo gerador da ConditionalGAN.
+        - get_discriminator : Instância e retorna o modelo gerador da ConditionalGAN.
+        - get_dense_generator_model : Retorna o modelo do gerador da ConditionalGAN.
+        - get_dense_discriminator_model :  Retorna o modelo do discriminador da ConditionalGAN.
+        - set_latent_dimension : Define a dimensão latente da ConditionalGAN.
+        - set_output_shape : Define o formato de saída da ConditionalGAN.
+        - set_activation_function : Define a função de ativação das camadas internas da ConditionalGAN.
+        - set_last_layer_activation :Define a função de ativação para a última camada do gerador.
+        - set_dropout_decay_rate_generator : Define a taxa do dropout para o gerador da ConditionalGAN.
+        - set_dropout_decay_rate_discriminator : Define a taxa do dropout para o discriminador da ConditionalGAN.
+        - set_dense_layer_sizes_generator : Define os tamanhos das camadas densas para o gerador da ConditionalGAN.
+        - set_dense_layer_sizes_discriminator : Define os tamanhos das camadas densas para o discriminador da ConditionalGAN.
+        - set_dataset_type : Define o tipo de dados do dataset.
+        - set_initializer_mean : Define a média para inicialização dos pesos das camadas.
+        - set_initializer_deviation : Define o desvio padrão para inicialização dos pesos das camadas.
     """
 
     def __init__(self, latent_dim=DEFAULT_CONDITIONAL_GAN_LATENT_DIMENSION, output_shape=None,
@@ -75,7 +96,7 @@ class ConditionalGAN:
 
     def add_activation_layer(self, neural_nodel):
         """
-        Adiciona uma camada de ativação especificada à rede neural.
+        Define a funlção de ativação especificada à  camada na rede neural.
 
         Parâmetros:
            - neural_nodel : Camada da rede neural.
@@ -96,7 +117,7 @@ class ConditionalGAN:
 
     def get_generator(self):
         """
-        Retorna o modelo do gerador da ConditionalGAN.
+        Instância e retorna o modelo gerador da ConditionalGAN.
 
          Retorno:
            - Model: Modelo do gerador.
@@ -129,7 +150,7 @@ class ConditionalGAN:
 
     def get_discriminator(self):
         """
-        Retorna o modelo do discriminador da ConditionalGAN.
+        Instância e retorna o modelo discriminador da ConditionalGAN.
 
         Retorno:
            - Model: Modelo do discriminador.
@@ -187,16 +208,16 @@ class ConditionalGAN:
 
     def set_output_shape(self, output_shape):
         """
-        Define a forma de saída da ConditionalGAN.
+        Define o formato de saída da ConditionalGAN.
 
         Parâmetros:
-          -  output_shape : Forma de saída.
+          -  output_shape : Formato de saída da ConditionalGAN.
         """
         self.output_shape = output_shape
 
     def set_activation_function(self, activation_function):
         """
-        Define a função de ativação das ccamadas internas da ConditionalGAN.
+        Define a função de ativação das camadas internas da ConditionalGAN.
 
         Parâmetros:
           -  activation_function: Função de ativação.
@@ -262,7 +283,7 @@ class ConditionalGAN:
         Define a média para inicialização dos pesos das camadas.
 
         Parâmetros:
-          -  initializer_mean (float): média para inicialização dos pesos das camadas.
+          -  initializer_mean : média para inicialização dos pesos das camadas.
         """
         self.initializer_mean = initializer_mean
 
@@ -271,6 +292,6 @@ class ConditionalGAN:
         Define o desvio padrão para inicialização dos pesos das camadas.
 
         Parâmetros:
-           - initializer_deviation (float): desvio padrão para inicialização dos pesos das camadas.
+           - initializer_deviation : desvio padrão para inicialização dos pesos das camadas.
         """
         self.initializer_deviation = initializer_deviation
