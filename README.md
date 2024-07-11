@@ -273,6 +273,8 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 ```bash
 tensorboard --logdir=tensorboardfolder/ --port=6002
 ```
+## 8. Documentação do código
+A documentação do código está disponivel no formato html na pasta [docs](https://github.com/SBSegSF24/MalSynGen/tree/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs), para acessar a documentação abra o arquivo [index.html](https://github.com/SBSegSF24/MalSynGen/blob/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs/index.html).
 
 Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
 
