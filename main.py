@@ -1,16 +1,19 @@
 
 """
-Módulo principal para a execução de experimentos da ferramenta, responsável pelo fluxo de execução.
+Módulo principal para a execução de experimentos da ferramenta, responsável pelo fluxo de execução, parâmetros de entrada, log de dados e organização dos dados de saída.
 Funções: 
-- run_experiment (Fluxo principal de execução)
-- get_adversarial_model (Instanciamento do modelo cGAN).
-- show_and_export_results (Exportação de resultados).
-- comparative_data ( Compara dados sintéticos com dados reais usando métricas de fidelidade (Similaridade de cosseno, erro quadrático médio).
-- evaluate_TRTS_data, evaluate_TSTR_data (Cálculo das métricas de utilidade dos classificadores).
-- p_value_test (Cálculo do teste de Wilcoxon).
-- generate_sample (Gera amostras sintéticas usando o modelo gerador da cGAN. Utilizado para gerar os datatsets S e s)
-
-
+- run_experiment : Função responsável pelo principal fluxo de execução da cGAN.
+- get_adversarial_model : Função utilizada para a chamada do método de instanciamento da rede adversarial cGAN.
+- show_and_export_results : Função para demonstrar e exportar resultados de métricas de fidelidade e utilidade, além da chamada de criação dos plots destas métricas.
+- comparative_data : Função para a comparação entres os dados sintéticos com dados reais usando métricas de fidelidade (Similaridade de cosseno, erro quadrático médio.
+- evaluate_TRTS_data, evaluate_TSTR_data :Cálculo das métricas de utilidade dos classificadores.
+- p_value_test : A funlção calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas das métricas de utilidade dos classificadores.
+- generate_sample : Função utilizada para a geração de amostras sintéticas usando o modelo gerador da cGAN. Utilizado para gerar os datatsets S e s.
+- plot_to_image : Converte um gráfico Matplotlib em uma imagem utilizável pelo TensorBoard.
+- show_all_settings : Função exibe todas as configurações do experimento nos logs.
+- show_model :  A função imprime os parametros da rede adversarial no log de saida
+- initial_step :  A função realiza a configuração inicial do experimento; salvamento dos argumentos da linha de comando e o Carregamento do dataset e estabelecimento da forma dos dados de entrada.
+ - create_argparse :   Estabelece a lista de parâmetros de entradas para o argparse. 
 """
 
 # Importação de bibliotecas necessárias
@@ -138,7 +141,7 @@ DEFAULT_ADVERSARIAL_RANDOM_LATENT_MEAN_DISTRIBUTION = 0.0
 #Valor para o desvio padrão do ruído aleatório de entrada
 DEFAULT_ADVERSARIAL_RANDOM_LATENT_STANDER_DEVIATION = 1.0
 
-#Configurações das camadas internas
+#Configurações a função de ativação da última camada
 DEFAULT_CONDITIONAL_LAST_ACTIVATION_LAYER = "sigmoid"
 #Configurações do perceptron
 DEFAULT_PERCEPTRON_TRAINING_ALGORITHM = "Adam"
@@ -178,7 +181,7 @@ def list_of_strs(arg):
 def generate_samples(instance_model, number_instances, latent_dimension, label_class, verbose_level,
                      latent_mean_distribution, latent_stander_deviation):
     """
-    Gera amostras sintéticas usando o modelo gerador da cGAN. Utilizado para gerar os datatsets S e s
+    Função utilizada para a geração de amostras sintéticas usando o modelo gerador da cGAN. Utilizado para gerar os datatsets S e s
 
     Parâmetros:
     - instance_model: modelo gerador
@@ -231,7 +234,7 @@ def plot_to_image(figure):
 
 def comparative_data(fold, x_synthetic, real_data, label):
     """
-    Compara dados sintéticos com dados reais usando métricas de fidelidade (Similaridade de cosseno, erro quadrático médio).
+    Função para a comparação entres os dados sintéticos com dados reais usando métricas de fidelidade (Similaridade de cosseno, erro quadrático médio
 
     Parâmetros:
     - fold: índice da iteração atual
@@ -487,7 +490,7 @@ def evaluate_TSTR_data(list_classifiers, x_TSTR, y_TSTR, fold, k, generate_confu
 
 def p_value_test (TSTR_label,TRTS_label,type_of_metric,classifier_type):
     """
-    Calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas das métricas de utilidade dos classificadores.
+    A função calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas das métricas de utilidade dos classificadores.
 
     Parâmetros:
     -TSTR_label (dict): Dicionário contendo os dados dos classificadores TSTR, onde as chaves são os tipos de classificadores 
@@ -512,7 +515,7 @@ def p_value_test (TSTR_label,TRTS_label,type_of_metric,classifier_type):
 
 def show_and_export_results(dict_similarity, classifier_type, output_dir, title_output_label, dict_metrics, dict_TRTS_auc, dict_TSTR_auc):
     """
-    Função para mostrar e exportar resultados de métricas de fidelidade e utilidade.
+    Função para demonstrar e exportar resultados de métricas de fidelidade e utilidade, além da chamada de criação dos plots destas métricas.
     
     Parâmetros:
         -dict_similarity (dict): Dicionário contendo listas de métricas de fidelidade entre os dados.
@@ -743,7 +746,7 @@ def get_adversarial_model(latent_dim, input_data_shape, activation_function, ini
                           dense_layer_sizes_d, dataset_type, training_algorithm, latent_mean_distribution,
                           latent_stander_deviation):
     """
-    Função para o instanciamento da rede adversarial cGAN.
+    Função utilizada para a chamada do método de instanciamento da rede adversarial cGAN.
     
     Parâmetros:
         -latent_dim:  Dimensão do espaço latente para treinamento cGAN.
@@ -794,7 +797,7 @@ def show_model(latent_dim, input_data_shape, activation_function, initializer_me
                last_layer_activation, dense_layer_sizes_g, dense_layer_sizes_d,
                dataset_type, verbose_level):
     """
-    Função imprime os parametros da rede adversarial no log de saida .
+    A função imprime os parametros da rede adversarial no log de saida.
     
     Parâmetros:
         -latent_dim:  Dimensão do espaço latente para treinamento cGAN.
@@ -824,7 +827,13 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
                    path_confusion_matrix=None, path_curve_loss=None, verbose_level=None,
                    latent_mean_distribution=None, latent_stander_deviation=None, num_samples_class_malware=None, num_samples_class_benign=None):
     """
-    Executa um experimento de rede adversarial condicionada e registra os parâmetros e resultados no log de saída.
+   Responsável pelo principal fluxo de execução da cGAN, realiza as chamada das funções de:
+       - Treino da cGAN.
+       - Geração de dados sintéticos.
+       - Comparação de dados.
+       - Cálculo de métricas de utilidade e fidelidade.
+       - Export de resultados
+
 
     Parâmetros:
         - dataset: Dataset de entrada no formato CSV.
@@ -1011,7 +1020,7 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
 
 def show_all_settings(arg_parsers):
         """
-        Exibe todas as configurações do experimento nos logs.
+        Função exibe todas as configurações do experimento nos logs.
 
         Parâmetros:
             - arg_parsers: Objeto contendo os argumentos do experimento.
@@ -1039,8 +1048,11 @@ def show_all_settings(arg_parsers):
 
 def initial_step(initial_arguments, dataset_type):
     """
-    Realiza a configuração inicial do experimento, salvando os argumentos da linha de comando,
-    carregando o dataset e calculando a forma dos dados de entrada.
+    A função realiza:
+    - A configuração inicial do experimento,
+    - Salvamento dos argumentos da linha de comando,
+    - Carregamento do dataset e estabelecimento da forma dos dados de entrada.
+
 
     Parâmetros:
         - initial_arguments: Objeto contendo os argumentos iniciais do experimento.
@@ -1073,7 +1085,7 @@ def initial_step(initial_arguments, dataset_type):
     return dataset_file_loaded, dataset_input_shape, dataset_labels
 def create_argparse():
     """
-    Estabelece a lista de parametros de entradas para o argparse e se esses são obrigatorios ou não
+    Estabelece a lista de parâmetros de entradas para o argparse. 
     """
     parser = argparse.ArgumentParser(description='Run the experiment with cGAN and classifiers')
 
