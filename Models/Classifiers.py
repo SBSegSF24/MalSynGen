@@ -38,50 +38,82 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 
 # Parâmetros padrão para cada tipo de classificador
-#Valor padrão para o número de estimadores para o Random Forest.
+## Valor padrão para o número de estimadores para o Random Forest.
 DEFAULT_RANDOM_FOREST_NUMBER_ESTIMATORS = 100
+## Valor padrão para a profundidade do Random Forest
 DEFAULT_RANDOM_FOREST_MAX_DEPTH = None
+## Valor padrão para o número maximo de folhas para o Random forest
 DEFAULT_RANDOM_FOREST_MAX_LEAF_NODES = None
 
+## Valor padrão de regularização para o SVM
 DEFAULT_SUPPORT_VECTOR_MACHINE_REGULARIZATION = 1.0
+## Kernel padrão para a SVM
 DEFAULT_SUPPORT_VECTOR_MACHINE_KERNEL = "rbf"
+## Valor padrão o número máximo de iterações para o processo gaussiano
 DEFAULT_SUPPORT_VECTOR_MACHINE_KERNEL_DEGREE = 3
+##  Valor padrão para o coeficiente gamma para SVM
 DEFAULT_SUPPORT_VECTOR_MACHINE_GAMMA = "scale"
-
+##Valor padrão para o número de viznhos para O KNN
 DEFAULT_KNN_NUMBER_NEIGHBORS = 5
+## Função de peso padrão para o KNN.
 DEFAULT_KNN_WEIGHTS = "uniform"
+## Algortimo padrão para o KNN
 DEFAULT_KNN_ALGORITHM = "auto"
+## Valor padrão para folhas para o KNN
 DEFAULT_KNN_LEAF_SIZE = 30
+## Métrica padrão utilizada para a computação da distância para o KNN
 DEFAULT_KNN_METRIC = "minkowski"
-
+## Kernel padrão para o processo gaussiano
 DEFAULT_GAUSSIAN_PROCESS_KERNEL = None
+## Valor padrõa para o número máximo de iterações para o processo gaussiano
 DEFAULT_GAUSSIAN_PROCESS_MAX_ITERATIONS = 20
+##  Otimizador padrão para o processo gaussiano
 DEFAULT_GAUSSIAN_PROCESS_OPTIMIZER = "fmin_l_bfgs_b"
 
+## Critério padrão usado para medir a qualidade da divisão na árvore de decisão
 DEFAULT_DECISION_TREE_CRITERION = "gini"
+## Valor padrão para a profundidade máxima da árvore de decisão
 DEFAULT_DECISION_TREE_MAX_DEPTH = None
+## Valor padrão para o número máximo de características a serem consideradas
 DEFAULT_DECISION_TREE_MAX_FEATURE = None
+## Valor padrão para o número máximo de folhas na árvore de decisão
 DEFAULT_DECISION_TREE_MAX_LEAF = None
 
+##Estimador base padrão para o AdaBoost
 DEFAULT_ADA_BOOST_ESTIMATOR = None
+## Valor padrão para o  número maximo de estimadores para o AdaBoost
 DEFAULT_ADA_BOOST_NUMBER_ESTIMATORS = 50
+## Valor padrão para a taxa de aprendizado do AdaBosst
 DEFAULT_ADA_BOOST_LEARNING_RATE = 1.0
+## Algoritmo padrão utilizado pelo AdaBoost
 DEFAULT_ADA_BOOST_ALGORITHM = "SAMME.R"
 
+## Valor padrão para a probabilidades de Priors para Naive Bayes
 DEFAULT_NAIVE_BAYES_PRIORS = None
+## Valor padrão para o parâmetro de suavização para Naive Bayes
 DEFAULT_NAIVE_BAYES_VARIATION_SMOOTHING = 1e-09
-
+## Valor padrão para a probabilidades de priors para QDA.
 DEFAULT_QUADRATIC_DISCRIMINANT_ANALYSIS_PRIORS = None
+## Valor padrão para o parâmetro de regularização para QDA.
 DEFAULT_QUADRATIC_DISCRIMINANT_ANALYSIS_REGULARIZATION = 0.0
+## Valor padrão para o parâmetro de regularização para QDA
 DEFAULT_QUADRATIC_DISCRIMINANT_THRESHOLD = 0.0001
 
+## Algoritmo padrão de treinamento para Perceptron.
 DEFAULT_PERCEPTRON_TRAINING_ALGORITHM = "Adam"
+## Função de perda padrão para o perceptron
 DEFAULT_PERCEPTRON_LOSS = "binary_crossentropy"
+##  Valores padrões para as camadas do perceptron
 DEFAULT_PERCEPTRON_LAYERS_SETTINGS = [512, 256, 256]
+## Valor padrão para a taxa de dropout do perceptron
 DEFAULT_PERCEPTRON_DROPOUT_DECAY_RATE = 0.2
+## Métrica padrão utilizada pelo perceptron para avaliar sua performance
 DEFAULT_PERCEPTRON_METRIC = ["accuracy"]
+## Função padrão de ativação para as camadas internas
 DEFAULT_PERCEPTRON_LAYER_ACTIVATION = keras.activations.swish
+## Função padrão de ativação para a última camada
 DEFAULT_PERCEPTRON_LAST_LAYER_ACTIVATION = "sigmoid"
+## Valor padrão paro número de épocas para o perceptron
 DEFAULT_PERCEPTRON_NUMBER_EPOCHS = 1
 
 
@@ -206,7 +238,7 @@ A classe suporta múltiplos algoritmos de aprendizado supervisionado, incluindo:
            - decision_tree_max_depth : Profundidade máxima da árvore de decisão.
            - decision_tree_max_feature : Número máximo de características a serem consideradas.
            - decision_tree_max_leaf : Número máximo de folhas na árvore de decisão.
-           - ada_boost_estimator : Estimador base para AdaBoost.
+           - ada_boost_estimator : Estimador base para o AdaBoost.
            - ada_boost_number_estimators : Número maximo de estimadores para o AdaBoost.
            - ada_boost_learning_rate : Taxa de aprendizado do AdaBoost.
            - ada_boost_algorithm : Algoritmo usado pelo AdaBoost.

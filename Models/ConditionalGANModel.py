@@ -3,40 +3,40 @@ Este módulo define a classe ConditionalGAN  responsavel por configurar e criar 
 Classes: 
     - Classe responsavel por configurar e criar um modelo GAN condicional utilizando Keras. 
 """
-# Importação de bibliotecas necessárias
+## Importação de bibliotecas necessárias
 import numpy as np
 from keras.layers import Input, Dense, Flatten, Dropout, Activation, LeakyReLU, PReLU, Concatenate, BatchNormalization
 from keras.initializers import RandomNormal
 from keras.models import Model
 
-# Parâmetros padrão para a Conditional GAN
-#Valor padrão para o valor da minesão latente
+## Parâmetros padrão para a Conditional GAN
+##Valor padrão para o valor da minesão latente
 DEFAULT_CONDITIONAL_GAN_LATENT_DIMENSION = 128
-#Algoritmo padrão de treinamento para a cGAN
+##Algoritmo padrão de treinamento para a cGAN
 DEFAULT_CONDITIONAL_GAN_TRAINING_ALGORITHM = "Adam"
-#Função de ativação padrão para a cGAN
+##Função de ativação padrão para a cGAN
 DEFAULT_CONDITIONAL_GAN_ACTIVATION = "LeakyReLU"
-#Valor padrão para a taxa de dropout para o gerador
+##Valor padrão para a taxa de dropout para o gerador
 DEFAULT_CONDITIONAL_GAN_DROPOUT_DECAY_RATE_G = 0.2
-#Valor padrão para a taxa de dropout para o discriminador
+##Valor padrão para a taxa de dropout para o discriminador
 DEFAULT_CONDITIONAL_GAN_DROPOUT_DECAY_RATE_D = 0.4
-#Valor padrão para o tamanho de lote
+##Valor padrão para o tamanho de lote
 DEFAULT_CONDITIONAL_GAN_BATCH_SIZE = 32
-#Valor padrão para o número de classes
+##Valor padrão para o número de classes
 DEFAULT_CONDITIONAL_GAN_NUMBER_CLASSES = 2
-#Valor padrão para o tamanho das camadas densas do gerador.
+##Valor padrão para o tamanho das camadas densas do gerador.
 DEFAULT_CONDITIONAL_GAN_DENSE_LAYERS_SETTINGS_G = [128]
-#Valor padrão para o tamanho das camadas densas do discriminador.
+##Valor padrão para o tamanho das camadas densas do discriminador.
 DEFAULT_CONDITIONAL_GAN_DENSE_LAYERS_SETTINGS_D = [128]
-#Função padrão de perda da GAN
+##Função padrão de perda da GAN
 DEFAULT_CONDITIONAL_GAN_LOSS = "binary_crossentropy"
-#Valor padrão para o momentum da GAN
+##Valor padrão para o momentum da GAN
 DEFAULT_CONDITIONAL_GAN_MOMENTUM = 0.8
-#Função de ativação padrão para a ultima camada
+##Função de ativação padrão para a ultima camada
 DEFAULT_CONDITIONAL_LAST_ACTIVATION_LAYER = "sigmoid"
-#Valor padrão para a inicialização dos pesos das camadas
+##Valor padrão para a inicialização dos pesos das camadas
 DEFAULT_CONDITIONAL_GAN_INITIALIZER_MEAN = 0.0
-#Valor padrão para  o desvio padrão para inicialização dos pesos das camadas
+##Valor padrão para  o desvio padrão para inicialização dos pesos das camadas
 DEFAULT_CONDITIONAL_GAN_INITIALIZER_DEVIATION = 0.02
 
 

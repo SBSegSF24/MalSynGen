@@ -9,13 +9,21 @@ from keras.models import Model
 from tensorflow import keras
 import numpy as np
 
+## Algoritmo padrão de treinamento
 DEFAULT_PERCEPTRON_TRAINING_ALGORITHM = "Adam"
+## Função de perda padrão para o perceptron
 DEFAULT_PERCEPTRON_LOSS = "binary_crossentropy"
+## Configuração de camadas padrão para o Perceptron
 DEFAULT_PERCEPTRON_LAYERS_SETTINGS = [512, 256, 256]
+## Valor padrão para a taxa de dropouut
 DEFAULT_PERCEPTRON_DROPOUT_DECAY_RATE = 0.2
+## Métricas padrão utilizada para a avaliação do modelo.
 DEFAULT_PERCEPTRON_METRIC = ["accuracy"]
+## Função padrão de ativação para as camadas internas do modelo
 DEFAULT_PERCEPTRON_LAYER_ACTIVATION = keras.activations.swish
+## Função padrão de ativação para a última camada do modelo
 DEFAULT_PERCEPTRON_LAST_LAYER_ACTIVATION = "sigmoid"
+## Valor padrão de entrada para o perceptron
 DEFAULT_PERCEPTRON_DATA_TYPE = np.float32
 
 

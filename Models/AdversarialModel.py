@@ -4,7 +4,7 @@ Classes:
 - AdversarialModel (Classe utilizada para a criação e treinamento um modelo adversarial generativo (GAN)).
 """
 
-# Importação de bibliotecas necessárias
+## Importação de bibliotecas necessárias
 import logging
 import os
 from pathlib import Path
@@ -14,43 +14,44 @@ from tensorflow.keras.losses import BinaryCrossentropy
 from tensorflow.keras.optimizers.legacy import Adam, RMSprop, Adadelta
 import tensorflow as tf
 
-# Constantes padrão para hiperparâmetros do modelo adversarial
-#Valor padrão para a taxa de aprendizado do gerador
-DEFAULT_OPTIMIZER_GENERATOR_LEARNING = 0.0001
-#Valor padrão para a taxa de aprendizado do discriminador
-DEFAULT_OPTIMIZER_DISCRIMINATOR_LEARNING = 0.0001
-# Valor padrão beta para o gerador
+### Constantes padrão para hiperparâmetros do modelo adversarial
+
+DEFAULT_OPTIMIZER_GENERATOR_LEARNING = 0.0001 ##Valor padrão para a taxa de aprendizado do gerador
+
+DEFAULT_OPTIMIZER_DISCRIMINATOR_LEARNING = 0.0001 ##Valor padrão para a taxa de aprendizado do discriminador
+## Valor padrão beta para o gerador
 DEFAULT_OPTIMIZER_GENERATOR_BETA = 0.5
-#Valor padrão beta para o  discriminador
+##Valor padrão beta para o  discriminador
 DEFAULT_OPTIMIZER_DISCRIMINATOR_BETA = 0.5
 DEFAULT_LATENT_DIMENSION = 128
-# Otimizadores padrões para o gerador e discriminador
+## Otimizadores padrões para o gerador e discriminador
 DEFAULT_OPTIMIZER_GENERATOR = Adam(DEFAULT_OPTIMIZER_GENERATOR_LEARNING, DEFAULT_OPTIMIZER_GENERATOR_BETA)
 DEFAULT_OPTIMIZER_DISCRIMINATOR = Adam(DEFAULT_OPTIMIZER_DISCRIMINATOR_LEARNING, DEFAULT_OPTIMIZER_DISCRIMINATOR_BETA)
-#Funções de perda padrão para o gerador e discriminador
+##Funções de perda padrão para o gerador 
 DEFAULT_LOSS_GENERATOR = BinaryCrossentropy()
+##Funções de perda padrão parao o discriminador
 DEFAULT_LOSS_DISCRIMINATOR = BinaryCrossentropy()
 
-#Valor padrão para a taxa de aprendizado para o otimizador Adam.
+##Valor padrão para a taxa de aprendizado para o otimizador Adam.
 DEFAULT_CONDITIONAL_GAN_ADAM_LEARNING_RATE = 0.0001
-#Valor padrão beta para o otimizador Adam.
+##Valor padrão beta para o otimizador Adam.
 DEFAULT_CONDITIONAL_GAN_ADAM_BETA = 0.5
-#Valor padrão para a Taxa de aprendizado para o otimizador Adam.
+##Valor padrão para a Taxa de aprendizado para o otimizador Adam.
 DEFAULT_CONDITIONAL_GAN_RMS_PROP_LEARNING_RATE = 0.001
-#Valor padrão para a taxa de decaimento para o otimizador RMSprop.
+##Valor padrão para a taxa de decaimento para o otimizador RMSprop.
 DEFAULT_CONDITIONAL_GAN_RMS_PROP_DECAY_RATE = 0.5
-#Valor padrão para a taxa de aprendizado para o otimizador Adadelta.
+##Valor padrão para a taxa de aprendizado para o otimizador Adadelta.
 DEFAULT_CONDITIONAL_GAN_ADA_DELTA_LEARNING_RATE = 0.001
-#Valor padrão para a taxa de decaimento para o otimizador Adadelta.
+##Valor padrão para a taxa de decaimento para o otimizador Adadelta.
 DEFAULT_CONDITIONAL_GAN_ADA_DELTA_DECAY_RATE = 0.5
-#Valor padrão para a taxa de suavização do modelo adversarial
+##Valor padrão para a taxa de suavização do modelo adversarial
 DEFAULT_CONDITIONAL_GAN_SMOOTHING_RATE = 0.15
-#Valor padrão para a média da distribuição latente do modelo adversarial.
+##Valor padrão para a média da distribuição latente do modelo adversarial.
 DEFAULT_CONDITIONAL_GAN_LATENT_MEAN_DISTRIBUTION = 0.0
-#Valor padrão para o desvio padrão da distribuição latente do modelo adversarial
+##Valor padrão para o desvio padrão da distribuição latente do modelo adversarial
 DEFAULT_CONDITIONAL_GAN_LATENT_STANDER_DEVIATION = 1.0
 
-#Títulos padrão para os arquivos dos modelos 
+##Títulos padrão para os arquivos dos modelos 
 DEFAULT_FILE_NAME_DISCRIMINATOR = "discriminator_model"
 DEFAULT_FILE_NAME_GENERATOR = "generator_model"
 DEFAULT_PATH_OUTPUT_MODELS = "models_saved/"
