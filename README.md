@@ -282,7 +282,7 @@ A aba Páginas relacionadas contém as informaçẽs do artefatos apêndice.
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/8fb63e75-ff4e-482f-855e-52e471fa90fb)
 A aba namespace descreve os módulos de código da ferramenta.
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/84f66aa6-ec28-4894-8c3a-e5d6e5f0226b)
-A aba contém as classes utilizadas na implementação da ferramenta.
+A aba Classes contém as classes utilizadas na implementação da ferramenta.
 
 
 
