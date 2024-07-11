@@ -1,6 +1,15 @@
 """
-Módulo responsavel pela execução de campanhas da ferramenta 
+Módulo responsavel pela execução de campanhas da ferramenta, incluindo as configurações de experimentos do paper.
 
+Classes:
+    IntRange :  Tipo personalizado de argparse que representa um inteiro delimitado por um intervalo.
+Funções:
+    - print_config : Imprime a configuração dos argumentos para fins de logging.
+    - convert_flot_to_int : Converte um valor float para int multiplicando por 100.
+    - run_cmd : A função executa um comando de shell especificado e registra a saída.
+    - check_files : Verifica se os arquivos especificados existem.
+    - main: Função principal que configura e executa as campanhas.
+    
 """
 # Importação de bibliotecas necessárias
 try:
@@ -16,6 +25,7 @@ try:
     import itertools
     import mlflow
 
+#Tratamento de erro de import
 except ImportError as error:
     print(error)
     print()
@@ -24,26 +34,43 @@ except ImportError as error:
     sys.exit(-1)
 
 # Definindo constantes padrão
+
 DEFAULT_VERBOSITY_LEVEL = logging.INFO
+
 NUM_EPOCHS = 1000
 TIME_FORMAT = '%Y-%m-%d_%H:%M:%S'
+# Estabelece a campanha padrão como a demo
 DEFAULT_CAMPAIGN = "demo"
+# Caminho para os arquivos de log
 PATH_LOG = 'logs'
+# Caminho para os dataset
 PATH_DATASETS = 'datasets'
 PATHS = [PATH_LOG]
 Parâmetros = None
+#Valores para os comandos de entrada o COMMAND não possuei a opção de rastreameto do mflow, enquanto que COMMAND2 possui
 COMMAND = "pipenv run python main.py   "
 COMMAND2 = "pipenv run python main.py -ml  "
 
+#Dataset utiliados
 datasets = ['datasets/kronodroid_emulador-balanced.csv', 'datasets/kronodroid_real_device-balanced.csv']
 
 # Definindo campanhas disponíveis
+"""
+  Campanhas:
+   - Demo: execução do demo proposto no arquivo run_demo_venv.sh
+   - Demo2: execução de um demo alternativo que engloba ambos datasets.
+   - Kronodroid_r: Mesma configuração do paper para o dataset Kronodroid_r.
+   - Kronodroid_E: Mesma configuração do paper para o dataset Kronodroid_E.
+   - SF24_4096_2048_10: Mesma configuração dos experimentos dos papers
+
+"""
 campaigns_available = {
     'demo': {
         'input_dataset': ['datasets/kronodroid_emulador-balanced.csv'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-        'number_epochs': ['300'],
+        'number_epochs': ['100'],
+        'k_fold': ['2'],
         'output_dir':["campanhas_demo"],
         'training_algorithm': ['Adam'],
     },
@@ -80,7 +107,7 @@ campaigns_available = {
         'output_dir':["campanhas_SF24"],
         'training_algorithm': ['Adam'],
     },
-     'teste': {
+     'demo2': {
         'input_dataset': ['datasets/kronodroid_real_device-balanced.csv', 'datasets/kronodroid_emulador-balanced.csv'],
         'number_epochs': ['100'],
         'k_fold': ['2'],
@@ -125,12 +152,37 @@ def convert_flot_to_int(value):
 class IntRange:
     """
     Tipo personalizado de argparse que representa um inteiro delimitado por um intervalo.
+
+    Funções:
+        - __init__: Inicializa a classe com os limites inferior e superior opcionais.
+        - __call__: Converte o argumento fornecido para inteiro e verifica se está dentro do intervalo.
+        - exception : Retorna uma exceção ArgumentTypeError com uma mensagem de erro apropriada.
     """
+
     def __init__(self, imin=None, imax=None):
+        """
+        Inicializa a classe IntRange com limites opcionais.
+
+        Parâmetros:
+            imin : Limite inferior do intervalo. Default é None.
+            imax : Limite superior do intervalo. Default é None.
+        """
         self.imin = imin
         self.imax = imax
 
     def __call__(self, arg):
+        """
+        Converte o argumento fornecido para inteiro e verifica se está dentro do intervalo especificado.
+
+        Parâmetros:
+            arg : O argumento fornecido na linha de comando.
+
+        Retorno:
+            int: O valor convertido se estiver dentro do intervalo.
+
+        Exceções:
+            ArgumentTypeError: Se o argumento não puder ser convertido para inteiro ou não estiver dentro do intervalo.
+        """
         try:
             value = int(arg)
         except ValueError:
@@ -142,6 +194,12 @@ class IntRange:
         return value
 
     def exception(self):
+        """
+        Retorna uma exceção ArgumentTypeError com uma mensagem de erro apropriada.
+
+        Retorno:
+            ArgumentTypeError: Exceção com uma mensagem que especifica os limites do intervalo.
+        """
         if self.imin is not None and self.imax is not None:
             return argparse.ArgumentTypeError(f"Must be an integer in the range [{self.imin}, {self.imax}]")
         elif self.imin is not None:
@@ -150,10 +208,9 @@ class IntRange:
             return argparse.ArgumentTypeError(f"Must be an integer <= {self.imax}")
         else:
             return argparse.ArgumentTypeError("Must be an integer")
-
 def run_cmd(cmd, shell=False):
     """
-    Executa um comando de shell e registra a saída.
+    A função executa um comando de shell especificado e registra a saída.
 
     Parâmetros:
         cmd : Comando a ser executado.
