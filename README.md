@@ -277,6 +277,14 @@ tensorboard --logdir=tensorboardfolder/ --port=6002
 Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
 ## 8. Documentação do código
 A documentação do código está disponivel no formato html na pasta [docs](https://github.com/SBSegSF24/MalSynGen/tree/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs), para acessar a documentação abra o arquivo [index.html](https://github.com/SBSegSF24/MalSynGen/blob/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs/index.html) no seu ambiente local.
+![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/23ad1214-4644-49f7-ba60-a574575a8cc3)
+A aba Páginas relacionadas contém as informaçẽs do artefatos apêndice.
+![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/8fb63e75-ff4e-482f-855e-52e471fa90fb)
+A aba namespace descreve os módulos de código da ferramenta.
+![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/84f66aa6-ec28-4894-8c3a-e5d6e5f0226b)
+A aba contém as classes utilizadas na implementação da ferramenta.
+
+
 
 
 
