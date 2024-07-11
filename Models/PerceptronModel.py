@@ -1,6 +1,7 @@
 """
 Este módulo define a classe PerceptronMutlilayer e suas funções utilizadas para a classificação de dados binarios
-
+Classes:
+    -PerceptronMultilayer (Responsável pelo instanciamento e criação de um perceptron de múltiplas camadas(MLP))
 """
 # Importação de bibliotecas necessárias
 from keras.layers import Dense, Dropout, Input
@@ -20,7 +21,15 @@ DEFAULT_PERCEPTRON_DATA_TYPE = np.float32
 
 class PerceptronMultilayer:
     """
-     A classe PerceptronMultilayer implementa  um perceptron de múltiplas camadas(MLP).
+     A classe PerceptronMultilayer é responsável pelo instanciamento e criação de um perceptron de múltiplas camadas(MLP)
+     Funções:
+        - __init__ : Inicializa o PerceptronMultilayer com as configurações especificadas
+        - get_model :  Compila a instância do modelo com bases nas configuraçõe especificadas.
+        - set_training_algorithm : Defino o algoritmo de treinamento a ser utilizado para optimização durante o treinamento do modelo.
+        - set_training_loss : Define a função de perda a ser utilizada.
+        - set_data_type: Define o tipo de dados para a entrada do modelo.
+        - set_last_layer_activation :  Define a função de ativação para a última camada do modelo.
+        - set_dropout_decay_rate :  Define a taxa de dropout para o modelo
 
     Parâmetros:
         - training_algorithm : Algoritmo de treinamento a ser utilizado.
@@ -39,7 +48,7 @@ class PerceptronMultilayer:
                  last_layer_activation=DEFAULT_PERCEPTRON_LAST_LAYER_ACTIVATION,
                  dropout_decay_rate=DEFAULT_PERCEPTRON_DROPOUT_DECAY_RATE):
         """
-        Inicializa o PerceptronMultilayer com as configurações especificadas 
+        Inicializa o PerceptronMultilayer com as configurações especificadas.
 
         Parâmetros:
             - layers_settings : Número de neurônios  por camada.
@@ -113,19 +122,19 @@ class PerceptronMultilayer:
 
     def set_data_type(self, data_type):
         """
-        Define o tipo de dados para as entradas do modelo.
+        Define o tipo de dados para a entrada do modelo.
 
         Parâmetros:
-            data_type: Tipo de dados.
+            data_type: Tipo de dados para a entrada do modelo.
         """
         self.data_type = data_type
 
     def set_layer_activation(self, layer_activation):
         """
-        Define a função de ativação para as camadas ocultas do modelo.
+        Define a função de ativação para as camadas internas do modelo.
 
         Parâmetros:
-            layer_activation : Função de ativação das camadas ocultas.
+            layer_activation : Função de ativação das camadas internas do modelo.
         """
         self.layer_activation = layer_activation
 
@@ -135,7 +144,7 @@ class PerceptronMultilayer:
         Define a função de ativação para a última camada do modelo.
 
         Parâmetros:
-            last_layer_activation (str): Função de ativação para a última camada do modelo.
+            last_layer_activation : Função de ativação para a última camada do modelo.
         """
         self.last_layer_activation = last_layer_activation
 
@@ -145,7 +154,7 @@ class PerceptronMultilayer:
 
         Parâmetros:
 
-            dropout_decay_rate (float): Taxa de dropout.
+            dropout_decay_rate : Taxa de dropout.
         """
         self.dropout_decay_rate = dropout_decay_rate
 
