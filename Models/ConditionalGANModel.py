@@ -1,5 +1,5 @@
 """
-Este módulo define a classe ConditionalGAN  responsavel por configurar e criar um modelo GAN condicional utilizando Keras.
+Este módulo define a classe ConditionalGAN  responsavel por configurar e criar um modelo GAN condicional (cGAN) utilizando Keras.
 Classes: 
     - Classe responsavel por configurar e criar um modelo GAN condicional utilizando Keras. 
 """
@@ -10,26 +10,39 @@ from keras.initializers import RandomNormal
 from keras.models import Model
 
 # Parâmetros padrão para a Conditional GAN
-
+#Valor padrão para o valor da minesão latente
 DEFAULT_CONDITIONAL_GAN_LATENT_DIMENSION = 128
+#Algoritmo padrão de treinamento para a cGAN
 DEFAULT_CONDITIONAL_GAN_TRAINING_ALGORITHM = "Adam"
+#Função de ativação padrão para a cGAN
 DEFAULT_CONDITIONAL_GAN_ACTIVATION = "LeakyReLU"
+#Valor padrão para a taxa de dropout para o gerador
 DEFAULT_CONDITIONAL_GAN_DROPOUT_DECAY_RATE_G = 0.2
+#Valor padrão para a taxa de dropout para o discriminador
 DEFAULT_CONDITIONAL_GAN_DROPOUT_DECAY_RATE_D = 0.4
+#Valor padrão para o tamanho de lote
 DEFAULT_CONDITIONAL_GAN_BATCH_SIZE = 32
+#Valor padrão para o número de classes
 DEFAULT_CONDITIONAL_GAN_NUMBER_CLASSES = 2
+#Valor padrão para o tamanho das camadas densas do gerador.
 DEFAULT_CONDITIONAL_GAN_DENSE_LAYERS_SETTINGS_G = [128]
+#Valor padrão para o tamanho das camadas densas do discriminador.
 DEFAULT_CONDITIONAL_GAN_DENSE_LAYERS_SETTINGS_D = [128]
+#Função padrão de perda da GAN
 DEFAULT_CONDITIONAL_GAN_LOSS = "binary_crossentropy"
+#Valor padrão para o momentum da GAN
 DEFAULT_CONDITIONAL_GAN_MOMENTUM = 0.8
+#Função de ativação padrão para a ultima camada
 DEFAULT_CONDITIONAL_LAST_ACTIVATION_LAYER = "sigmoid"
+#Valor padrão para a inicialização dos pesos das camadas
 DEFAULT_CONDITIONAL_GAN_INITIALIZER_MEAN = 0.0
+#Valor padrão para  o desvio padrão para inicialização dos pesos das camadas
 DEFAULT_CONDITIONAL_GAN_INITIALIZER_DEVIATION = 0.02
 
 
 class ConditionalGAN:
     """
-    Classe responsavel por configurar e criar um modelo GAN condicional utilizando Keras.
+    Classe responsavel por configurar e criar um modelo GAN condicional (cGAN) utilizando Keras.
     Funções:
         - __init__ : Inicializa a ConditionalGAN com os parâmetros especificados ou padrão.
         - add_activation_layer :  Define a funlção de ativação especificada à  camada na rede neural.
@@ -46,7 +59,7 @@ class ConditionalGAN:
         - set_dense_layer_sizes_generator : Define os tamanhos das camadas densas para o gerador da ConditionalGAN.
         - set_dense_layer_sizes_discriminator : Define os tamanhos das camadas densas para o discriminador da ConditionalGAN.
         - set_dataset_type : Define o tipo de dados do dataset.
-        - set_initializer_mean : Define a média para inicialização dos pesos das camadas.
+        - set_initializer_mean : Define a média para a inicialização dos pesos das camadas.
         - set_initializer_deviation : Define o desvio padrão para inicialização dos pesos das camadas.
     """
 
@@ -64,7 +77,7 @@ class ConditionalGAN:
         Parâmetros:
            - latent_dim : Dimensão do espaço latente.
            - output_shape t: Formato da saída.
-           - activation_function : Função de ativação para as camadas internas.
+           - activation_function : Função de ativação para as camadas internas da cGAN.
            - initializer_mean : Média para inicialização dos pesos das camadas
            - initializer_deviation : Desvio padrão para inicialização dos pesos das camadas.
            - dropout_decay_rate_g : Taxa de dropout para o gerador.
@@ -280,7 +293,7 @@ class ConditionalGAN:
 
     def set_initializer_mean(self, initializer_mean):
         """
-        Define a média para inicialização dos pesos das camadas.
+        Define a média para a inicialização dos pesos das camadas.
 
         Parâmetros:
           -  initializer_mean : média para inicialização dos pesos das camadas.
