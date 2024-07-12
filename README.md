@@ -38,7 +38,7 @@
    ```
    Obs: É necessário a instalação do pipenv através da opção 4 ou opção 2 para garantir o funcionamento da ferramenta.
 ## 2. Execução
-1. Executar a demonstração de funcionamento da ferramenta: 
+Executar a demonstração de funcionamento da ferramenta: 
 
    **Opção 1**: instalar as dependências e executar uma demonstração em um ambiente Linux. A execução leva em torno de 5 minutos numa máquina AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
    ```bash
@@ -50,8 +50,8 @@
    ./run_demo_docker.sh
    ```
 
-2. Executar os mesmos experimentos (campanhas) do paper. A execução leva em torno de 14 horas em um computador AMD Ryzen 7 5800x, 8 cores, 64 GB RAM.
-   
+## 3. Reprodução 
+Para a reprodução dos mesmos experimentos (campanhas) do paper utilize uma das seguintes opções. A execução leva em torno de 14 horas em um computador AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
 
    **Opção 1**: No ambiente local.
    ```bash
