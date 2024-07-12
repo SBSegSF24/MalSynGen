@@ -211,8 +211,17 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
 3. **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM (3200MHz), NVDIA RTX3090 24GB. **Software**: WSL: 2.2.4.0, Docker version 24.0.7 (build 24.0.7-0ubuntu2~22.04.1), Python 3.11.5
 
-## 8. Ferramentas de rastreamento
-### 8.1. Aimstack
+## 8. Datasets
+O diretório **datasets** do GitHub contém os conjuntos de dados balanceados KronoDroid_emulator e KronoDroid_real_device utilizados nos experimentos do trabalho. O código utilizado para balancear os datasets originais também está disponível. O diretório **datasets** contém também os arquivos de validação de cada dataset e código de validação utilizado no subdiretório **validation**. As versões originais dos datasets tem como origem o repositório [https://github.com/aleguma/kronodroid](https://github.com/aleguma/kronodroid).
+
+|    Dataset   | Características | Amostras |         |       | Características (balanceado) | N. Amostras  (Balanceado) |
+|:------------:|:---------------:|:--------:|:-------:|:-----:|:----------------------------:|:-------------------------:|
+|              |                 |  Malware | Malware | Total |                              |                           |
+| KronoDroid E |       482       |  44,90\% | 55,10\% | 63991 |              276             |           20000           |
+| KronoDroid R |       483       |   53\%   |   47\%  | 78137 |              285             |           20000           |
+
+## 9. Ferramentas de rastreamento
+### 9.1. Aimstack
 
 1. Instalar a ferramenta:
 
@@ -231,7 +240,7 @@ aim up
 Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
 
 
-### 8.2. Mlflow
+### 9.2. Mlflow
 
 1. Instalar a ferramenta:
    
@@ -255,7 +264,7 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 
-### 8.3. Tensorboard
+### 9.3. Tensorboard
 
 1. Instalar a ferramenta:
 
@@ -275,21 +284,21 @@ tensorboard --logdir=tensorboardfolder/ --port=6002
 ```
 
 Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
-## 9. Overview da documentação do código
+## 10. Overview da documentação do código
 A documentação do código está disponivel no formato html na pasta [docs](https://github.com/SBSegSF24/MalSynGen/tree/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs), para acessar a documentação abra o arquivo [index.html](https://github.com/SBSegSF24/MalSynGen/blob/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs/index.html) no seu ambiente local.
 
 A página princial apresenta a documentação do README.md
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4a738e53-ebae-4e5b-99ad-9de269139cc7)
 
-### 9.1. Páginas relacionadas
+### 10.1. Páginas relacionadas
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/23ad1214-4644-49f7-ba60-a574575a8cc3)
-A aba Páginas relacionadas contém as informaçẽs do artefatos apêndice.
-### 9.2. Namespace
+A aba **Páginas relacionadas** contém as informaçẽs do artefatos apêndice.
+### 10.2. Namespace
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/8fb63e75-ff4e-482f-855e-52e471fa90fb)
-A aba namespace descreve os módulos e funções do código da ferramenta.
-### 9.3. Classes
+A aba **namespace** descreve os módulos e funções do código da ferramenta.
+### 10.3. Classes
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/84f66aa6-ec28-4894-8c3a-e5d6e5f0226b)
-A aba Classes contém as classes utilizadas, suas hierarquias, variáveis e implementações na implementação da ferramenta.
+A aba **Classes** contém as classes utilizadas, suas hierarquias, variáveis e implementações na implementação da ferramenta.
 
 
 
