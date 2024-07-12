@@ -213,12 +213,8 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
 ## 8. Datasets
 O diretório **datasets** do GitHub contém os conjuntos de dados balanceados KronoDroid_emulator e KronoDroid_real_device utilizados nos experimentos do trabalho. O código utilizado para balancear os datasets originais também está disponível. O diretório **datasets** contém também os arquivos de validação de cada dataset e código de validação utilizado no subdiretório **validation**. As versões originais dos datasets tem como origem o repositório [https://github.com/aleguma/kronodroid](https://github.com/aleguma/kronodroid).
+![image](https://github.com/user-attachments/assets/19a3e2eb-451a-4e7f-8e31-8bcb8f0ae60c)
 
-|    Dataset   | Características | Amostras |         |       | Características (balanceado) | N. Amostras  (Balanceado) |
-|:------------:|:---------------:|:--------:|:-------:|:-----:|:----------------------------:|:-------------------------:|
-|              |                 |  Malware | Malware | Total |                              |                           |
-| KronoDroid E |       482       |  44,90\% | 55,10\% | 63991 |              276             |           20000           |
-| KronoDroid R |       483       |   53\%   |   47\%  | 78137 |              285             |           20000           |
 
 ## 9. Ferramentas de rastreamento
 ### 9.1. Aimstack
