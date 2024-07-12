@@ -64,7 +64,7 @@ Para a reprodução dos mesmos experimentos (campanhas) do paper utilize uma das
    ./run_reproduce_sf24_docker.sh
    ```
 
-## 3. Outras opções de execução
+## 4. Outras opções de execução
    O script **run_balanced_datasets.sh** é responsável pela execução dos datasets balanceaddos dos experimentos com base na entrada especificada pelo usuário.
    Executar o script: 
 
@@ -74,7 +74,7 @@ Para a reprodução dos mesmos experimentos (campanhas) do paper utilize uma das
    ```
 
 
-#### 3.1. Executando outros experimentos
+#### 4.1. Executando outros experimentos
 
 A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
 
@@ -89,7 +89,7 @@ Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main
 ```
 pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
 ```
-#### 3.2. Parâmetros dos testes automatizados:
+#### 4.2. Parâmetros dos testes automatizados:
 
       --------------------------------------------------------------
 
@@ -122,7 +122,7 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
     --------------------------------------------------------------
 
 
-#### 3.3. Executando a ferramenta no Google Colab
+#### 4.3. Executando a ferramenta no Google Colab
 Google collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
 
 1. Acesse o seguinte link para utilizar a ferramenta Google colab: https://colab.google/
@@ -152,7 +152,7 @@ cd /content/drive/MyDrive/MalSynGen-main
 ```
 
 
-## 4. Fluxo de execução 
+## 5. Fluxo de execução 
 ![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4d55117e-4203-4930-a0f5-2ed19c8857e3)
 
 O fluxo de execução da ferramenta consiste de três etapas:
@@ -169,7 +169,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 
 
 
-## 5. Parâmetros da Ferramenta
+## 6. Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -200,7 +200,7 @@ O fluxo de execução da ferramenta consiste de três etapas:
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
-## 6. Ambientes de teste
+## 7. Ambientes de teste
 
 A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
@@ -211,8 +211,8 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
 3. **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM (3200MHz), NVDIA RTX3090 24GB. **Software**: WSL: 2.2.4.0, Docker version 24.0.7 (build 24.0.7-0ubuntu2~22.04.1), Python 3.11.5
 
-## 7. Ferramentas de rastreamento
-### 7.1. Aimstack
+## 8. Ferramentas de rastreamento
+### 8.1. Aimstack
 
 1. Instalar a ferramenta:
 
@@ -231,7 +231,7 @@ aim up
 Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
 
 
-### 7.2. Mlflow
+### 8.2. Mlflow
 
 1. Instalar a ferramenta:
    
@@ -255,7 +255,7 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 
-### 7.3. Tensorboard
+### 8.3. Tensorboard
 
 1. Instalar a ferramenta:
 
@@ -275,19 +275,19 @@ tensorboard --logdir=tensorboardfolder/ --port=6002
 ```
 
 Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
-## 8. Overview da documentação do código
+## 9. Overview da documentação do código
 A documentação do código está disponivel no formato html na pasta [docs](https://github.com/SBSegSF24/MalSynGen/tree/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs), para acessar a documentação abra o arquivo [index.html](https://github.com/SBSegSF24/MalSynGen/blob/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs/index.html) no seu ambiente local.
 
 A página princial apresenta a documentação do README.md
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4a738e53-ebae-4e5b-99ad-9de269139cc7)
 
-### 8.1. Páginas relacionadas
+### 9.1. Páginas relacionadas
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/23ad1214-4644-49f7-ba60-a574575a8cc3)
 A aba Páginas relacionadas contém as informaçẽs do artefatos apêndice.
-### 8.2. Namespace
+### 9.2. Namespace
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/8fb63e75-ff4e-482f-855e-52e471fa90fb)
 A aba namespace descreve os módulos e funções do código da ferramenta.
-### 8.3. Classes
+### 9.3. Classes
 ![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/84f66aa6-ec28-4894-8c3a-e5d6e5f0226b)
 A aba Classes contém as classes utilizadas, suas hierarquias, variáveis e implementações na implementação da ferramenta.
 
