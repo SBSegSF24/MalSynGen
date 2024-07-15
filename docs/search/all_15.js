@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['rastreamento_0',['7. Ferramentas de rastreamento',['../index.html#autotoc_md20',1,'']]],
-  ['rastreamento_20aimstack_1',['opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'']]],
-  ['rebalancer_2',['rebalancer',['../namespacerebalancer.html',1,'']]],
-  ['redes_20neurais_20artificiais_20na_20geração_20de_20dados_20tabulares_20sintéticos_20para_20detecção_20de_20malware_3',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
-  ['rotatingfilehandler_4',['rotatingFileHandler',['../namespacemain.html#a1aa4801aba9a7f52c57b0248953325b0',1,'main']]],
-  ['run_5fcampaign_5',['run_campaign',['../namespacerun__campaign.html',1,'']]],
-  ['run_5fcmd_6',['run_cmd',['../namespacerun__campaign.html#a2986dc18216e995c547e9380d7f269eb',1,'run_campaign']]],
-  ['run_5fexperiment_7',['run_experiment',['../namespacemain.html#a8c7fe4856c51030e9d137378c75186f7',1,'main']]],
-  ['run_5fid_8',['run_id',['../namespacemain.html#ae9096e855462a5a41a2c822ec72bc8eb',1,'main']]]
+  ['obtidas_20na_20ferramenta_20de_20rastreamento_20aimstack_0',['obtidas na ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack'],['..//home/angelo/MalSynGen/main.py#autotoc_md10',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack']]],
+  ['opção_20para_20salvamento_20das_20figuras_20geradas_20e_20as_20métricas_20obtidas_20na_20ferramenta_20de_20rastreamento_20aimstack_1',['opção para salvamento das figuras geradas e as métricas obtidas na ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack'],['..//home/angelo/MalSynGen/main.py#autotoc_md10',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack']]],
+  ['opções_20de_20execução_2',['4. Outras opções de execução',['../index.html#autotoc_md14',1,'']]],
+  ['optimizer_5fdiscriminator_3',['optimizer_discriminator',['../classAdversarialModel_1_1AdversarialModel.html#a3c474f00277d468a060a184d7d7cb1f0',1,'AdversarialModel::AdversarialModel']]],
+  ['optimizer_5fgenerator_4',['optimizer_generator',['../classAdversarialModel_1_1AdversarialModel.html#aa2f9c8df1f99576c4b8bf8e051c4b85b',1,'AdversarialModel::AdversarialModel']]],
+  ['output_5fdir_5',['output_dir',['../namespacemain.html#abff85f1d03d6c13ece3375e4c9a5213f',1,'main']]],
+  ['output_5flabel_6',['output_label',['../namespacemain.html#a5aee86725326be98009bbde5747d71e2',1,'main']]],
+  ['output_5fshape_7',['output_shape',['../classConditionalGANModel_1_1ConditionalGAN.html#a294d2f05e4c20820df9f4978a5daa2de',1,'ConditionalGANModel.ConditionalGAN.output_shape'],['../namespacemain.html#a914926a9877ffca3242d682a08780558',1,'main.output_shape']]],
+  ['outras_20opções_20de_20execução_8',['4. Outras opções de execução',['../index.html#autotoc_md14',1,'']]],
+  ['outros_20experimentos_9',['4.1. Executando outros experimentos',['../index.html#autotoc_md15',1,'']]],
+  ['overview_20da_20documentação_20do_20código_10',['10. Overview da documentação do código',['../index.html#autotoc_md27',1,'']]]
 ];

@@ -1,10 +1,14 @@
 var searchData=
 [
-  ['métricas_20obtidas_20na_20ferramenta_20de_20rastreamento_20aimstack_0',['opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'']]],
-  ['mínimo_1',['6. Teste mínimo',['../md_ARTEFATOS.html#autotoc_md7',1,'']]],
-  ['main_2',['main',['../namespacemain.html',1,'main'],['../namespacerun__campaign.html#a945f0ef773b5d4b8a0fde91addaf5dfc',1,'run_campaign.main()']]],
-  ['malsyngen_3a_20redes_20neurais_20artificiais_20na_20geração_20de_20dados_20tabulares_20sintéticos_20para_20detecção_20de_20malware_3',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
-  ['malware_4',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
-  ['max_5fleaf_5fnodes_5',['max_leaf_nodes',['../classClassifiers_1_1Classifiers.html#a81d6fb7a0cc5fc39d842a4061d35d666',1,'Classifiers::Classifiers']]],
-  ['mlflow_6',['7.2. Mlflow',['../index.html#autotoc_md22',1,'']]]
+  ['imax_0',['imax',['../classrun__campaign_1_1IntRange.html#ae124604522120770b3505e36c3ba1b4c',1,'run_campaign::IntRange']]],
+  ['imin_1',['imin',['../classrun__campaign_1_1IntRange.html#a39294a8d430f97a2255bc2fa41be3283',1,'run_campaign::IntRange']]],
+  ['index_2',['index',['../namespacerebalancer.html#a34cd3b3e8160dfe3e89917330d890d75',1,'rebalancer']]],
+  ['informações_20básicas_3',['2. Informações básicas',['../md_ARTEFATOS.html#autotoc_md2',1,'']]],
+  ['initial_5fstep_4',['initial_step',['../namespacemain.html#a984991cc1bbc2aa8bcba9b45f082c766',1,'main']]],
+  ['initializer_5fdeviation_5',['initializer_deviation',['../classConditionalGANModel_1_1ConditionalGAN.html#a6eac297dc54cf909c05a9e581cc99ab2',1,'ConditionalGANModel.ConditionalGAN.initializer_deviation'],['../namespacemain.html#a732c1cd6ef76c6f40d84444695819dd8',1,'main.initializer_deviation']]],
+  ['initializer_5fmean_6',['initializer_mean',['../classConditionalGANModel_1_1ConditionalGAN.html#af4e5a3986edf4a42e02646b51cc5089c',1,'ConditionalGANModel.ConditionalGAN.initializer_mean'],['../namespacemain.html#ac8fa90a62d5b5425983053fb07cdfc70',1,'main.initializer_mean']]],
+  ['inplace_7',['inplace',['../namespacerebalancer.html#a8119dc4e47fd2b56f923d42dca3632a1',1,'rebalancer']]],
+  ['instalação_8',['3. Instalação',['../md_ARTEFATOS.html#autotoc_md4',1,'']]],
+  ['instalação_9',['1. Preparação e instalação',['../index.html',1,'']]],
+  ['intrange_10',['IntRange',['../classrun__campaign_1_1IntRange.html',1,'run_campaign']]]
 ];

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['num_5fepochs_0',['NUM_EPOCHS',['../namespacerun__campaign.html#a38f7c81c8e38a7cc495993fdc41d57fa',1,'run_campaign']]],
-  ['num_5fsamples_5fclass_5fbenign_1',['num_samples_class_benign',['../namespacemain.html#aedd6869a96c11ce9dce9451bcacef256',1,'main']]],
-  ['num_5fsamples_5fclass_5fmalware_2',['num_samples_class_malware',['../namespacemain.html#a44ad3abde238d0d42b370d0733788b7e',1,'main']]],
-  ['number_5fepochs_3',['number_epochs',['../namespacemain.html#a14440b44b092134a3deceb19ef15f4e6',1,'main']]]
+  ['optimizer_5fdiscriminator_0',['optimizer_discriminator',['../classAdversarialModel_1_1AdversarialModel.html#a3c474f00277d468a060a184d7d7cb1f0',1,'AdversarialModel::AdversarialModel']]],
+  ['optimizer_5fgenerator_1',['optimizer_generator',['../classAdversarialModel_1_1AdversarialModel.html#aa2f9c8df1f99576c4b8bf8e051c4b85b',1,'AdversarialModel::AdversarialModel']]],
+  ['output_5fdir_2',['output_dir',['../namespacemain.html#abff85f1d03d6c13ece3375e4c9a5213f',1,'main']]],
+  ['output_5flabel_3',['output_label',['../namespacemain.html#a5aee86725326be98009bbde5747d71e2',1,'main']]],
+  ['output_5fshape_4',['output_shape',['../classConditionalGANModel_1_1ConditionalGAN.html#a294d2f05e4c20820df9f4978a5daa2de',1,'ConditionalGANModel.ConditionalGAN.output_shape'],['../namespacemain.html#a914926a9877ffca3242d682a08780558',1,'main.output_shape']]]
 ];

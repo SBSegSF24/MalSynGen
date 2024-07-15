@@ -264,8 +264,8 @@ def evaluate_TRTS_data(list_classifiers, x_TRTS, y_TRTS, fold, k, generate_confu
 
     Parâmetros:
     - list_classifiers: lista de classificadores
-    - x_TRTS: dados predizidos por TRTS
-    - y_TRTS: rótulos reais dos dados
+    - x_TRTS: dados predizidos por t
+    - y_TRTS: rótulos reais TRTS 
     - fold: índice da iteração atual
     - k: índice da subdivisão atual
     - generate_confusion_matrix: flag para geração de matriz de confusão
@@ -275,12 +275,12 @@ def evaluate_TRTS_data(list_classifiers, x_TRTS, y_TRTS, fold, k, generate_confu
     - path_confusion_matrix: caminho para salvar matriz de confusão
     - verbose_level: nível de verbosidade
     - dict: dicionário para armazenar resultados das métricas de utilidade
-    - TRTS_aucs: lista para armazenar AUCs dos classificadore TRTS
+    - syn_aucs: lista para armazenar AUCs
     
 
     Retorna:
     - dict: dicionário atualizado com resultados
-    - TRTS_aucs: lista atualizada com AUCs
+    - syn_aucs: lista atualizada com AUCs
     """
     instance_metrics = ProbabilisticMetrics()
     y_predict_prob=[]
@@ -379,8 +379,8 @@ def evaluate_TSTR_data(list_classifiers, x_TSTR, y_TSTR, fold, k, generate_confu
 
     Parâmetros:
     - list_classifiers: lista de classificadores
-    - x_TSTR: dados predizidos por TSTR
-    - y_TSTR: rótulos reais dos dados
+    - x_TRTS: dados reais para serem evaluados
+    - y_TRTS: rótulos dos dados reais
     - fold: índice da iteração atual
     - k: índice da subdivisão atual
     - generate_confusion_matrix: flag para geração de matriz de confusão
@@ -390,12 +390,127 @@ def evaluate_TSTR_data(list_classifiers, x_TSTR, y_TSTR, fold, k, generate_confu
     - path_confusion_matrix: caminho para salvar matriz de confusão
     - verbose_level: nível de verbosidade
     - dict: dicionário para armazenar resultados das métricas de utilidade
-    - TSTR_aucs: lista para armazenar AUCs dos classificadores TSTR
+    - syn_aucs: lista para armazenar AUCs
 
 
     Retorna:
     - dict: dicionário atualizado com resultados
-    - TSTR_aucs: lista atualizada com AUCs
+    - syn_aucs: lista atualizada com AUCs
+  
+    """
+    logging.info(f"TSTR Fold {fold + 1}/{k} results")
+    
+    instance_metrics = ProbabilisticMetrics()
+    y_predict_prob=[]
+    ## Itera sobre a lista dos classificadores
+    for index, classifier_model in enumerate(list_classifiers):
+        ## obtém a predição do classificador em relação aos dados
+        if classifier_type[index] == "Perceptron":
+            y_predicted_TSTR = classifier_model.predict(x_TSTR, verbose=DEFAULT_VERBOSE_LIST[verbose_level])
+            y_predicted_TSTR = np.rint(np.squeeze(y_predicted_TSTR, axis=1))
+            y_predict_prob=y_predicted_TSTR
+        else:
+            print(classifier_type[index])
+            y_predicted_TSTR = classifier_model.predict(x_TSTR)
+            y_predict_prob=classifier_model.predict_proba(x_TSTR)[::,1]
+
+        y_predicted_TSTR = y_predicted_TSTR.astype(int)
+        y_sample_TSTR = y_TSTR.astype(int)
+        ##cria uma matrix de confusão
+        confusion_matrix_TSTR = confusion_matrix(y_sample_TSTR, y_predicted_TSTR)
+        ##Obtem as métricas de utilidade do classificador
+        accuracy_TSTR = instance_metrics.get_accuracy(y_sample_TSTR, y_predicted_TSTR)
+        precision_TSTR = instance_metrics.get_precision(y_sample_TSTR, y_predicted_TSTR)
+        recall_TSTR = instance_metrics.get_recall(y_sample_TSTR, y_predicted_TSTR)
+        f1_TSTR = instance_metrics.get_f1_score(y_sample_TSTR, y_predicted_TSTR)
+        ##Realiza o logging das métricas de fidelidade obtidas
+        logging.info(f" Classifier Model: {classifier_type[index]}")
+        logging.info(f"   TSTR Fold {fold + 1} - Confusion Matrix:")
+        logging.info(confusion_matrix_TSTR)
+        logging.info(f"\n   Classifier Metrics:")
+        logging.info(f"     TSTR Fold {fold + 1} - Accuracy: " + str(accuracy_TSTR))
+        logging.info(f"     TSTR Fold {fold + 1} - Precision: " + str(precision_TSTR))
+        logging.info(f"     TSTR Fold {fold + 1} - Recall: " + str(recall_TSTR))
+        logging.info(f"     TSTR Fold {fold + 1} - F1 Score: " + str(f1_TSTR) + "\n")
+        logging.info("")
+
+        ## cria uma lista com os nomes das métricas, será utilizada pelas ferramentas de rastreamento
+        ac='TSTR Accuracy '+f' Classifier Model {classifier_type[index]}'
+        pc='TSTR precision '+f' Classifier Model {classifier_type[index]}'
+        rr='TSTR Recall '+f' Classifier Model {classifier_type[index]}'
+        f1='TSTR f1 Score '+f' Classifier Model {classifier_type[index]}'
+        values={ac:accuracy_TSTR,pc:precision_TSTR,rr:recall_TSTR,f1:f1_TSTR}
+
+        ##Salvamento das métricas no dicionário de métricas
+        dict["TSTR accuracy"][classifier_type[index]].append(accuracy_TSTR)
+        dict["TSTR precision"][classifier_type[index]].append(precision_TSTR)
+        dict["TSTR F1 score"][classifier_type[index]].append(f1_TSTR)
+        dict["TSTR recall"][classifier_type[index]].append(recall_TSTR)
+
+        ##calculo das métricas da curva de ROC
+        fpr, tpr,thresholds=metrics.roc_curve(y_sample_TSTR, y_predict_prob)
+        ##plot da figura da curva de ROC
+        plt.figure()  
+        Path(os.path.join(output_dir, path_confusion_matrix)).mkdir(parents=True, exist_ok=True)
+        roc_file = os.path.join(output_dir, path_confusion_matrix,f'Roc_curve_TSTR_{classifier_type[index]}_k{fold + 1}.jpg')
+        auc=metrics.roc_auc_score(y_sample_TSTR,  y_predict_prob)
+        plt.plot(fpr, tpr)
+        plt.savefig(roc_file, bbox_inches="tight")
+        ##Salvamento do AUC no dicnário TRTS
+        TSTR_aucs[classifier_type[index]].append(auc)
+        if generate_confusion_matrix:
+            ##realiza o plot da figura da matrix de confusão
+            plt.figure()
+            selected_color_map = plt.colormaps.get_cmap(DEFAULT_COLOR_NAME[(fold + 2) % len(DEFAULT_COLOR_NAME)])
+            confusion_matrix_instance = PlotConfusionMatrix()
+            confusion_matrix_instance.plot_confusion_matrix(confusion_matrix_TSTR, out_label, selected_color_map)
+            Path(os.path.join(output_dir, path_confusion_matrix)).mkdir(parents=True, exist_ok=True)
+            matrix_file = os.path.join(output_dir, path_confusion_matrix,
+                                       f'CM_TSTR_{classifier_type[index]}_k{fold + 1}.jpg')
+            matrix=plt.savefig(matrix_file, bbox_inches='tight')
+            cm_image = plot_to_image(matrix_file)
+            ##  opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento TensorBoard
+            if USE_TENSORBOARD:
+               with file_writer.as_default():
+                  tf.summary.image(f'CM_TSTR_{classifier_type[index]}_k{fold + 1}', cm_image,step=fold+1)
+                  tf.summary.scalar(ac, data=accuracy_TSTR, step=fold+1)
+                  tf.summary.scalar(pc, data=precision_TSTR, step=fold+1)
+                  tf.summary.scalar(rr, data=recall_TSTR, step=fold+1)
+                  tf.summary.scalar(f1, data=f1_TSTR, step=fold+1)
+            ## ## opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack 
+            if USE_AIM:
+               aim_run.track(values)
+               plt.savefig(matrix_file, bbox_inches='tight')
+               aim_image = Image(matrix_file)
+               aim_run.track(value=aim_image, name=f'CM_TSTR_{classifier_type[index]}_k{fold + 1}')
+            ## opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Mlflow
+            if USE_MLFLOW:
+                  mlflow.log_metrics(values,step=fold+1)
+                  mlflow.log_artifact(matrix_file, 'images')
+def evaluate_TRTR_data(list_classifiers, x_TRTR, y_TRTR, fold, k, generate_confusion_matrix, output_dir,
+                       classifier_type, out_label, path_confusion_matrix, verbose_level,dict,TRTR_aucs):
+    """
+    Avalia os do classificador TSTR(Treinado com dados sintéticos/ Avaliado com dados reais) 
+
+    Parâmetros:
+    - list_classifiers: lista de classificadores
+    - x_TRTR: dados reais para serem evaluados
+    - y_TRTR: rótulos dos dados reais
+    - fold: índice da iteração atual
+    - k: índice da subdivisão atual
+    - generate_confusion_matrix: flag para geração de matriz de confusão
+    - output_dir: diretório de saída
+    - classifier_type: tipo de classificador
+    - out_label: rótulo de saída
+    - path_confusion_matrix: caminho para salvar matriz de confusão
+    - verbose_level: nível de verbosidade
+    - dict: dicionário para armazenar resultados das métricas de utilidade
+    - syn_aucs: lista para armazenar AUCs
+
+
+    Retorna:
+    - dict: dicionário atualizado com resultados
+    - syn_aucs: lista atualizada com AUCs
   
     """
     logging.info(f"TSTR Fold {fold + 1}/{k} results")
@@ -493,12 +608,12 @@ def p_value_test (TSTR_label,TRTS_label,type_of_metric,classifier_type):
     A função calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas das métricas de utilidade dos classificadores.
 
     Parâmetros:
-    -TSTR_label : Dicionário contendo os dados dos classificadores TSTR, onde as chaves são os tipos de classificadores 
+    -TSTR_label (dict): Dicionário contendo os dados dos classificadores TSTR, onde as chaves são os tipos de classificadores 
                        e os valores são listas ou arrays com os dados.
-    -TRTS_label : Dicionário contendo os dados dos classificadores TRTS, onde as chaves são os tipos de 
+    -TRTS_label (dict): Dicionário contendo os dados dos classificadores TRTS, onde as chaves são os tipos de 
                         classificadores e os valores são listas ou arrays com os dados.
-    -type_of_metric : Uma string que representa o tipo de métrica que está sendo testada.
-    -classifier_type : Uma string que representa o tipo de classificador cujos dados serão comparados.
+    -type_of_metric (str): Uma string que representa o tipo de métrica que está sendo testada.
+    -classifier_type (str): Uma string que representa o tipo de classificador cujos dados serão comparados.
 
     Retorna:
     -p_value: O valor-p resultante do teste de Wilcoxon.
@@ -518,13 +633,13 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
     Função para demonstrar e exportar resultados de métricas de fidelidade e utilidade, além da chamada de criação dos plots destas métricas.
     
     Parâmetros:
-        -dict_similarity : Dicionário contendo listas de métricas de fidelidade entre os dados.
-        -classifier_type : Lista de classificadores.
-        -output_dir (: Diretório de saída para salvar os resultados.
-        -title_output_label : Título do rótulo de saída.
-        -dict_metrics : Dicionário contendo listas de métricas (ex. precisão, recall, etc.).
-        -dict_TRTS_auc : Dicionário contendo AUC para os classificadores TRTS.
-        -dict_TSTR_auc : Dicionário contendo AUC para os classificadores TSTR.
+        -dict_similarity (dict): Dicionário contendo listas de métricas de fidelidade entre os dados.
+        -classifier_type (list): Lista de classificadores.
+        -output_dir (str): Diretório de saída para salvar os resultados.
+        -title_output_label (str): Título do rótulo de saída.
+        -dict_metrics (dict): Dicionário contendo listas de métricas (ex. precisão, recall, etc.).
+        -dict_TRTS_auc (dict): Dicionário contendo AUC para os classificadores TRTS.
+        -dict_TSTR_auc (dict): Dicionário contendo AUC para os classificadores TSTR.
     """
     
     ## Inicializa as classes para plotar métricas
@@ -884,6 +999,7 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
     ## Definição dos dicionários utilizados para armazenar as métricas de utilidade
     dict_TRTS_auc={"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]}
     dict_TSTR_auc={"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]}
+
     dict_metrics={"TSTR accuracy":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]},
          "TRTS accuracy":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]},
          "TSTR precision":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]},
@@ -892,6 +1008,7 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
          "TRTS F1 score":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[],"Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]},
          "TSTR recall":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]},
          "TRTS recall":{"RandomForest":[],"AdaBoost":[],"DecisionTree":[], "Perceptron":[],"SupportVectorMachine":[],"SGDRegressor":[],"XGboost":[]}}
+    ## Iterar sobre cada fold do KFold estratificado
     ## Iterar sobre cada fold do KFold estratificado
     for i, (train_index, test_index) in enumerate(stratified.split(dataset.iloc[:, :-1], dataset.iloc[:, -1])):
         ## Obter o modelo adversarial configurado

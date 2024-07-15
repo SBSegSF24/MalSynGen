@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['campaign_0',['Campaign',['../classrun__campaign_1_1Campaign.html',1,'run_campaign']]],
-  ['check_5ffiles_1',['check_files',['../namespacerun__campaign.html#a706e2b6bf5c4cf76f1c66e773a36f314',1,'run_campaign']]],
-  ['classifiers_2',['Classifiers',['../classClassifiers_1_1Classifiers.html',1,'Classifiers.Classifiers'],['../namespaceClassifiers.html',1,'Classifiers']]],
-  ['colab_3',['3.3. Executando a ferramenta no Google Colab',['../index.html#autotoc_md16',1,'']]],
-  ['comparative_5fdata_4',['comparative_data',['../namespacemain.html#a1f25866fcf0d02fe84c790e248124eb3',1,'main']]],
-  ['compile_5',['compile',['../classAdversarialModel_1_1AdversarialModel.html#a9525828c83d71d4a8b0f2341c9edb393',1,'AdversarialModel::AdversarialModel']]],
-  ['conditionalgan_6',['ConditionalGAN',['../classConditionalGANModel_1_1ConditionalGAN.html',1,'ConditionalGANModel']]],
-  ['conditionalganmodel_7',['ConditionalGANModel',['../namespaceConditionalGANModel.html',1,'']]],
-  ['considerados_8',['1. Selos Considerados',['../md_ARTEFATOS.html#autotoc_md1',1,'']]],
-  ['convert_5fflot_5fto_5fint_9',['convert_flot_to_int',['../namespacerun__campaign.html#ab66f6ae6b38af0fe25000afa9f97fdb5',1,'run_campaign']]],
-  ['create_5fargparse_10',['create_argparse',['../namespacerebalancer.html#a960509622b836aad5bb26cf6e9b0d1ba',1,'rebalancer.create_argparse()'],['../namespacevalidation.html#aaf85d86050684c5622e23401647ec932',1,'validation.create_argparse()'],['../namespacemain.html#a18c14f57fb84e6fb22ac128e3c047ec9',1,'main.create_argparse()']]]
+  ['a_20ferramenta_20no_20google_20colab_0',['4.3. Executando a ferramenta no Google Colab',['../index.html#autotoc_md18',1,'']]],
+  ['activation_5ffunction_1',['activation_function',['../classConditionalGANModel_1_1ConditionalGAN.html#a718282db69bb559c6d906915c536360c',1,'ConditionalGANModel.ConditionalGAN.activation_function'],['../namespacemain.html#ae58581114e54b4b8fbf7e7e0b6bbf633',1,'main.activation_function']]],
+  ['add_5factivation_5flayer_2',['add_activation_layer',['../classConditionalGANModel_1_1ConditionalGAN.html#aa358bdcdec7eee061533ec913c5913b9',1,'ConditionalGANModel::ConditionalGAN']]],
+  ['adversarialmodel_3',['AdversarialModel',['../classAdversarialModel_1_1AdversarialModel.html',1,'AdversarialModel.AdversarialModel'],['../namespaceAdversarialModel.html',1,'AdversarialModel']]],
+  ['adversarialmodel_2epy_4',['AdversarialModel.py',['../AdversarialModel_8py.html',1,'']]],
+  ['aim_5frun_5',['aim_run',['../namespacemain.html#ac0f4a58ccc5bb4ee14f9319054e1b55a',1,'main']]],
+  ['aimstack_6',['Aimstack',['../index.html#autotoc_md24',1,'9.1. Aimstack'],['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack'],['..//home/angelo/MalSynGen/main.py#autotoc_md10',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack']]],
+  ['ambiente_20de_20testes_7',['5. Ambiente de testes',['../md_ARTEFATOS.html#autotoc_md6',1,'']]],
+  ['ambientes_20de_20teste_8',['7. Ambientes de teste',['../index.html#autotoc_md21',1,'']]],
+  ['apêndice_20sbseg24_20sf_3a_20243359_3a_20malsyngen_3a_20redes_20neurais_20artificiais_20na_20geração_20de_20dados_20tabulares_20sintéticos_20para_20detecção_20de_20malware_9',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
+  ['arguments_10',['arguments',['../namespacerebalancer.html#a6b05ceee6ef439c0bfbb8ec83cd7fa77',1,'rebalancer.arguments'],['../namespacevalidation.html#ad1beceb35d2ea57c9d17049144f3c698',1,'validation.arguments'],['../namespacemain.html#a9364589a2aeb5530ff35d7ea71213660',1,'main.arguments']]],
+  ['artefatos_20apêndice_20sbseg24_20sf_3a_20243359_3a_20malsyngen_3a_20redes_20neurais_20artificiais_20na_20geração_20de_20dados_20tabulares_20sintéticos_20para_20detecção_20de_20malware_11',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
+  ['artefatos_2emd_12',['ARTEFATOS.md',['../ARTEFATOS_8md.html',1,'']]],
+  ['artificiais_20na_20geração_20de_20dados_20tabulares_20sintéticos_20para_20detecção_20de_20malware_13',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
+  ['as_20métricas_20obtidas_20na_20ferramenta_20de_20rastreamento_20aimstack_14',['as métricas obtidas na ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack'],['..//home/angelo/MalSynGen/main.py#autotoc_md10',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack']]],
+  ['automatizados_3a_15',['4.2. Parâmetros dos testes automatizados:',['../index.html#autotoc_md16',1,'']]],
+  ['axis_16',['axis',['../namespacerebalancer.html#a9a68fdb4104b4cddf37c6cebb31d4fd8',1,'rebalancer']]]
 ];
