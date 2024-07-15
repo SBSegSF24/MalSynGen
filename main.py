@@ -275,12 +275,12 @@ def evaluate_TRTS_data(list_classifiers, x_TRTS, y_TRTS, fold, k, generate_confu
     - path_confusion_matrix: caminho para salvar matriz de confusão
     - verbose_level: nível de verbosidade
     - dict: dicionário para armazenar resultados das métricas de utilidade
-    - syn_aucs: lista para armazenar AUCs
+    - TRTS_aucs: lista para armazenar AUCs dos classificadore TRTS
     
 
     Retorna:
     - dict: dicionário atualizado com resultados
-    - syn_aucs: lista atualizada com AUCs
+    - TRTS_aucs: lista atualizada com AUCs
     """
     instance_metrics = ProbabilisticMetrics()
     y_predict_prob=[]
@@ -390,12 +390,12 @@ def evaluate_TSTR_data(list_classifiers, x_TSTR, y_TSTR, fold, k, generate_confu
     - path_confusion_matrix: caminho para salvar matriz de confusão
     - verbose_level: nível de verbosidade
     - dict: dicionário para armazenar resultados das métricas de utilidade
-    - syn_aucs: lista para armazenar AUCs
+    - TSTR_aucs: lista para armazenar AUCs dos classificadores TSTR
 
 
     Retorna:
     - dict: dicionário atualizado com resultados
-    - syn_aucs: lista atualizada com AUCs
+    - TSTR_aucs: lista atualizada com AUCs
   
     """
     logging.info(f"TSTR Fold {fold + 1}/{k} results")
@@ -493,12 +493,12 @@ def p_value_test (TSTR_label,TRTS_label,type_of_metric,classifier_type):
     A função calcula o valor-p (p-value) utilizando o teste de Wilcoxon para amostras pareadas das métricas de utilidade dos classificadores.
 
     Parâmetros:
-    -TSTR_label (dict): Dicionário contendo os dados dos classificadores TSTR, onde as chaves são os tipos de classificadores 
+    -TSTR_label : Dicionário contendo os dados dos classificadores TSTR, onde as chaves são os tipos de classificadores 
                        e os valores são listas ou arrays com os dados.
-    -TRTS_label (dict): Dicionário contendo os dados dos classificadores TRTS, onde as chaves são os tipos de 
+    -TRTS_label : Dicionário contendo os dados dos classificadores TRTS, onde as chaves são os tipos de 
                         classificadores e os valores são listas ou arrays com os dados.
-    -type_of_metric (str): Uma string que representa o tipo de métrica que está sendo testada.
-    -classifier_type (str): Uma string que representa o tipo de classificador cujos dados serão comparados.
+    -type_of_metric : Uma string que representa o tipo de métrica que está sendo testada.
+    -classifier_type : Uma string que representa o tipo de classificador cujos dados serão comparados.
 
     Retorna:
     -p_value: O valor-p resultante do teste de Wilcoxon.
@@ -518,13 +518,13 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
     Função para demonstrar e exportar resultados de métricas de fidelidade e utilidade, além da chamada de criação dos plots destas métricas.
     
     Parâmetros:
-        -dict_similarity (dict): Dicionário contendo listas de métricas de fidelidade entre os dados.
-        -classifier_type (list): Lista de classificadores.
-        -output_dir (str): Diretório de saída para salvar os resultados.
-        -title_output_label (str): Título do rótulo de saída.
-        -dict_metrics (dict): Dicionário contendo listas de métricas (ex. precisão, recall, etc.).
-        -dict_TRTS_auc (dict): Dicionário contendo AUC para os classificadores TRTS.
-        -dict_TSTR_auc (dict): Dicionário contendo AUC para os classificadores TSTR.
+        -dict_similarity : Dicionário contendo listas de métricas de fidelidade entre os dados.
+        -classifier_type : Lista de classificadores.
+        -output_dir (: Diretório de saída para salvar os resultados.
+        -title_output_label : Título do rótulo de saída.
+        -dict_metrics : Dicionário contendo listas de métricas (ex. precisão, recall, etc.).
+        -dict_TRTS_auc : Dicionário contendo AUC para os classificadores TRTS.
+        -dict_TSTR_auc : Dicionário contendo AUC para os classificadores TSTR.
     """
     
     ## Inicializa as classes para plotar métricas
