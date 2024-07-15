@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['salvamento_20das_20figuras_20geradas_20e_20as_20métricas_20obtidas_20na_20ferramenta_20de_20rastreamento_20aimstack_0',['salvamento das figuras geradas e as métricas obtidas na ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack'],['..//home/angelo/MalSynGen/main.py#autotoc_md10',1,'opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack']]],
-  ['save_5fmodels_1',['save_models',['../classAdversarialModel_1_1AdversarialModel.html#a7d99c1e3f4c9fa2517991d07ca9d930f',1,'AdversarialModel.AdversarialModel.save_models()'],['../namespacemain.html#a3a2164aa0fb3d39991c6175539d9639c',1,'main.save_models']]],
+  ['salvamento_20das_20figuras_20geradas_20e_20as_20métricas_20obtidas_20na_20ferramenta_20de_20rastreamento_20aimstack_0',['opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Aimstack',['..//home/angelo/MalSynGen/main.py#autotoc_md9',1,'']]],
+  ['save_5fmodels_1',['save_models',['../classAdversarialModel_1_1AdversarialModel.html#a7d99c1e3f4c9fa2517991d07ca9d930f',1,'AdversarialModel::AdversarialModel']]],
   ['sbseg24_20sf_3a_20243359_3a_20malsyngen_3a_20redes_20neurais_20artificiais_20na_20geração_20de_20dados_20tabulares_20sintéticos_20para_20detecção_20de_20malware_2',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
   ['selos_20considerados_3',['1. Selos Considerados',['../md_ARTEFATOS.html#autotoc_md1',1,'']]],
   ['set_5factivation_5ffunction_4',['set_activation_function',['../classConditionalGANModel_1_1ConditionalGAN.html#a88b173bd29fcaf1a3d564984c6b1e226',1,'ConditionalGANModel::ConditionalGAN']]],
@@ -75,6 +75,5 @@ var searchData=
   ['show_5fall_5fsettings_72',['show_all_settings',['../namespacemain.html#ab0324a6dd883415a3c87373088f64894',1,'main']]],
   ['show_5fand_5fexport_5fresults_73',['show_and_export_results',['../namespacemain.html#ac8e083ea3af0bb7a23361aec32f0ba04',1,'main']]],
   ['show_5fmodel_74',['show_model',['../namespacemain.html#a07f32adbedabcab5641200b65c90d685',1,'main']]],
-  ['sintéticos_20para_20detecção_20de_20malware_75',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]],
-  ['smoothing_5frate_76',['smoothing_rate',['../classAdversarialModel_1_1AdversarialModel.html#a164192f5974aa33b6e936d9f75edc830',1,'AdversarialModel::AdversarialModel']]]
+  ['sintéticos_20para_20detecção_20de_20malware_75',['Artefatos apêndice SBSeg24/SF: #243359: MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware',['../md_ARTEFATOS.html',1,'']]]
 ];

@@ -264,8 +264,8 @@ def evaluate_TRTS_data(list_classifiers, x_TRTS, y_TRTS, fold, k, generate_confu
 
     Parâmetros:
     - list_classifiers: lista de classificadores
-    - x_TRTS: dados predizidos por TRTS
-    - y_TRTS: rótulos reais dos dados
+    - x_TRTS: dados utilizada para evaluar os classificadores TRTS
+    - y_TRTS: rótulos dos dados de avaliação
     - fold: índice da iteração atual
     - k: índice da subdivisão atual
     - generate_confusion_matrix: flag para geração de matriz de confusão
@@ -379,8 +379,8 @@ def evaluate_TSTR_data(list_classifiers, x_TSTR, y_TSTR, fold, k, generate_confu
 
     Parâmetros:
     - list_classifiers: lista de classificadores
-    - x_TSTR: dados predizidos por TSTR
-    - y_TSTR: rótulos reais dos dados
+    - x_TSTR: dados utilizada para evaluar os classificadores TSTR
+    - y_TSTR: rótulos dos dados de avaliação
     - fold: índice da iteração atual
     - k: índice da subdivisão atual
     - generate_confusion_matrix: flag para geração de matriz de confusão
