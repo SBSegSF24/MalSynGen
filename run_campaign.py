@@ -104,7 +104,7 @@ campaigns_available = {
         'k_fold': ['10'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-        'output_dir':["campanhas_SF24"],
+        'output_dir':["campanhas_SF24/kronodroid_real","campanhas_SF24/kronodroid_emulator"],
         'training_algorithm': ['Adam'],
     },
      'demo2': {
@@ -113,7 +113,7 @@ campaigns_available = {
         'k_fold': ['2'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-        'output_dir':["teste"],
+        'output_dir':["demo2/kronodroid_real","demo2/kronodroid_emulator"],
         'training_algorithm': ['Adam'],
     },
 }
