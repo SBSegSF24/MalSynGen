@@ -391,7 +391,10 @@ def main():
 
                 for param in combination.keys():
                     cmd += " --{} {}".format(param, combination[param])
-
+                    if(c!='SF24_4096_2048_10'):
+                                cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
+                    else:
+                                cmd+=" --output_dir {}".format(("campanhas_SF24"+"/"+(combination[param].split("/")[-1])))
                 # cronometra o início do experimento da campanha
                 time_start_experiment = datetime.datetime.now()
                 logging.info(
