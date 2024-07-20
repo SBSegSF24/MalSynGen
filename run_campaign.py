@@ -71,7 +71,7 @@ campaigns_available = {
         "num_samples_class_malware": ['10000'],
         'number_epochs': ['100'],
         'k_fold': ['2'],
-        'output_dir':["campanhas_demo"],
+
         'training_algorithm': ['Adam'],
     },
     'Kronodroid_r': {
@@ -82,7 +82,7 @@ campaigns_available = {
         "num_samples_class_malware": ['10000'],
         'number_epochs': ['500'],
         'k_fold': ['10'],
-        'output_dir':["campanhas_kronodroid_r"],
+
         'training_algorithm': ['Adam'],
     },
     'Kronodroid_e': {
@@ -93,7 +93,7 @@ campaigns_available = {
         'k_fold': ['10'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-        'output_dir':["campanhas_kronodroid_e"],
+
         'training_algorithm': ['Adam'],
     },
     'SF24_4096_2048_10': {
@@ -104,7 +104,7 @@ campaigns_available = {
         'k_fold': ['10'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-        'output_dir':["campanhas_SF24/kronodroid_real","campanhas_SF24/kronodroid_emulator"],
+
         'training_algorithm': ['Adam'],
     },
      'demo2': {
@@ -113,7 +113,6 @@ campaigns_available = {
         'k_fold': ['2'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-        'output_dir':["demo2/kronodroid_real","demo2/kronodroid_emulator"],
         'training_algorithm': ['Adam'],
     },
 }
@@ -335,12 +334,17 @@ def main():
                     # estabelece o comando de execução
                     cmd = COMMAND
                     cmd += " --verbosity {}".format(Parâmetros.verbosity)
-                    cmd += " --output_dir {}".format(os.path.join(campaign_dir, "combination_{}".format(count_combination)))
+
 
                     count_combination += 2
 
                     for param in combination.keys():
                         cmd += " --{} {}".format(param, combination[param])
+                        if(param=="input_dataset"):
+                            if(c!='SF24_4096_2048_10'):
+                                cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
+                            else:
+                                cmd+=" --output_dir {}".format(("campanhas_SF24"+"/"+(combination[param].split("/")[-1])))
                     # cronometra o início do experimento da campanha
                     time_start_experiment = datetime.datetime.now()
                     logging.info("\t\t\t\t\tBegin: {}".format(time_start_experiment.strftime(TIME_FORMAT)))
