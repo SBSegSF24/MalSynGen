@@ -54,6 +54,14 @@ COMMAND2 = "pipenv run python main.py -ml  "
 #Dataset utiliados
 datasets = ['datasets/kronodroid_emulador-balanced.csv', 'datasets/kronodroid_real_device-balanced.csv']
 
+def list_of_ints(arg):
+    return list(map(int, arg.split(',')))
+def list_of_floats(arg):
+    return list(map(float, arg.split(',')))
+# Define a custom argument type for a list of integers
+def list_of_strs(arg):
+    return list(map(str, arg.split(',')))
+
 # Definindo campanhas disponíveis
 """
   Campanhas:
@@ -71,7 +79,6 @@ campaigns_available = {
         "num_samples_class_malware": ['10000'],
         'number_epochs': ['100'],
         'k_fold': ['2'],
-
         'training_algorithm': ['Adam'],
     },
     'Kronodroid_r': {
@@ -82,7 +89,6 @@ campaigns_available = {
         "num_samples_class_malware": ['10000'],
         'number_epochs': ['500'],
         'k_fold': ['10'],
-
         'training_algorithm': ['Adam'],
     },
     'Kronodroid_e': {
@@ -93,18 +99,14 @@ campaigns_available = {
         'k_fold': ['10'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-
         'training_algorithm': ['Adam'],
     },
-    'SF24_4096_2048_10': {
+    'campanhas_SF24': {
         'input_dataset': ['datasets/kronodroid_real_device-balanced.csv', 'datasets/kronodroid_emulador-balanced.csv'],
-        "dense_layer_sizes_g": ['4096'],
-        "dense_layer_sizes_d": ['2048'],
-        'number_epochs': ['500'],
-        'k_fold': ['10'],
+        'number_epochs': ['100'],
+        'k_fold': ['2'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
-
         'training_algorithm': ['Adam'],
     },
      'demo2': {
@@ -270,6 +272,19 @@ def main():
     parser.add_argument("--verbosity", "-v", help=help_msg, default=DEFAULT_VERBOSITY_LEVEL, type=int)
     parser.add_argument('-ml','--use_mlflow',action='store_true',help="Uso ou não da ferramenta mlflow para monitoramento") 
 
+    parser.add_argument("--dense_layer_sizes_g", type=list_of_ints,default=None,help=" Valor das camadas densas do gerador")
+    parser.add_argument("--dense_layer_sizes_d", type=list_of_ints,default=None,help="valor das camadas densas do discriminador")
+    parser.add_argument('--number_epochs', type=list_of_ints,help='Número de épocas (iterações de treinamento).')
+    parser.add_argument('--batch_size', type=int,default=64,choices=[16, 32, 64,128,256],help='Tamanho do lote da cGAN.')
+    parser.add_argument("--optimizer_generator_learning", type=list_of_floats,default=None,help='Taxa de aprendizado do gerador')
+    parser.add_argument("--optimizer_discriminator_learning", type=list_of_floats,default=None,help='Taxa de aprendizado do discriminador')
+
+    parser.add_argument("--dropout_decay_rate_d",type=list_of_floats,default=None,help="Taxa de decaimento do dropout do discriminador da cGAN")
+    parser.add_argument("--dropout_decay_rate_g",type=list_of_floats,default=None,help="Taxa de decaimento do dropout do gerador da cGAN")
+
+    parser.add_argument('--initializer_mean', type=list_of_floats,default=None,help='Valor central da distribuição gaussiana do inicializador.')
+    parser.add_argument('--initializer_deviation', type=list_of_floats,default=None,help='Desvio padrão da distribuição gaussiana do inicializador.')
+
     global Parâmetros
     Parâmetros = parser.parse_args()
     #cria a estrutura dos diretórios de saída
@@ -312,6 +327,9 @@ def main():
     logging.info("##########################################")
     time_start_evaluation = datetime.datetime.now()
     count_campaign = 1
+    aux=None
+           # "num_samples_class_benign":[3418,10170,9077,5222,5222,5222,5975,5555,36755,28745],
+       # "num_samples_class_malware":[3418,10170,9077,5222,5222,5222,5975,5555,36755,28745],
     USE_MLFLOW=False
     #testa se o parâmetro do mlflow está ativado
     if Parâmetros.use_mlflow:
@@ -324,8 +342,28 @@ def main():
                 #para cada campanha aumentar o número de campanhas
                 count_campaign += 1
                 campaign = campaigns_available[c]
+                if(Parâmetros.dense_layer_sizes_g!=None):
+                    campaign['dense_layer_sizes_g']=Parâmetros.dense_layer_sizes_g
+                if(Parâmetros.dense_layer_sizes_d!=None):
+                    campaign['dense_layer_sizes_d']=Parâmetros.dense_layer_sizes_d
+                if(Parâmetros.number_epochs!=None):
+                    campaign['number_epochs']=Parâmetros.number_epochs
+                if(Parâmetros.optimizer_generator_learning!=None):
+                    campaign['optimizer_generator_learning']=Parâmetros.optimizer_generator_learning
+                if(Parâmetros.optimizer_discriminator_learning!=None):
+                    campaign["optimizer_discriminator_learning"]=Parâmetros.optimizer_discriminator_learning
+                if(Parâmetros.dropout_decay_rate_d!=None):
+                    campaign["dropout_decay_rate_d"]=Parâmetros.dropout_decay_rate_d
+                if(Parâmetros.dropout_decay_rate_g!=None):
+                    campaign["dropout_decay_rate_g"]=Parâmetros.dropout_decay_rate_g
+                if(Parâmetros.initializer_mean!=None):
+                    campaign["initializer_mean"]=Parâmetros.initializer_mean
+                if(Parâmetros.initializer_deviation!=None):
+                    campaign['initializer_deviation']=Parâmetros.initializer_deviation
                 params, values = zip(*campaign.items())
                 combinations_dicts = [dict(zip(params, v)) for v in itertools.product(*values)]
+                #print(campaign["output_dir"][0])
+
                 campaign_dir = '{}/{}'.format(output_dir, c)
                 count_combination = 1
                 for combination in combinations_dicts:
@@ -334,17 +372,15 @@ def main():
                     # estabelece o comando de execução
                     cmd = COMMAND
                     cmd += " --verbosity {}".format(Parâmetros.verbosity)
-
-
+                    cmd+=" --batch_size {}".format(Parâmetros.batch_size)
                     count_combination += 2
 
                     for param in combination.keys():
                         cmd += " --{} {}".format(param, combination[param])
                         if(param=="input_dataset"):
-                            if(c!='SF24_4096_2048_10'):
-                                cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
-                            else:
-                                cmd+=" --output_dir {}".format(("campanhas_SF24"+"/"+(combination[param].split("/")[-1])))
+
+                            cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
+                        
                     # cronometra o início do experimento da campanha
                     time_start_experiment = datetime.datetime.now()
                     logging.info("\t\t\t\t\tBegin: {}".format(time_start_experiment.strftime(TIME_FORMAT)))
@@ -373,6 +409,24 @@ def main():
             count_campaign += 1
 
             campaign = campaigns_available[c]
+            if(Parâmetros.dense_layer_sizes_g!=None):
+                    campaign['dense_layer_sizes_g']=Parâmetros.dense_layer_sizes_g
+            if(Parâmetros.dense_layer_sizes_d!=None):
+                    campaign['dense_layer_sizes_d']=Parâmetros.dense_layer_sizes_d
+            if(Parâmetros.number_epochs!=None):
+                    campaign['number_epochs']=Parâmetros.number_epochs
+            if(Parâmetros.optimizer_generator_learning!=None):
+                    campaign['optimizer_generator_learning']=Parâmetros.optimizer_generator_learning
+            if(Parâmetros.optimizer_discriminator_learning!=None):
+                    campaign["optimizer_discriminator_learning"]=Parâmetros.optimizer_discriminator_learning
+            if(Parâmetros.dropout_decay_rate_d!=None):
+                    campaign["dropout_decay_rate_d"]=Parâmetros.dropout_decay_rate_d
+            if(Parâmetros.dropout_decay_rate_g!=None):
+                    campaign["dropout_decay_rate_g"]=Parâmetros.dropout_decay_rate_g
+            if(Parâmetros.initializer_mean!=None):
+                    campaign["initializer_mean"]=Parâmetros.initializer_mean
+            if(Parâmetros.initializer_deviation!=None):
+                    campaign['initializer_deviation']=Parâmetros.initializer_deviation
             params, values = zip(*campaign.items())
             combinations_dicts = [dict(zip(params, v)) for v in itertools.product(*values)]
             campaign_dir = '{}/{}'.format(output_dir, c)
@@ -384,17 +438,16 @@ def main():
                 #comando alternativo que possui a opção -ml
                 cmd = COMMAND2
                 cmd += " --verbosity {}".format(Parâmetros.verbosity)
-                cmd += " --output_dir {}".format(os.path.join(campaign_dir, "combination_{}".format(count_combination)))
                 cmd += " --run_id {}".format(id)
 
                 count_combination += 2
 
                 for param in combination.keys():
                     cmd += " --{} {}".format(param, combination[param])
-                    if(c!='SF24_4096_2048_10'):
-                                cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
-                    else:
-                                cmd+=" --output_dir {}".format(("campanhas_SF24"+"/"+(combination[param].split("/")[-1])))
+                    if(param=="input_dataset"):
+
+                            cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
+
                 # cronometra o início do experimento da campanha
                 time_start_experiment = datetime.datetime.now()
                 logging.info(
