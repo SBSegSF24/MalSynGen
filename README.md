@@ -74,6 +74,8 @@ Ademais, caso já tenha realizado a execução das campanhas anteriormente basta
  jupyter notebook plots.ipynb
    ```
 
+Ao fim da execução serão gerados três plots com duas versões cada: plot_3-v2,plot_2-v2 e plot_1-v2; todos estão no diretório MalSynGen
+
 ## 4. Outras opções de execução
    O script **run_balanced_datasets.sh** é responsável pela execução dos datasets balanceaddos dos experimentos com base na entrada especificada pelo usuário.
    Executar o script: 
