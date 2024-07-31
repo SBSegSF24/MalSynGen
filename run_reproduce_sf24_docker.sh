@@ -10,3 +10,10 @@ if docker info >/dev/null 2>&1; then
 else
     echo "Seu usuário atual não possui permissões para executar docker sem sudo, execute o seguinte comando e reinicialize a máquina: sudo usermod -aG docker SEU_USER "
 fi
+if command -v jupyter &> /dev/null
+then
+    jupyter notebook plots.ipynb
+else
+   pip install notebook
+   jupyter notebook plots.ipynb
+fi
