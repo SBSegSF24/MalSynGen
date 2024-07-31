@@ -103,8 +103,10 @@ campaigns_available = {
     },
     'campanhas_SF24': {
         'input_dataset': ['datasets/kronodroid_real_device-balanced.csv', 'datasets/kronodroid_emulador-balanced.csv'],
-        'number_epochs': ['100'],
-        'k_fold': ['2'],
+        "dense_layer_sizes_g": ['4096'],
+        "dense_layer_sizes_d": ['2048'],
+        'number_epochs': ['500'],
+        'k_fold': ['10'],
         "num_samples_class_benign": ['10000'],
         "num_samples_class_malware": ['10000'],
         'training_algorithm': ['Adam'],
