@@ -64,7 +64,7 @@ Para a reprodução dos mesmos experimentos (campanhas) do paper utilize uma das
    ./run_reproduce_sf24_docker.sh
    ```
 ### 3.1. Geração dos gráficos do paper
-Ao final da execução do script de reprodução é aberto um notebook jupyter com o código de geração dos gráficos do paper, este é feito com base nos arquivos na pasta campanhas_SF24 criada ao final da execução. Para realizar a execução do notebook clique na aba run e na opção run all cells conforme demonstrado na imagem:
+Ao final da execução do script de reprodução é aberto um notebook jupyter com o código de geração dos gráficos do paper, este é feito com base nos arquivos logging.log nas pastas do diretório campanhas_SF24 criada ao final da execução. Para realizar a execução do notebook clique na aba run e na opção run all cells conforme demonstrado na imagem:
 ![image](https://github.com/user-attachments/assets/43f2b8ba-ae3a-4a23-9e3c-62a3cb01ece3)
 
 Ademais, caso já tenha realizado a execução das campanhas anteriormente basta executar o comando:
