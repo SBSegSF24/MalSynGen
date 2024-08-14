@@ -145,8 +145,11 @@ DEFAULT_ADVERSARIAL_RANDOM_LATENT_STANDER_DEVIATION = 1.0
 DEFAULT_CONDITIONAL_LAST_ACTIVATION_LAYER = "sigmoid"
 ##Configurações do perceptron
 DEFAULT_PERCEPTRON_TRAINING_ALGORITHM = "Adam"
+##Função de perda padrão para o perceptron
 DEFAULT_PERCEPTRON_LOSS = "binary_crossentropy"
+##Configuração de camadas padrão para o perceptron
 DEFAULT_PERCEPTRON_DENSE_LAYERS_SETTINGS = [512, 256, 256]
+##Valor padrão para a taxa de decaimento do perceptron
 DEFAULT_PERCEPTRON_DROPOUT_DECAY_RATE = 0.2
 DEFAULT_PERCEPTRON_METRIC = ["accuracy"]
 ## Valor padrão para a opção de salvar modelos: True ou False

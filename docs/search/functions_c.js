@@ -69,6 +69,6 @@ var searchData=
   ['set_5ftraining_5floss_66',['set_training_loss',['../classPerceptronModel_1_1PerceptronMultilayer.html#afffbd51c381164512ad14024c34e7604',1,'PerceptronModel::PerceptronMultilayer']]],
   ['set_5fwidth_5fbar_67',['set_width_bar',['../classtools_1_1PlotClassificationMetrics.html#a45e5f71a347cd156ac1546af62146b28',1,'tools.PlotClassificationMetrics.set_width_bar()'],['../classtools_1_1PlotFidelityeMetrics.html#a337d35987e5a069e5413ea12201a6d3e',1,'tools.PlotFidelityeMetrics.set_width_bar()']]],
   ['show_5fall_5fsettings_68',['show_all_settings',['../namespacemain.html#ab0324a6dd883415a3c87373088f64894',1,'main']]],
-  ['show_5fand_5fexport_5fresults_69',['show_and_export_results',['../namespacemain.html#ac8e083ea3af0bb7a23361aec32f0ba04',1,'main']]],
+  ['show_5fand_5fexport_5fresults_69',['show_and_export_results',['../namespacemain.html#a43fff75cd9b6474d77dde6035da9f97e',1,'main']]],
   ['show_5fmodel_70',['show_model',['../namespacemain.html#a07f32adbedabcab5641200b65c90d685',1,'main']]]
 ];

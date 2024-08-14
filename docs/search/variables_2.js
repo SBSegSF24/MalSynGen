@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['output_5fdir_0',['output_dir',['../namespacemain.html#abff85f1d03d6c13ece3375e4c9a5213f',1,'main']]]
+  ['balanced_5fdata_0',['balanced_data',['../namespacerebalancer.html#a0fcb6a51a47107a2b75360da3bf90bf2',1,'rebalancer']]],
+  ['batch_5fsize_1',['batch_size',['../namespacemain.html#a4e9ceb03cdd7f3a9774b7964b51f9fe4',1,'main']]]
 ];

@@ -167,8 +167,8 @@ class IntRange:
         Inicializa a classe IntRange com limites opcionais.
 
         Parâmetros:
-            imin : Limite inferior do intervalo. Default é None.
-            imax : Limite superior do intervalo. Default é None.
+            imin : Limite inferior do intervalo. O valor padrão é None.
+            imax : Limite superior do intervalo. O valor padrão é None.
         """
         self.imin = imin
         self.imax = imax
