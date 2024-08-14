@@ -10,9 +10,9 @@ A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar 
     cd MalSynGen
    ```
 2. Instalação do Pipenv, necessário para a execução de vários comandos.
-```bash
-pip install pipenv
-```
+   ```bash
+   pip install pipenv
+   ```
     
 3. Instalação das dependências.
    
