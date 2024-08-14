@@ -9,7 +9,12 @@ A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar 
     git clone https://github.com/SBSegSF24/MalSynGen.git
     cd MalSynGen
    ```
-2. Instalação das dependências.
+2. Instalação do Pipenv,o pipenv é necessario para a execução de vários comandos.
+    ```bash
+      pip install pipenv
+    ```
+    
+3. Instalação das dependências.
    
    **Opção 1**: Construir uma imagem Docker localmente a partir do Dockerfile.
       
@@ -34,13 +39,11 @@ A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar 
    ```
 
    **Opção 4**: Configurar o pipenv.
-   ```
-   pip install pipenv
-   ```
+
    ```
    pipenv install -r requirements.txt
    ```
-   Obs: É necessário a instalação do pipenv através da opção 4 ou opção 2 para garantir o funcionamento da ferramenta.
+
 ## 2. Execução
 Executar a demonstração de funcionamento da ferramenta: 
 
