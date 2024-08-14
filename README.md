@@ -56,7 +56,20 @@ Executar a demonstração de funcionamento da ferramenta:
    ```bash
    ./run_demo_docker.sh
    ```
+### 2.1. Dependências
+Testamos o código da ferramenta com as seguintes versões Python:
 
+1. Python 3.8.2 
+
+2. Python 3.8.10
+
+3. Python 3.9.2
+
+4. Python 3.10.12
+
+O código da MalSynGen possui dependências com diversos pacotes e bibliotecas Python, como 
+numpy 1.21.5, Keras 2.9.0, Tensorflow 2.9.1, pandas 1.4.4, scikit-learn 1.1.1. e mlflow 2.12.1.
+A lista completa e extensa das dependências está no arquivo [**requirements.txt**](https://github.com/SBSegSF24/MalSynGen/blob/880d39c70a8b6e6725acb7a6376f57268ac4ba11/requirements.txt). 
 ## 3. Reprodução 
 Para a reprodução dos mesmos experimentos (campanhas) do paper utilize uma das seguintes opções. A execução leva em torno de 14 horas em um computador AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
 
