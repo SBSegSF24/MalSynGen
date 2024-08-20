@@ -244,7 +244,7 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 3. **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM (3200MHz), NVDIA RTX3090 24GB. **Software**:Python 3.11.5, WSL: 2.2.4.0, Docker version 24.0.7, 
 
 ## 8. Datasets
-O diretório **datasets** do GitHub contém os conjuntos de dados balanceados KronoDroid_emulator e KronoDroid_real_device utilizados nos experimentos do trabalho. O código utilizado para balancear os datasets originais também está disponível. O diretório **datasets** contém também os arquivos de validação de cada dataset e código de validação utilizado no subdiretório **validation**. As versões originais dos datasets tem como origem o repositório [^1][https://github.com/aleguma/kronodroid](https://github.com/aleguma/kronodroid).
+O diretório **datasets** do GitHub contém os conjuntos de dados balanceados KronoDroid_emulator e KronoDroid_real_device utilizados nos experimentos do trabalho. O código utilizado para balancear os datasets originais também está disponível. O diretório **datasets** contém também os arquivos de validação de cada dataset e código de validação utilizado no subdiretório **validation**. As versões originais dos datasets tem como origem o repositório [https://github.com/aleguma/kronodroid](https://github.com/aleguma/kronodroid) do artigo https://www.sciencedirect.com/science/article/pii/S0167404821002236[^1]. 
 ![image](https://github.com/user-attachments/assets/534462b5-b0f2-4fe1-93c4-c0446d0d2fa4)
 [^1]:Guerra-Manzanares, Alejandro, Hayretdin Bahsi, and Sven Nõmm. "Kronodroid: time-based hybrid-featured dataset for effective android malware detection and characterization." Computers & Security 110 (2021): 102399.
 
