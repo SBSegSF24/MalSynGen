@@ -277,7 +277,7 @@ def main():
     parser.add_argument("--dense_layer_sizes_g", type=list_of_ints,default=None,help=" Valor das camadas densas do gerador")
     parser.add_argument("--dense_layer_sizes_d", type=list_of_ints,default=None,help="valor das camadas densas do discriminador")
     parser.add_argument('--number_epochs', type=list_of_ints,help='Número de épocas (iterações de treinamento).')
-    parser.add_argument('--batch_size', type=int,default=64,choices=[16, 32, 64,128,256],help='Tamanho do lote da cGAN.')
+    parser.add_argument('--batch_size', type=int,default=256,choices=[16, 32, 64,128,256],help='Tamanho do lote da cGAN.')
     parser.add_argument("--optimizer_generator_learning", type=list_of_floats,default=None,help='Taxa de aprendizado do gerador')
     parser.add_argument("--optimizer_discriminator_learning", type=list_of_floats,default=None,help='Taxa de aprendizado do discriminador')
 
@@ -330,8 +330,7 @@ def main():
     time_start_evaluation = datetime.datetime.now()
     count_campaign = 1
     aux=None
-           # "num_samples_class_benign":[3418,10170,9077,5222,5222,5222,5975,5555,36755,28745],
-       # "num_samples_class_malware":[3418,10170,9077,5222,5222,5222,5975,5555,36755,28745],
+
     USE_MLFLOW=False
     #testa se o parâmetro do mlflow está ativado
     if Parâmetros.use_mlflow:
@@ -342,7 +341,7 @@ def main():
 
                 logging.info("\tCampaign {} {}/{} ".format(c, count_campaign, len(campaigns_chosen)))
                 #para cada campanha aumentar o número de campanhas
-                count_campaign += 1
+                #count_campaign += 1
                 campaign = campaigns_available[c]
                 if(Parâmetros.dense_layer_sizes_g!=None):
                     campaign['dense_layer_sizes_g']=Parâmetros.dense_layer_sizes_g
@@ -366,7 +365,7 @@ def main():
                 combinations_dicts = [dict(zip(params, v)) for v in itertools.product(*values)]
                 #print(campaign["output_dir"][0])
 
-                campaign_dir = '{}/{}'.format(output_dir, c)
+                #campaign_dir = '{}/{}'.format(output_dir, c)
                 count_combination = 1
                 for combination in combinations_dicts:
                     logging.info("\t\tcombination {}/{} ".format(count_combination, len(combinations_dicts)))
@@ -375,13 +374,15 @@ def main():
                     cmd = COMMAND
                     cmd += " --verbosity {}".format(Parâmetros.verbosity)
                     cmd+=" --batch_size {}".format(Parâmetros.batch_size)
-                    count_combination += 2
-
+                    #count_combination += 1
+                    count_combination=1
                     for param in combination.keys():
                         cmd += " --{} {}".format(param, combination[param])
                         if(param=="input_dataset"):
 
-                            cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
+                            cmd+=" --output_dir {}".format((c+"/"+((combination[param].split("/")[-1]).split('.csv')[0])+'_'+str(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))))
+
+                    count_combination += 1
                         
                     # cronometra o início do experimento da campanha
                     time_start_experiment = datetime.datetime.now()
@@ -401,15 +402,12 @@ def main():
     else:
         #caso o mlflow esteja habilitado, estabelece o endereço e nome da campanha
         mlflow.set_tracking_uri("http://127.0.0.1:6002/")
-        mlflow.set_experiment("MalSynGEn")
+        mlflow.set_experiment("DroidAugmentor")
         with mlflow.start_run(run_name="campanhas"): 
          for c in campaigns_chosen:
            #para cada execução da campanha é criada uma execução filha da execução original
-           with mlflow.start_run(run_name=c,nested=True) as run:
-            id=run.info.run_id
             logging.info("\tCampaign {} {}/{} ".format(c, count_campaign, len(campaigns_chosen)))
             count_campaign += 1
-
             campaign = campaigns_available[c]
             if(Parâmetros.dense_layer_sizes_g!=None):
                     campaign['dense_layer_sizes_g']=Parâmetros.dense_layer_sizes_g
@@ -432,34 +430,36 @@ def main():
             params, values = zip(*campaign.items())
             combinations_dicts = [dict(zip(params, v)) for v in itertools.product(*values)]
             campaign_dir = '{}/{}'.format(output_dir, c)
-
             count_combination = 1
             for combination in combinations_dicts:
-                logging.info("\t\tcombination {}/{} ".format(count_combination, len(combinations_dicts)))
-                logging.info("\t\t{}".format(combination))
-                #comando alternativo que possui a opção -ml
-                cmd = COMMAND2
-                cmd += " --verbosity {}".format(Parâmetros.verbosity)
-                cmd += " --run_id {}".format(id)
+                with mlflow.start_run(run_name=c,nested=True) as run:
+                    id=run.info.run_id    
+                    logging.info("\t\tcombination {}/{} ".format(count_combination, len(combinations_dicts)))
+                    logging.info("\t\t{}".format(combination))
+                    # estabelece o comando de execução
+                    cmd = COMMAND2
+                    cmd += " --verbosity {}".format(Parâmetros.verbosity)
+                    cmd+=" --batch_size {}".format(Parâmetros.batch_size)
+                    cmd += " --run_id {}".format(id)
+                    #count_combination += 1
+                    count_combination=1
+                    for param in combination.keys():
+                        cmd += " --{} {}".format(param, combination[param])
+                        if(param=="input_dataset"):
 
-                count_combination += 2
+                            cmd+=" --output_dir {}".format((c+"/"+((combination[param].split("/")[-1]).split('.csv')[0])+'_'+str(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))))
 
-                for param in combination.keys():
-                    cmd += " --{} {}".format(param, combination[param])
-                    if(param=="input_dataset"):
-
-                            cmd+=" --output_dir {}".format((c+"/"+(combination[param].split("/")[-1])))
-
-                # cronometra o início do experimento da campanha
-                time_start_experiment = datetime.datetime.now()
-                logging.info(
-                    "\t\t\t\t\tBegin: {}".format(time_start_experiment.strftime(TIME_FORMAT)))
-                run_cmd(cmd)
-                #cronometra o fim do experimento da campanha
-                time_end_experiment = datetime.datetime.now()
-                duration = time_end_experiment - time_start_experiment
-                logging.info("\t\t\t\t\tEnd                : {}".format(time_end_experiment.strftime(TIME_FORMAT)))
-                logging.info("\t\t\t\t\tExperiment duration: {}".format(duration))
+                    count_combination += 1
+                    # cronometra o início do experimento da campanha
+                    time_start_experiment = datetime.datetime.now()
+                    logging.info(
+                        "\t\t\t\t\tBegin: {}".format(time_start_experiment.strftime(TIME_FORMAT)))
+                    run_cmd(cmd)
+                    #cronometra o fim do experimento da campanha
+                    time_end_experiment = datetime.datetime.now()
+                    duration = time_end_experiment - time_start_experiment
+                    logging.info("\t\t\t\t\tEnd                : {}".format(time_end_experiment.strftime(TIME_FORMAT)))
+                    logging.info("\t\t\t\t\tExperiment duration: {}".format(duration))
 
 
             time_end_campaign = datetime.datetime.now()
@@ -472,3 +472,4 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
+
