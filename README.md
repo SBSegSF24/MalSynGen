@@ -2,7 +2,7 @@
 ## MalSynGen
 A MalSynGen  é uma ferramenta que utiliza redes neurais artificiais para gerar dados sintéticos tabulares para o domínio de malware Android. Para avaliar o seu desempenho foram aumentados os dados de dois datasets, considerando métricas de fidelidade estatística e utilidade. Os resultados indicam que MalSynGen é capaz de capturar padrões representativos para o aumento de dados tabulares.
 ### informação importante
-Está é uma ferramenta publica, no entato, caso usar esse material, por favor, referencie os artigos: 
+Está é uma ferramenta pública, no entanto, caso usar esse material, por favor, referenciar os artigos:
 >@@inproceedings{sbseg_estendido,<br/>
  author = {Angelo Nogueira and Kayua Paim and Hendrio Bragança and Rodrigo Mansilha and Diego Kreutz},<br/>
  title = { MalSynGen: redes neurais artificiais na geração de dados tabulares sintéticos para detecção de malware},<br/>
@@ -16,6 +16,8 @@ Está é uma ferramenta publica, no entato, caso usar esse material, por favor, 
  address = {Porto Alegre, RS, Brasil},<br/>
  doi = {10.5753/sbseg_estendido.2024.243359},<br/>
  url = {https://sol.sbc.org.br/index.php/sbseg_estendido/article/view/30126}}<br/>
+
+ 
 https://sol.sbc.org.br/index.php/sbseg_estendido/article/view/30126
 
 
