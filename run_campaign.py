@@ -402,9 +402,12 @@ def main():
     else:
         #caso o mlflow esteja habilitado, estabelece o endereço e nome da campanha
         mlflow.set_tracking_uri("http://127.0.0.1:6002/")
-        mlflow.set_experiment("DroidAugmentor")
-        with mlflow.start_run(run_name="campanhas"): 
-         for c in campaigns_chosen:
+
+          
+        for c in campaigns_chosen:
+            child_experiment_id = mlflow.create_experiment(c)
+            #mlflow.set_experiment(c)
+
            #para cada execução da campanha é criada uma execução filha da execução original
             logging.info("\tCampaign {} {}/{} ".format(c, count_campaign, len(campaigns_chosen)))
             count_campaign += 1
@@ -432,7 +435,9 @@ def main():
             campaign_dir = '{}/{}'.format(output_dir, c)
             count_combination = 1
             for combination in combinations_dicts:
-                with mlflow.start_run(run_name=c,nested=True) as run:
+                run_name="{}".format((c+"/"+((combination["input_dataset"].split("/")[-1]).split('.csv')[0])+'_'+str(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))))
+
+                with mlflow.start_run(run_name=run_name,nested=True,experiment_id=child_experiment_id) as run:
                     id=run.info.run_id    
                     logging.info("\t\tcombination {}/{} ".format(count_combination, len(combinations_dicts)))
                     logging.info("\t\t{}".format(combination))
