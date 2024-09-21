@@ -137,28 +137,30 @@ class ConditionalGAN:
         """
         initialization = RandomNormal(mean=self.initializer_mean, stddev=self.initializer_deviation)
         neural_model_inputs = Input(shape=(self.latent_dim,), dtype=self.dataset_type)
+        latent_input = Input(shape=(self.latent_dim,))
+
+        label_input = Input(shape=(1,), dtype=self.dataset_type)
 
         generator_model = Dense(self.dense_layer_sizes_g[0], kernel_initializer=initialization)(neural_model_inputs)
+        #generator_model = BatchNormalization(momentum=0.8)(generator_model)
         generator_model = Dropout(self.dropout_decay_rate_g)(generator_model)
         generator_model = self.add_activation_layer(generator_model)
 
         for layer_size in self.dense_layer_sizes_g[1:]:
             generator_model = Dense(layer_size, kernel_initializer=initialization)(generator_model)
+            #generator_model = BatchNormalization(momentum=0.8)(generator_model)
             generator_model = Dropout(self.dropout_decay_rate_g)(generator_model)
             generator_model = self.add_activation_layer(generator_model)
 
-        generator_model = Dense(self.output_shape, self.last_layer_activation, kernel_initializer=initialization)(
+        generator_model = Dense(self.output_shape,activation='sigmoid', kernel_initializer=initialization)(
             generator_model)
         generator_model = Model(neural_model_inputs, generator_model, name="Dense_Generator")
         self.generator_model_dense = generator_model
-
-        latent_input = Input(shape=(self.latent_dim,))
-        label_input = Input(shape=(1,), dtype=self.dataset_type)
         concatenate_output = Concatenate()([latent_input, label_input])
         label_embedding = Flatten()(concatenate_output)
         model_input = Dense(self.latent_dim)(label_embedding)
+        model_input = self.add_activation_layer(model_input)
         generator_output_flow = generator_model(model_input)
-
         return Model([latent_input, label_input], generator_output_flow, name="Generator")
 
     def get_discriminator(self):
@@ -168,29 +170,31 @@ class ConditionalGAN:
         Retorno:
            - Model: Modelo do discriminador.
         """
-        neural_model_input = Input(shape=(self.output_shape,), dtype=self.dataset_type)
-        discriminator_model = Dense(self.dense_layer_sizes_d[0])(neural_model_input)
+        neural_model_input = Input(shape=(self.output_shape//16,), dtype=self.dataset_type)
+        discriminator_shape_input = Input(shape=(self.output_shape,))
+        label_input = Input(shape=(1,), dtype=self.dataset_type)
+
+        discriminator_model = Dense(self.dense_layer_sizes_d[0]//2,name="pesado")(neural_model_input)
         discriminator_model = Dropout(self.dropout_decay_rate_d)(discriminator_model)
+        #discriminator_model = BatchNormalization(momentum=0.8)(discriminator_model)
         discriminator_model = self.add_activation_layer(discriminator_model)
 
         for layer_size in self.dense_layer_sizes_d[1:]:
-            discriminator_model = Dense(layer_size)(discriminator_model)
+
+            discriminator_model = Dense(layer_size//2,)(discriminator_model)
+            #discriminator_model = BatchNormalization(momentum=0.8)(discriminator_model)
             discriminator_model = Dropout(self.dropout_decay_rate_d)(discriminator_model)
             discriminator_model = self.add_activation_layer(discriminator_model)
 
-        discriminator_model = Dense(1, self.last_layer_activation)(discriminator_model)
-        discriminator_model = Model(inputs=neural_model_input, outputs=discriminator_model, name="Dense_Discriminator")
-
+        discriminator_model = Dense(1, self.last_layer_activation,name='primeiro_neuronio')(discriminator_model)
+        discriminator_model = Model(inputs=neural_model_input, outputs=discriminator_model, name="segundo_neuronio")
         self.discriminator_model_dense = discriminator_model
-
-        discriminator_shape_input = Input(shape=(self.output_shape,))
-        label_input = Input(shape=(1,), dtype=self.dataset_type)
         concatenate_output = Concatenate()([discriminator_shape_input, label_input])
         label_embedding = Flatten()(concatenate_output)
-        model_input = Dense(self.output_shape)(label_embedding)
+        model_input = Dense(self.output_shape//16)(label_embedding)
+        model_input = self.add_activation_layer(model_input)
         validity = discriminator_model(model_input)
-
-        return Model(inputs=[discriminator_shape_input, label_input], outputs=validity, name="Discriminator")
+        return Model(inputs=[discriminator_shape_input, label_input], outputs=validity, name='Discriminator')
 
     def get_dense_generator_model(self):
         """

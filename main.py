@@ -129,7 +129,7 @@ DEFAULT_ADVERSARIAL_DROPOUT_DECAY_RATE_D = 0.4
 ##Valor padrão para a central da distribuição gaussiana do inicializador.
 DEFAULT_ADVERSARIAL_INITIALIZER_MEAN = 0.0
 ## Valor padrão para desvio padrão da distribuição gaussiana do inicializador.
-DEFAULT_ADVERSARIAL_INITIALIZER_DEVIATION = 0.02
+DEFAULT_ADVERSARIAL_INITIALIZER_DEVIATION = 0.5 
 ##Tamanho de lota padrão da cGAN. Opções: 16, 32, 64,128,256
 DEFAULT_ADVERSARIAL_BATCH_SIZE = 32
 ##Valor padrão para número de neurônios das camadas densas do gerador.
@@ -1164,7 +1164,7 @@ def create_argparse():
 
     parser.add_argument('--batch_size', type=int,
                         default=DEFAULT_ADVERSARIAL_BATCH_SIZE,
-                        choices=[16, 32, 64,128,256],
+                        choices=[16, 32, 64,128,256,512],
                         help='Tamanho do lote da cGAN.')
 
     parser.add_argument("--verbosity", type=int,
