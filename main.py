@@ -362,7 +362,7 @@ def evaluate_TR_As_data(list_classifiers, x_TR_As, y_TR_As, fold, k, generate_co
                ## opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Mlflow
             if USE_MLFLOW:
                   mlflow.log_metrics(values,step=fold+1)
-                  mlflow.log_artifact(matrix_file, 'images')
+                  mlflow.log_artifact(matrix_file, 'matrizes de confusão')
             ## opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento TensorBoard
             if USE_TENSORBOARD:
                with file_writer.as_default():
@@ -489,7 +489,7 @@ def evaluate_TS_Ar_data(list_classifiers, x_TS_Ar, y_TS_Ar, fold, k, generate_co
             ## opção para salvamento das figuras geradas e as métricas obtidas, na  ferramenta de rastreamento Mlflow
             if USE_MLFLOW:
                   mlflow.log_metrics(values,step=fold+1)
-                  mlflow.log_artifact(matrix_file, 'images')
+                  mlflow.log_artifact(matrix_file, 'classificadoress')
 
 def p_value_test (TS_Ar_label,TR_As_label,type_of_metric,classifier_type):
     """
@@ -739,8 +739,8 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
     
     ## Rastreamento das imagens utilizando Mlflow
     if USE_MLFLOW:
-        mlflow.log_artifact(plot_filename1, 'images')
-        mlflow.log_artifact(plot_filename2, 'images')
+        mlflow.log_artifact(plot_filename1, 'Métricas de similaridade')
+        mlflow.log_artifact(plot_filename2, 'Métricas de similaridade')
 
 
 
