@@ -1194,7 +1194,8 @@ def create_argparse():
     
     parser.add_argument('-ml','--use_mlflow',action='store_true',help="Uso ou não da ferramenta mlflow para monitoramento") 
 
-    parser.add_argument('-rid','--run_id',type=str,help="codigo da run",default=None) 
+    parser.add_argument('-rid','--run_id',type=str,help="id da run do mlflow",default=None) 
+    parser.add_argument('-p_ml','--port_mlflow',type=int,help="porta para o servidor mlflow",default=6002) 
     
     
     parser.add_argument("-tb",'--use_tensorboard',action='store_true',help="Uso ou não da ferramenta tensorboard para monitoramento")
@@ -1264,8 +1265,9 @@ if __name__ == "__main__":
         experiment_name= output_dir.split('/')[-1]
         aim_run=Run(experiment=experiment_name)
     if USE_MLFLOW:
-       ##Estabelece o endereço do servidor de rastreamento mlflow como localhost porta 6002
-       mlflow.set_tracking_uri("http://127.0.0.1:6002/")
+       ##Estabelece o endereço do servidor de rastreamento mlflow como localhost 
+       adress="http://127.0.0.1:{}".format(arguments.port_mlflow)
+       mlflow.set_tracking_uri(adress)
        
        if arguments.run_id==None:
              ## Resumir uma execução caso tenha sido abortada
