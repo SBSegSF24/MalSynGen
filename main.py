@@ -153,7 +153,7 @@ DEFAULT_PERCEPTRON_DENSE_LAYERS_SETTINGS = [512, 256, 256]
 DEFAULT_PERCEPTRON_DROPOUT_DECAY_RATE = 0.2
 DEFAULT_PERCEPTRON_METRIC = ["accuracy"]
 ## Valor padrão para a opção de salvar modelos: True ou False
-DEFAULT_SAVE_MODELS = True
+DEFAULT_SAVE_MODELS = False
 ##Caminhos para os arquivos de saida
 DEFAULT_OUTPUT_PATH_CONFUSION_MATRIX = "confusion_matrix"
 DEFAULT_OUTPUT_PATH_TRAINING_CURVE = "training_curve"
@@ -933,8 +933,8 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
         logging.info("Treinamento concluído.")
 
         ## Salvar os modelos treinados, se solicitado
-        #if save_models:
-        #    adversarial_model.save_models(output_dir, i)
+        if save_models:
+           adversarial_model.save_models(output_dir, i)
 
         ## Plotar a curva de perda durante o treinamento
         generator_loss_list = training_history.history['loss_g']
