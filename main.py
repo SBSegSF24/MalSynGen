@@ -561,7 +561,7 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
         logging.info("  TR_As Standard Deviation of F1 Score: {} \n".format(np.std(dict_metrics["TR_As F1 score"][classifier_type[index]])))
         logging.info("  TR_As Standard Deviation of AUC: {} ".format(np.std(dict_TR_As_auc[classifier_type[index]])))
         ## Nome do plot
-        output_dir_metrics=output_dir+"/metrics/graphs_classifier/"
+        output_dir_metrics=output_dir+"/metrics/"
         Path(output_dir_metrics).mkdir(parents=True, exist_ok=True)
         plot_filename = os.path.join(output_dir_metrics, f'{classifier_type[index]}_TR_As_(Treinado com  dados reais,avalia com dados sinteticos)_.pdf')
 
