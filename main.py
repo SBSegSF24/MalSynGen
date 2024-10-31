@@ -285,7 +285,7 @@ def evaluate_TR_As_data(list_classifiers, x_TR_As, y_TR_As, fold, k, generate_co
     - dict: dicionário atualizado com resultados
     - TR_As_aucs: lista atualizada com AUCs
     """
-    output_dir=output_dir+"_resultados"
+    output_dir=output_dir+"/metrics/"
     instance_metrics = ProbabilisticMetrics()
     y_predict_prob=[]
     logging.info(f"TR_As Fold {fold + 1}/{k} results\n")
@@ -406,7 +406,7 @@ def evaluate_TS_Ar_data(list_classifiers, x_TS_Ar, y_TS_Ar, fold, k, generate_co
   
     """
     logging.info(f"TS_Ar Fold {fold + 1}/{k} results")
-    output_dir=output_dir+"_resultados"
+    output_dir=output_dir+"/metrics/"
     instance_metrics = ProbabilisticMetrics()
     y_predict_prob=[]
     ## Itera sobre a lista dos classificadores
@@ -561,7 +561,7 @@ def show_and_export_results(dict_similarity, classifier_type, output_dir, title_
         logging.info("  TR_As Standard Deviation of F1 Score: {} \n".format(np.std(dict_metrics["TR_As F1 score"][classifier_type[index]])))
         logging.info("  TR_As Standard Deviation of AUC: {} ".format(np.std(dict_TR_As_auc[classifier_type[index]])))
         ## Nome do plot
-        output_dir_metrics=output_dir+"_resultados"
+        output_dir_metrics=output_dir+"/metrics/graphs_classifier/"
         Path(output_dir_metrics).mkdir(parents=True, exist_ok=True)
         plot_filename = os.path.join(output_dir_metrics, f'{classifier_type[index]}_TR_As_(Treinado com  dados reais,avalia com dados sinteticos)_.pdf')
 
@@ -940,7 +940,7 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
         generator_loss_list = training_history.history['loss_g']
         discriminator_loss_list = training_history.history['loss_d']
         plot_loss_curve_instance = PlotCurveLoss()
-        output_dir1=output_dir+"_resultados"
+        output_dir1=output_dir+"/metrics/"
         plot_loss_curve_instance.plot_training_loss_curve(generator_loss_list, discriminator_loss_list, output_dir1, i,
                                                           path_curve_loss)
 
@@ -969,7 +969,7 @@ def run_experiment(dataset, input_data_shape, k, classifier_list, output_dir, ba
 
             ## Salvar dados sintéticos em um arquivo CSV
         synthetic_filename = f'synthetic_data_fold_{i + 1}.csv'
-        output_dir_folds=output_dir+"_dados"
+        output_dir_folds=output_dir+"/datasets/"
         Path(output_dir_folds).mkdir(parents=True, exist_ok=True)
         synthetic_filepath = os.path.join(output_dir_folds, synthetic_filename)
         df_synthetic.to_csv(synthetic_filepath, index=False, sep=',', header=True)
@@ -1075,7 +1075,7 @@ def initial_step(initial_arguments, dataset_type):
     """
 
     ## Caminho para o arquivo onde os argumentos da linha de comando serão salvos
-    output_dir=initial_arguments.output_dir+"_resultados"
+    output_dir=initial_arguments.output_dir+"/metrics/"
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     file_args = os.path.join(  output_dir, 'commandline_args.txt')
 
@@ -1228,7 +1228,7 @@ if __name__ == "__main__":
         logging_format = '%(asctime)s\t***\t%(levelname)s {%(module)s} [%(funcName)s] %(message)s'
 
     ##Verifica se o caminho para o diretório de output existe
-    output_dir=arguments.output_dir+"_resultados"
+    output_dir=arguments.output_dir+"/metrics/"
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     logging_filename = os.path.join(output_dir, LOGGING_FILE_NAME)
 
