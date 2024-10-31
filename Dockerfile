@@ -21,12 +21,8 @@ COPY ./ /MalSynGen/
 
 # Install dependencies using pipenv and requirements.txt
 
-RUN pipenv install --skip-lock --dev && \
-    pipenv install -r requirements.txt
-RUN pip3 install requests
-RUN pip install selenium
-RUN chmod +x /MalSynGen/scripts/run_app_in_docker.sh
-RUN /MalSynGen/scripts/run_app_in_docker.sh
+RUN pip3 install -r requirements.txt
 
-
+RUN chmod +x /MalSynGen/shared/app_run.sh
+CMD ["/MalSynGen/shared/app_run.sh"]
 
